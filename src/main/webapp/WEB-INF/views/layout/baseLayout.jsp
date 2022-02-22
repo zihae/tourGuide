@@ -5,7 +5,7 @@
  
 <html>
 <head>
-<title>스프링</title>
+<title>뚜벅이 안내서</title>
 <jsp:include page="/WEB-INF/views/common/head.jsp"></jsp:include>
 </head>
 <body>
