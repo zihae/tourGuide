@@ -18,8 +18,7 @@ public class HomeController {
   @RequestMapping(value="/")
   public ModelAndView main(ModelAndView mv) throws Exception{
       mv.setViewName("/main/home");
-      mv.addObject("setHeader", "타일즈테스트");
-      System.out.println(memberService.getEmail("1"));
+      
       return mv;
   }
 
