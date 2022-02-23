@@ -3,9 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.tour.dao.MemberDAO">
-  <select id="getEmail" resultType="String">
-    select email from member where id = #{id}
-  </select>
+  <insert id="insertMember">
+  	insert into member(user_id,password,nickname,email,gender,birth)
+  							values(#{user.user_id},#{user.password},#{user.nickname},#{user.email},#{user.gender},#{user.birth})
+  </insert>
 </mapper>
 
 

@@ -35,7 +35,6 @@
         }
     </style>
 
-
 </head>
 
 <!--================Header Area =================-->
@@ -43,7 +42,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" href="index.html"><i class="bi bi-book" style="margin-right:4px;"></i>뚜벅이 안내서</a>
+                    <a class="navbar-brand logo_h" href="<%=request.getContextPath()%>/home"><i class="bi bi-book" style="margin-right:4px;"></i>뚜벅이 안내서</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -52,7 +51,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li> 
+                            <li class="nav-item active"><a class="nav-link" href="<%=request.getContextPath()%>/home">Home</a></li> 
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">숙소</a>
                                 <ul class="dropdown-menu">
@@ -84,7 +83,7 @@
 				            </a>
 				            <ul class="main-menu">
 				                <li class="menu-item">
-				                    <a href="#" class="menu-link">회원가입</a>
+				                    <a class="menu-link" href="<%=request.getContextPath()%>/signup">회원가입</a>
 				                </li>
 				                <li class="menu-item">
 				                    <a href="#" class="menu-link">로그인</a>
