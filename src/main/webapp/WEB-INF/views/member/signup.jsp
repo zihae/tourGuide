@@ -16,7 +16,7 @@
 	<style>
 		.label_title{font-weight: bold; font-size: 14px;
 		}
-		
+		.error{color : red }
 		
 	</style>
 </head>
@@ -63,6 +63,7 @@
 				<option value="noe">선택안함</option>
 			</select>
 		</div>
+		<label id = "me_gender-error" class="error" for="me_gender"></label>
 		<button class="btn btn-outline-success col-12">회원가입</button>
 	</form>
 	<script>
@@ -112,7 +113,7 @@
 			             	emailCheck = true;
 			             }
 			             else{
-			             	alert('사용할 수 없는 이메일입니다.');
+			             	alert('이미 가입된 이메일입니다.');
 			             	emailCheck = false;
 			             }
 			        }
@@ -121,6 +122,82 @@
 					$('[name=email]').change(function(){
 						emailCheck = false;
 					});
-	
+					
+			//유효성 검사
+					
+					$("form").validate({
+		        rules: {
+		          user_id: {
+		        	  //4~10 자의 영문 소문자, 숫자, 특수기호(_),(-)만 사용 가능합니다.
+		        	  //단, 첫글자는 영문 소문자만 올 수 있다.
+		            required : true,
+		            regex : /^[a-z][a-z0-9_-]{4,10}$/
+		          },
+		          //8~16자의 영문 대 소문자, 숫자, 특수문자를 사용하세요.
+		          password: {
+		        	  required : true,
+		            regex : /^[A-Za-z0-9-_!@#$%]{8,16}$/
+		          },
+		          password_check:{
+		        	  equalTo : pw
+		          },
+		          //2~10자의 영문 대 소문자, 한글을 사용하세요.
+		          nickname : {
+		        	  required : true,
+		        	  regex : /^[가-힣A-z]{2,10}$/
+		          },
+		          //5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다. (@앞에 부분)
+		          email : {
+		        	  required: true,
+		        	  regex : /^[a-z0-9]{5,20}@[a-z]+\.[a-z]{2,3}$/
+		          },
+		          
+		          gender : {
+		        	  required : true
+		          },
+		          birth : {
+		        	  required : true,
+		        	  regex : /^\d{4}-\d{2}-\d{2}$/
+		          }
+		          
+		        },
+		        //규칙체크 실패시 출력될 메시지
+		        messages : {
+		          user_id: {
+		              required : "필수 정보입니다.",
+		              regex : "4~10 자의 영문 소문자, 숫자, 특수기호(_),(-)만 사용 가능합니다."
+		          },
+		          //
+		          password: {
+		        	  required : "필수 정보입니다.",
+		            regex : '8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.'
+		          },
+		          password_check:{
+		        	  equalTo : '비밀번호가 일치하지 않습니다.'
+		          },
+		          nickname : {
+		        	  required : "필수 정보입니다.",
+		        	  regex : "2~10자의 영문 대 소문자, 한글을 사용하세요."
+		          },
+		          gender : {
+		        	  required : "필수 정보입니다.",
+		          },
+		          birth : {
+		        	  required : "필수 정보입니다.",
+		        	  regex : 'yyyy-mm-dd형태로 입력하세요.'
+		          }   
+		        }
+					});
+				
+			
+				$.validator.addMethod(
+			    "regex",
+			    function(value, element, regexp) {
+		        var re = new RegExp(regexp);
+		        return this.optional(element) || re.test(value);
+			    },
+			    "Please check your input."
+				);
+			
 	</script>
 </body>
