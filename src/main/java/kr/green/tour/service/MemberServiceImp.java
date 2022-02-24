@@ -26,12 +26,19 @@ public class MemberServiceImp implements MemberService{
 				return false;
 			if(user.getGender()== null || user.getGender().trim().length() == 0)
 				return false;
-			if(user.getBirth_str()== null || user.getBirth_str().trim().length() == 0)
-				return false;
 			String encPw = passwordEncoder.encode(user.getPassword());
 			user.setPassword(encPw);
 			memberDao.insertMember(user);
 			return true;
+		}
+
+		@Override
+		public String idCheck(String user_id) {
+			MemberVO user = memberDao.selectMember(user_id);
+			if(user == null)
+				return "true";
+			else
+			return "false";
 		}
 
 

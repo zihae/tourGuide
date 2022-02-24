@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.tour.service.MemberService;
@@ -39,6 +40,14 @@ public class HomeController {
 		  	}
 		  	return mv;
 		  }
+		  
+		  @ResponseBody
+		  @RequestMapping(value="idcheck")
+		  public String idcheck(String user_id) {
+				return memberService.idCheck(user_id);
+			}
+		  
+		  
   
   
 }

@@ -14,40 +14,50 @@
 	<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/additional-methods.min.js"></script>
 	<style>
-		.error{ color: red}
+		.label_title{font-weight: bold; font-size: 14px;
+		}
+		
+		
 	</style>
 </head>
 <body>
 	<form class="container signup body" action="<%=request.getContextPath()%>/signup" method="post">
 		<h1 class="title text-center">회원가입</h1>
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="아이디" name="user_id" >
+			<label class="label_title"for="user_id">아이디</label>
+			<input type="text" class="form-control "  name="user_id" >
 		</div>
 		<div class="form-group">
 			<button type="button" class="btn btn-outline-info form-control" id="idCheck">아이디 중복 체크</button>
 		</div>
 		<div class="form-group">
-			<input type="password" class="form-control" placeholder="비밀번호" name="password" id="pw">
+			<label class="label_title" for="password">비밀번호</label>
+			<input type="password" class="form-control"  name="password" id="pw">
 		</div>
 		<div class="form-group">
-			<input type="password" class="form-control" placeholder="비밀번호확인" name="password_check">
+			<label class="label_title" for="password_check">비밀번호 재확인</label>
+			<input type="password" class="form-control"  name="password_check">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="닉네임" name="nickname">
+			<label class="label_title" for="nickname">닉네임</label>
+			<input type="text" class="form-control" name="nickname">
 		</div>
 		<div class="form-group">
-			<button type="button" class="btn btn-outline-info form-control" id="idCheck">닉네임 중복 체크</button>
+			<button type="button" class="btn btn-outline-info form-control" id="nicknameCheck">닉네임 중복 체크</button>
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="이메일" name="email">
+			<label class="label_title" for="email">이메일</label>
+			<input type="text" class="form-control" name="email">
 		</div>
 		<div class="form-group">
-			<button type="button" class="btn btn-outline-info form-control" id="idCheck">이메일 중복 체크</button>
+			<button type="button" class="btn btn-outline-info form-control" id="emailCheck">이메일 중복 체크</button>
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="생년월일" name="birth" id="birth">
+			<label class="label_title" for="birth" >생년월일</label>
+			<input type="text" class="form-control" name="birth" placeholder="예시) 2022-01-01">
 		</div>
 		
+		<label class="label_title" for="gender">성별</label>
 		<div class="form-group">
 			<select name="gender" class="form-control select2 select2-hidden-accessible">
 				<option value="default">성별</option>
@@ -55,108 +65,39 @@
 				<option value="female">여자</option>
 				<option value="noe">선택안함</option>
 			</select>
-			<div>
-				<label class="error" id="me_gender-error" for="gender"></label>
-			</div>
 		</div>
 		<button class="btn btn-outline-success col-12">회원가입</button>
 	</form>
 	<script>
-		let idCheck = false;
-		$('form').submit(function(){
-		//아이디 중복 체크
-		$('#idCheck').click(function(){
-			var id = $('[name=user_id]').val();
+			//아이디 중복 체크
+			//아이디가 중복일 경우 false, 중복이 아닐경우 true
+			let idCheck = false;
 			
-			$.ajax({
-				async:false,
-        type:'get',
-        url:'<%=request.getContextPath()%>/idcheck?user_id='+id,
-        success : function(data){
-            if(data == 'true'){
-            	alert('사용 가능한 아이디입니다.');
-            	idCheck = true;
-            }
-            else{
-            	alert('이미 가입된 아이디입니다.');
-            	idCheck = false;
-            }
-        }
+			$('#idCheck').click(function(){
+				//user_id에 입력되는 값
+				var id = $('[name=user_id]').val();
+				
+				$.ajax({
+					async:false,
+	        type:'get',
+	        url:'<%=request.getContextPath()%>/idcheck?user_id='+id,
+	        success : function(data){
+	        	 if(data == 'true'){
+	             	alert('사용 가능한 아이디입니다.');
+	             	idCheck = true;
+	             }
+	             else{
+	             	alert('사용할 수 없는 아이디입니다.');
+	             	idCheck = false;
+	             }
+	        }
+				});
 			});
-		});
-		
-		$('[name=user_id]').change(function(){
-			idCheck = false;
-		});
-		
-		
-		$(function(){
 			
-			$("form").validate({
-        rules: {
-          user_id: {
-        		//2~10자의 영문 소문자, 숫자, 특수기호(_)만 사용 가능합니다.
-        	  //단, 첫글자는 특수기호가 올수 없습니다.
-            required : true,
-            regex : /^[a-z0-9][a-z0-9_]{1,9}$/
-          },
-          //8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.
-          password: {
-        	  required : true,
-            regex : /^[A-Za-z0-9-_!@#$%]{8,16}$/
-          },
-          password_check:{
-        	  equalTo : password
-          },
-          
-          nickname : {
-        	  required : true
-        	  regex : /^[가-힣0-9]{1,8}$/
-        	  
-          },
-          gender : {
-        	  required : true
-          },
-          birth : {
-        	  required : true,
-        	  regex : /^\d{4}-\d{2}-\d{2}$/
-          }
-        },
-        //규칙체크 실패시 출력될 메시지
-        messages : {
-          user_id: {
-              required : "필수 정보입니다.",
-              regex : '2~10자의 영문 소문자, 숫자, 특수기호(_)만 사용 가능합니다. 단 첫글자는 특수 기호가 올 수 없습니다.'
-            	  
-          },
-          password: {
-        	  required : "필수 정보입니다.",
-            regex : '8~16자의 영문 대 소문자, 숫자, 특수문자(_)(-)(!)(#)($)(%)만 사용 가능합니다.'
-          },
-          password_check:{
-        	  equalTo : '비밀번호가 일치하지 않습니다.'
-          },
-          nickname : {
-        	  required : "필수 정보입니다.",
-          },
-          gender : {
-        	  required : "필수 정보입니다.",
-          },
-          birth : {
-        	  required : "필수 정보입니다.",
-        	  regex : '태어난 년도 4자리를 정확하게 입력하세요.'
-          }
-         
-        }
-	    });
-		});
-		$.validator.addMethod(
-	    "regex",
-	    function(value, element, regexp) {
-        var re = new RegExp(regexp);
-        return this.optional(element) || re.test(value);
-	    },
-	    "Please check your input."
-		);
+			//아이디가 변경되면 중복확인 다시하도록 처리
+			$('[name=me_id]').change(function(){
+				idCheck = false;
+			});
+	
 	</script>
 </body>
