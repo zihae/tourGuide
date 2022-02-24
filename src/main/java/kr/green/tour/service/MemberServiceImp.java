@@ -41,6 +41,17 @@ public class MemberServiceImp implements MemberService{
 			return "false";
 		}
 
+		@Override
+		public String emailCheck(String email) {
+			MemberVO user = memberDao.selectEmail(email);
+			if(user == null)
+				return "true";
+			else
+			return "false";
+		}
+
+		
+
 
 }
 

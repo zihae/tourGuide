@@ -7,5 +7,7 @@ public interface MemberService {
 	boolean signup(MemberVO user);
 
 	String idCheck(String user_id);
+
+	String emailCheck(String email);
 		
 }

@@ -47,6 +47,12 @@ public class HomeController {
 				return memberService.idCheck(user_id);
 			}
 		  
+		  @ResponseBody
+		  @RequestMapping(value="emailCheck")
+		  public String emailCheck(String email) {
+				return memberService.emailCheck(email);
+			}
+	
 		  
   
   

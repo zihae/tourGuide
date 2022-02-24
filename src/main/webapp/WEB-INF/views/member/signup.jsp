@@ -43,9 +43,6 @@
 			<input type="text" class="form-control" name="nickname">
 		</div>
 		<div class="form-group">
-			<button type="button" class="btn btn-outline-info form-control" id="nicknameCheck">닉네임 중복 체크</button>
-		</div>
-		<div class="form-group">
 			<label class="label_title" for="email">이메일</label>
 			<input type="text" class="form-control" name="email">
 		</div>
@@ -70,34 +67,60 @@
 	</form>
 	<script>
 			//아이디 중복 체크
-			//아이디가 중복일 경우 false, 중복이 아닐경우 true
-			let idCheck = false;
+					//아이디가 중복일 경우 false, 중복이 아닐경우 true
+					let idCheck = false;
+					
+					$('#idCheck').click(function(){
+						//user_id에 입력되는 값
+						var id = $('[name=user_id]').val();
+						
+						$.ajax({
+							async:false,
+			        type:'get',
+			        url:'<%=request.getContextPath()%>/idcheck?user_id='+id,
+			        success : function(data){
+			        	 if(data == 'true'){
+			             	alert('사용 가능한 아이디입니다.');
+			             	idCheck = true;
+			             }
+			             else{
+			             	alert('사용할 수 없는 아이디입니다.');
+			             	idCheck = false;
+			             }
+			        }
+						});
+					});
+					
+					//아이디가 변경되면 중복확인 다시하도록 처리
+					$('[name=me_id]').change(function(){
+						idCheck = false;
+					});
 			
-			$('#idCheck').click(function(){
-				//user_id에 입력되는 값
-				var id = $('[name=user_id]').val();
-				
-				$.ajax({
-					async:false,
-	        type:'get',
-	        url:'<%=request.getContextPath()%>/idcheck?user_id='+id,
-	        success : function(data){
-	        	 if(data == 'true'){
-	             	alert('사용 가능한 아이디입니다.');
-	             	idCheck = true;
-	             }
-	             else{
-	             	alert('사용할 수 없는 아이디입니다.');
-	             	idCheck = false;
-	             }
-	        }
-				});
-			});
-			
-			//아이디가 변경되면 중복확인 다시하도록 처리
-			$('[name=me_id]').change(function(){
-				idCheck = false;
-			});
+			//이메일 중복 체크
+					let emailCheck = false;
+					
+					$('#emailCheck').click(function(){
+						var email = $('[name=email]').val();
+						
+						$.ajax({
+							async:false,
+			        type:'get',
+			        url:'<%=request.getContextPath()%>/emailCheck?email='+email,
+			        success : function(data){
+			        	 if(data == 'true'){
+			             	alert('사용 가능한 이메일입니다.');
+			             	emailCheck = true;
+			             }
+			             else{
+			             	alert('사용할 수 없는 이메일입니다.');
+			             	emailCheck = false;
+			             }
+			        }
+						});
+					});
+					$('[name=email]').change(function(){
+						emailCheck = false;
+					});
 	
 	</script>
 </body>
