@@ -146,19 +146,13 @@
 		        	  required : true,
 		        	  regex : /^[가-힣A-z]{2,10}$/
 		          },
-		          //5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다. (@앞에 부분)
+		          
 		          email : {
 		        	  required: true,
-		        	  regex : /^[a-z0-9]{5,20}@[a-z]+\.[a-z]{2,3}$/
-		          },
-		          
-		          gender : {
-		        	  required : true
-		          },
-		          birth : {
-		        	  required : true,
-		        	  regex : /^\d{4}-\d{2}-\d{2}$/
+		        	  regex : /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+$/
 		          }
+		          
+		        
 		          
 		        },
 		        //규칙체크 실패시 출력될 메시지
@@ -179,13 +173,12 @@
 		        	  required : "필수 정보입니다.",
 		        	  regex : "2~10자의 영문 대 소문자, 한글을 사용하세요."
 		          },
-		          gender : {
+		         
+		          email : {
 		        	  required : "필수 정보입니다.",
-		          },
-		          birth : {
-		        	  required : "필수 정보입니다.",
-		        	  regex : 'yyyy-mm-dd형태로 입력하세요.'
-		          }   
+		        	  regex : "잘못된 이메일 형식입니다."
+		          }
+		         
 		        }
 					});
 				
