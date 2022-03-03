@@ -17,7 +17,8 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter{
 		@Autowired 
 		MemberService memberService;
 		@Override
-		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) 
+				throws Exception {
 			HttpSession session = request.getSession();
 			MemberVO user =(MemberVO)session.getAttribute("user");
 			//자동 로그인을 해야하는 경우: 로그인이 안됐을 때
@@ -34,7 +35,7 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter{
 				}
 			}
 		}
-			return false;
+			return true;
 		}
 		
 }
