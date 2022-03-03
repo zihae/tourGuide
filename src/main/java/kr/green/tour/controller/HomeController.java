@@ -61,13 +61,13 @@ public class HomeController {
 		  
 		  @RequestMapping(value = "/login", method = RequestMethod.POST)
 			public ModelAndView loginPost(ModelAndView mv, MemberVO user) {
-				
+		  	
 				MemberVO loginUser = memberService.login(user);
+				mv.addObject("user",loginUser);
 				if(loginUser == null) 
 					mv.setViewName("redirect:/login");
 				else {
 					loginUser.setAuto_login(user.getAuto_login());
-					mv.addObject("user",loginUser);
 					mv.setViewName("redirect:/");
 				} 
 				return mv;
