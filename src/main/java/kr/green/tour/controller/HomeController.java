@@ -1,5 +1,7 @@
 package kr.green.tour.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,11 +67,14 @@ public class HomeController {
 			public ModelAndView loginPost(ModelAndView mv, MemberVO user) {
 		  	
 				MemberVO loginUser = memberService.login(user);
-				mv.addObject("user",loginUser);
 				if(loginUser == null) 
 					mv.setViewName("redirect:/login");
 				else {
+					//loginUser는 DB에서 아이디, 비번과 일치하는 회원 정보를 가져온것이기 때문에
+					//로그인 화면에서 선택한 자동 로그인 체크 유무를 알 수 없다
+					//화면에서 전달한 user에 있는 자동 로그인 체크 유무를 loginUser에 설정
 					loginUser.setAuto_login(user.getAuto_login());
+					mv.addObject("user",loginUser);
 					mv.setViewName("redirect:/");
 				} 
 				return mv;
@@ -77,8 +82,14 @@ public class HomeController {
   
 		  @RequestMapping(value = "/logout")
 		  public ModelAndView logout(ModelAndView mv, HttpSession session) {
-		  	
-				session.removeAttribute("user");
+		  	MemberVO user = (MemberVO)session.getAttribute("user");
+				//session에 있는 user 정보 삭제
+		  	session.removeAttribute("user");
+				//session_limit에 로그아웃 시간을 저장
+		  	//session_id에 none 저장
+				user.setSession_limit(new Date());
+				user.setSession_id("none");
+				memberService.insertAutoLogin(user);
 				mv.setViewName("redirect:/");
 				return mv;
 		  	

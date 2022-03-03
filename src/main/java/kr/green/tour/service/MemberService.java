@@ -11,5 +11,7 @@ public interface MemberService {
 	String emailCheck(String email);
 
 	MemberVO login(MemberVO user);
+
+	void insertAutoLogin(MemberVO user);
 		
 }

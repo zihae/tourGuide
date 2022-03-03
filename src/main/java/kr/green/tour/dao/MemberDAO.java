@@ -12,6 +12,8 @@ public interface MemberDAO {
 
 	MemberVO selectEmail(@Param("email")String email);
 
+	void updateSession(@Param("user")MemberVO user);
+
 	
 	
 }
