@@ -70,6 +70,11 @@ public class MemberServiceImp implements MemberService{
 			
 		}
 
+		@Override
+		public MemberVO selectMemberBySessionId(String session_id) {
+			return memberDao.selectMemberBySessionId(session_id);
+		}
+
 		
 
 

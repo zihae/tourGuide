@@ -13,5 +13,7 @@ public interface MemberService {
 	MemberVO login(MemberVO user);
 
 	void insertAutoLogin(MemberVO user);
+
+	MemberVO selectMemberBySessionId(String session_id);
 		
 }

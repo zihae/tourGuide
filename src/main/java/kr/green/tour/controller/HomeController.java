@@ -23,7 +23,6 @@ public class HomeController {
 		  @RequestMapping(value="/")
 		  public ModelAndView main(ModelAndView mv) throws Exception{
 		      mv.setViewName("/main/home");
-		      
 		      return mv;
 		  }
 		  

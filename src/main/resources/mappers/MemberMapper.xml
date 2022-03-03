@@ -19,7 +19,11 @@
   		session_limit = #{user.session_limit}
   	where user_id = #{user.user_id}
   </update>
-  
+  <select id="selectMemberBySessionId" resultType="kr.green.tour.vo.MemberVO">
+  	select * from member
+  	where session_id = #{session_id}
+  		and session_limit >= now()
+  </select>
   
   
 </mapper>
