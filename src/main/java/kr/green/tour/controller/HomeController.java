@@ -52,8 +52,26 @@ public class HomeController {
 		  public String emailCheck(String email) {
 				return memberService.emailCheck(email);
 			}
-	
 		  
+		  @RequestMapping(value = "/login", method = RequestMethod.GET)
+			public ModelAndView loginGet(ModelAndView mv) {
+				mv.setViewName("/member/login");
+				return mv;
+			}
+		  
+		  @RequestMapping(value = "/login", method = RequestMethod.POST)
+			public ModelAndView loginPost(ModelAndView mv, MemberVO user) {
+				
+				MemberVO loginUser = memberService.login(user);
+				if(loginUser == null) 
+					mv.setViewName("redirect:/login");
+				else {
+					loginUser.setAuto_login(user.getAuto_login());
+					mv.addObject("user",loginUser);
+					mv.setViewName("redirect:/");
+				} 
+				return mv;
+			}
   
   
 }

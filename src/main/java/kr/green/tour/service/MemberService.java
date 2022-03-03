@@ -9,5 +9,7 @@ public interface MemberService {
 	String idCheck(String user_id);
 
 	String emailCheck(String email);
+
+	MemberVO login(MemberVO user);
 		
 }

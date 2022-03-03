@@ -24,6 +24,9 @@ public class MemberVO {
 	private String sns_type;
 	private String sns_id;
 	private Date sns_connect_date;
+	private Boolean auto_login;
+	private String session_id;
+	private Date session_limit;
 
 	public String getBirth_str() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

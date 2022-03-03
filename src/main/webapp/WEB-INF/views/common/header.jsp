@@ -55,7 +55,7 @@
                         		<a href="#" class="nav-link dropdown-toggle" id="ham-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-person-circle"></i></a>
                 							<ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/signup">회원가입</a></li>
-                                <li class="nav-item"><a class="nav-link" href="blog-single.html">로그인</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/login">로그인</a></li>
                             </ul>  
                         </li>     	
                     </ul>	
