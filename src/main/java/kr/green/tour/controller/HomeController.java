@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -92,6 +93,18 @@ public class HomeController {
 				mv.setViewName("redirect:/");
 				return mv;
 		  	
+		  }
+		  
+		  @RequestMapping(value ="/member/find")
+		  public ModelAndView memberFind(ModelAndView mv) {
+		  	mv.setViewName("/member/find");
+		  	return mv;
+		  }
+		  
+		  @ResponseBody
+		  @RequestMapping(value="/member/find/id")
+		  public String memberFindId(@RequestBody MemberVO member) {
+		  	return memberService.findId(member);
 		  }
   
 }

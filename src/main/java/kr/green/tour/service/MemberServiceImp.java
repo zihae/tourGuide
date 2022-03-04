@@ -75,6 +75,13 @@ public class MemberServiceImp implements MemberService{
 			return memberDao.selectMemberBySessionId(session_id);
 		}
 
+		@Override
+		public String findId(MemberVO member) {
+			if(member == null) 
+				return "";
+			return memberDao.findId(member);
+		}
+
 		
 
 
