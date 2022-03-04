@@ -82,6 +82,31 @@ $('.btn-find-id').click(function(){
 			}
 		});
 });
+
+$('.btn-find-pw').click(function(){
+		var email = $('.pw-box [name=email]').val();
+		var user_id = $('.pw-box [name=user_id]').val();
+		var member = {
+				email : email,
+				user_id : user_id
+		}
+		$.ajax({
+			async: false,
+			type: 'POST',
+			data: JSON.stringify(member),
+			url: '<%=request.getContextPath()%>/member/find/pw',
+			contentType:"application/json; charset=UTF-8",
+			success : function(res){
+				if(res == 'ok')
+					alert('이메일로 임시 비밀번호를 발송하였습니다.')
+				else if(res == 'fail')
+					alert('일치하는 정보가 없습니다.')
+				else if(res == 'erro')
+					alert('메일 전송에 실패하였습니다. 관리자에게 문의해 주세요.')
+			}
+		});
+		
+});
 </script>
 </body>
 </html>

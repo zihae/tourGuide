@@ -82,6 +82,32 @@ public class MemberServiceImp implements MemberService{
 			return memberDao.findId(member);
 		}
 
+		@Override
+		public String findPw(MemberVO member) {
+			if(member == null)
+				return "fail";
+			//id를 통해 회원 정보 가져옴 
+			MemberVO user = memberDao.selectMember(member.getUser_id());
+			//가져온 회원정보의 이메일과 입력한 이메일 같은지 비교
+			if( user == null || !user.getEmail().equals(member.getEmail()))
+				return "fail";
+			
+			//새 비번 생성
+			String newPw = createRandomPw(6);
+			//새 비번 암호화
+			String encPw = passwordEncoder.encode(newPw);
+			//새 비번 DB에 저장
+			user.setPassword(encPw);
+			
+			return "ok";
+			
+		}
+
+		private String createRandomPw(int i) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 		
 
 

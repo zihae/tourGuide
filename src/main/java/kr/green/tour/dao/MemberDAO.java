@@ -18,6 +18,8 @@ public interface MemberDAO {
 
 	String findId(@Param("user")MemberVO member);
 
+
+
 	
 	
 }
