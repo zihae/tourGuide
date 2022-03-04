@@ -32,23 +32,25 @@
                     <ul class="nav navbar-nav menu_nav ml-auto">
                         <li class="nav-item active"><a class="nav-link" href="<%=request.getContextPath()%>/">Home</a></li> 
                         <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">숙소</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">추천 여행</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="blog.html">숙소 검색</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog.html">관광지</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog-single.html">음식점</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog-single.html">숙소</a></li>
                             </ul>
                         </li> 
                         <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">추천여행</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">여행 지도</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="blog.html">여행지</a></li>
-                                <li class="nav-item"><a class="nav-link" href="blog-single.html">음식점</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog.html">나만의 여행지도 만들기</a></li>
+                                
                             </ul>
                         </li> 
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="blog.html">나만의 여행지도 만들기</a></li>
-                                <li class="nav-item"><a class="nav-link" href="blog-single.html">여행 코스 공유</a></li>
+                                <li class="nav-item"><a class="nav-link" href="blog.html">여행 지도 공유</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/review/list">여행 후기</a></li>
                             </ul>
                         </li>
                         <li class="nav-item submenu dropdown">
@@ -59,7 +61,7 @@
 	                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/login">로그인</a></li>
                                 </c:if>
                                 <c:if test="${user != null}">
-	                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/#">마이페이지</a></li>
+	                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/mypage">마이페이지</a></li>
 	                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/logout">로그아웃</a></li>
                                 </c:if>
                                 
