@@ -4,6 +4,17 @@
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="resources/templates/css/bootstrap.css">
+        <link rel="stylesheet" href="resources/templates/vendors/linericon/style.css">
+        <link rel="stylesheet" href="resources/templates/css/font-awesome.min.css">
+        <link rel="stylesheet" href="resources/templates/vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="resources/templates/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="resources/templates/vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="resources/templates/vendors/owl-carousel/owl.carousel.min.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="resources/templates/css/style.css">
+        <link rel="stylesheet" href="resources/templates/css/responsive.css">
   
 <style>
 #ham-menu>i{
@@ -16,6 +27,7 @@
 
 </head>
 <body>
+
 <!--================Header Area =================-->
     <header class="header_area">
         <div class="container">
