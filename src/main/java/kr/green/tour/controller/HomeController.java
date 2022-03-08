@@ -112,4 +112,12 @@ public class HomeController {
 		  public String memberFindPw(@RequestBody MemberVO member) {
 		  	return memberService.findPw(member);
 		  }
+		  
+		  @RequestMapping(value="/mypage")
+		  public ModelAndView myPage(ModelAndView mv) throws Exception{
+		      mv.setViewName("/member/mypage");
+		      return mv;
+		  }
+		  
+		  
 }
