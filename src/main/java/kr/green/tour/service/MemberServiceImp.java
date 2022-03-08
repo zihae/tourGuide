@@ -96,16 +96,29 @@ public class MemberServiceImp implements MemberService{
 			String newPw = createRandomPw(6);
 			//새 비번 암호화
 			String encPw = passwordEncoder.encode(newPw);
-			//새 비번 DB에 저장
+			//새 비번 DB에 저장 -> 회원정보 수정 기능 구현 후 보충
 			user.setPassword(encPw);
 			
 			return "ok";
 			
 		}
 
-		private String createRandomPw(int i) {
-			// TODO Auto-generated method stub
-			return null;
+		private String createRandomPw(int maxSize) {
+			String newPw = "";
+			if(maxSize <= 0)
+				return "";
+			for(int i = 1; i <= maxSize; i++) {
+				//62 = 26(영어소문자) + 26(영어대문자) + 10(숫자 0~9)
+				int r = (int)(Math.random()*62);
+				if(r < 10) {
+					newPw += (char)('0' + r);
+				}else if(r < 36) {
+					newPw += (char)('a' + r - 10);
+				}else {
+					newPw += (char)('A' + r - 36);
+				}
+			}
+			return newPw;
 		}
 
 		
