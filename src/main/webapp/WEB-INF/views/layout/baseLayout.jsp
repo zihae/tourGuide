@@ -9,7 +9,7 @@
 </head>
 <body>
     <tiles:insertAttribute name="header"/>
-    <div class="container" style="margin-top:80px;">
+    <div class="container" style="margin-top:96px;">
     <tiles:insertAttribute name="body" />     
     </div>                                  
     <tiles:insertAttribute name="footer" />
