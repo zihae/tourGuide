@@ -64,7 +64,7 @@
 			</select>
 		</div>
 		<label id = "me_gender-error" class="error" for="me_gender"></label>
-		<button class="btn btn-outline-success col-12">회원가입</button>
+		<button class="btn btn-outline-info col-12">회원가입</button>
 	</form>
 	<script>
 			//아이디 중복 체크

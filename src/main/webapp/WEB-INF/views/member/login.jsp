@@ -17,7 +17,7 @@
 			<div class="form-group">
 			  <input type="password" class="form-control" name="password">
 			</div>
-			<button class="btn btn-outline-success col-12">로그인</button>
+			<button class="btn btn-outline-info col-12">로그인</button>
 			<div class="form-group">
 			  <label>
 			    <input type="checkbox" value="true" name="auto_login">자동 로그인
