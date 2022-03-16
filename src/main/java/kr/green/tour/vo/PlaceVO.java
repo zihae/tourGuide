@@ -4,21 +4,24 @@ import lombok.Data;
 
 @Data
 public class PlaceVO {
-		private int sno;
+		private int place_id;
 		private int main_id;
+		private String area;
 		private String name;
-		private String overview;
-		private String tel;
-		private String img;
-		private String homepage;
 		private String address1;
 		private String address2;
+		private String parking;
+		private String homepage;
+		private String tel;
+		private String img;
 		private String bus;
 		private String localPub;
 		private String train;
-		private int openTime;
-		private int closeTime;
-		private String detail;
-		private int area;
-		private int sub_id;
+		private int checkIn;
+		private int checkOut;
+		private String menu;
+		private String holiday;
+		private double latitude;
+		private double longitude;
+		private String landmark;
 }

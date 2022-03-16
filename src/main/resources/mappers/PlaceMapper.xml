@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.tour.dao.PlaceDAO">
 	<select id="selectPlaceList" resultType="kr.green.tour.vo.PlaceVO">
-	 select * from place where main_id = #{cri.main_id} order by sno asc limit #{cri.pageStart}, #{cri.perPageNum}
+	 select * from place where main_id = #{cri.main_id} order by place_id asc limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
 	<select id="selectTotalCount" resultType="int">
