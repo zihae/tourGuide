@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +40,7 @@ h1{text-align: center;}
 		  		</div>
 	 		</div>
 	</form>	
-	<div class="btn-filter" style="float:right; margin-bottom: 15px">
+	<div class="btn-filter" style="margin-bottom: 15px;">
 			<div class="btn-group">
 	    	<button type="button" class="btn btn-outline-success">전체</button>
 	  	</div>	
@@ -50,40 +51,46 @@ h1{text-align: center;}
 	    	<button type="button" class="btn btn-outline-success">지도 보기</button>
 	  	</div>	
 	 </div>
-		<div class="container card-deck">
-			  <div class="card" style="width:50px">
-			    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-			    <div class="card-body">
-			      <h4 class="card-title">John Doe</h4>
-			      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-			      <a href="#" class="btn btn-success stretched-link">See Profile</a>
-			    </div>
-			  </div>
-			  <div class="card" style="width:50px">
-			    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-			    <div class="card-body">
-			      <h4 class="card-title">John Doe</h4>
-			      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-			      <a href="#" class="btn btn-success stretched-link">See Profile</a>
-			    </div>
-			  </div>
-			  <div class="card" style="width:50px">
-			    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-			    <div class="card-body">
-			      <h4 class="card-title">John Doe</h4>
-			      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-			      <a href="#" class="btn btn-success stretched-link">See Profile</a>
-			    </div>
-			  </div>
-			  <div class="card" style="width:50px">
-			    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-			    <div class="card-body">
-			      <h4 class="card-title">John Doe</h4>
-			      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-			      <a href="#" class="btn btn-success stretched-link">See Profile</a>
-			    </div>
-			  </div>
-		</div>	  
+	 <div class="card-box">
+			 <div class="card-columns">
+			 		<c:forEach items="${list}" var="place">
+					<div class="card-deck">
+						  <div class="card" style="width:50px">
+						    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
+						    <div class="card-body">
+						    	<span>${place.area}</span>
+						    	<h4>${place.name}</h4>
+						    	<ul class="card-body-ul">
+							      <li class="address1">${place.address1}</li>
+							      <li class="tel">${place.tel}</li>      
+							      <!-- test 조건 수정하기 -->
+							      <c:choose>
+							      <c:when test="${place.menu != null}">
+							      <li class="menu">메뉴: ${place.menu}</li>
+							      </c:when>
+							      </c:choose>
+						      </ul>
+						      <a href="#" class="btn btn-primary stretched-link">상세 보기</a>
+						    </div>
+						  </div>
+					</div>
+				</c:forEach>
+			</div>	
+		</div> 
+		 <c:if test="${pm.criteria.page == i}">active</c:if>
+		  <ul class="pagination justify-content-center">
+		    <li class="page-item <c:if test="${!pm.prev}">disabled</c:if>">
+		    	<a class="page-link" href="<%=request.getContextPath()%>/place/list?page=${pm.startPage-1}&search=${pm.criteria.search}">이전</a>
+		   	</li>
+		   	<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
+			    <li class="page-item <c:if test="${pm.criteria.page == i}">active</c:if>">
+			    	<a class="page-link" href="<%=request.getContextPath()%>/place/list?page=${i}&search=${pm.criteria.search}">${i}</a>
+			   	</li>
+		   	</c:forEach>
+		    <li class="page-item <c:if test="${!pm.next}">disabled</c:if>">
+		    	<a class="page-link" href="<%=request.getContextPath()%>/place/list?page=${pm.endPage+1}&search=${pm.criteria.search}">다음</a>
+		   	</li>
+		  </ul>
 	</div>
 </div>
 </body>
