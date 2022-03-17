@@ -21,7 +21,6 @@ public class PlaceServiceImp implements PlaceService {
 
 		@Override
 		public int getTotalCount(Criteria cri) {
-			// 다오에게 type에 맞는 게시글 전체수를 가져오라고 시킴
 			return placeDao.selectTotalCount(cri);
 		}
 }
