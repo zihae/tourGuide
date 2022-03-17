@@ -34,14 +34,12 @@ h1{text-align: center;}
 	 <form  class="input-group mt-3 mb-3" action="<%=request.getContextPath()%>/place/list">
 		    <div class="input-group mt-3 mb-3">
 		      <div class="input-group-prepend">
-			        <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
-			          지역
-			        </button>
-			        <div class="dropdown-menu">
-			         <a class="dropdown-item" href="#">광양시</a>
-    				   <a class="dropdown-item" href="#">Link 2</a>
-               <a class="dropdown-item" href="#">Link 3</a>
-			        </div>
+			        <select name="area" class="select">
+			        <option disabled selected>지역</option>
+			        <option value="AC01">광양시</option>
+			        <option value="AC02">강진군</option>
+			        
+			        </select>
 		      </div>
 		      <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요." value="${pm.criteria.search}">
 		      <div class="input-group-append">
