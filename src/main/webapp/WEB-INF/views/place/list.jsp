@@ -52,7 +52,8 @@ h1{text-align: center;}
 		      <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요." value="${pm.criteria.search}">
 		      <div class="input-group-append">
 		    		<button class="btn btn-info" type="submit">검색</button>
-		  		</div>
+		  	  </div>
+		  	  <input type="hidden" name="main_id" value="${pm.criteria.main_id }">
 	 		</div>
 	</form>	
 	<!-- 상단 버튼 -->
@@ -64,7 +65,7 @@ h1{text-align: center;}
 	    	<button type="button" class="btn btn-outline-info">인기순</button>
 	  	</div>	
 	  	<div class="btn-group">
-		  		<a href="<%=request.getContextPath()%>/place/map">
+		  		<a href="<%=request.getContextPath()%>/place/map?main_id=${pm.criteria.main_id }">
 		    	<button type="button" class="btn btn-outline-info" id="map-button">지도 보기</button>
 		    	</a>
 	  	</div>	
