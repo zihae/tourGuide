@@ -17,11 +17,19 @@
 h1{text-align: center;}
 .btn-group{margin-right: 5px;}
 .stretched-link{ position: absolute; bottom: 30px;}
-.card-body{height: 260px}
+.card-body{height: 260px; width: 350px;}
 .pagination{margin-top: 15px}
-.btn-filter{margin-bottom: 15px;}
+.btn-filter{margin-bottom: 20px;}
 .btn-group{position:absoulte; left:830px}
-
+.cards-box {
+            display: flex;
+            height: 260px; 
+            width: 350px;
+            margin: 0 70px;
+            margin-top: 65px;
+            flex-wrap: wrap;
+            float: left;
+        }
 
 
 </style>
@@ -61,12 +69,12 @@ h1{text-align: center;}
 	 </div>
 	 
 	 <!-- 컨텐츠 리스트 -->
-		 <div class="card-box">
+	
 				 <div class="card-columns">
 				 		<c:forEach items="${list}" var="place">
-						<div class="card-deck">
-							  <div class="card">
-							    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
+						<div class="card-box">
+							  <div class="card" style="margin-bottom: 20px;">
+							    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%; height: 200px" >
 							    <div class="card-body">
 							    	<span>${place.area}</span>
 							    	<h4>${place.name}</h4>
@@ -88,7 +96,7 @@ h1{text-align: center;}
 						</div>
 					</c:forEach>
 				</div>	
-			</div> 
+			
 			
 			<!-- 페이지네이션 --> 
 		 <c:if test="${pm.criteria.page == i}">active</c:if>
