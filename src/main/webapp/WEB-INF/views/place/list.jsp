@@ -64,7 +64,9 @@ h1{text-align: center;}
 	    	<button type="button" class="btn btn-outline-info">인기순</button>
 	  	</div>	
 	  	<div class="btn-group">
-	    	<button type="button" class="btn btn-outline-info">지도 보기</button>
+		  	<a href="<%=request.getContextPath()%>/place/map">
+		    	<button type="button" class="btn btn-outline-info">지도 보기</button>
+		    </a>
 	  	</div>	
 	 </div>
 	 
@@ -74,24 +76,26 @@ h1{text-align: center;}
 				 		<c:forEach items="${list}" var="place">
 						<div class="card-box">
 							  <div class="card" style="margin-bottom: 20px;">
-							    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%; height: 200px" >
-							    <div class="card-body">
-							    	<span>${place.area}</span>
-							    	<h4>${place.name}</h4>
-							    	<ul class="card-body-ul">
-								      <li class="address1">${place.address1}</li>
-								      <c:if test="${pm.criteria.main_id != 1}">
-								      	<li class="tel">${place.tel}</li>      
-								      </c:if>
-								      <!-- test 조건 수정하기 -->
-								      <c:choose>
-									      <c:when test="${place.menu != null}">
-									      <li class="menu">메뉴: ${place.menu}</li>
-								      </c:when>
-								      </c:choose>
-							      </ul>
-							      <a href="#" class="btn btn-info stretched-link">상세 보기</a>
-							    </div>
+									  <c:if test="${pm.criteria.main_id == 3}">
+									    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%; height: 200px" >
+									  </c:if>
+								    <div class="card-body">
+								    	<span>${place.area}</span>
+								    	<h4>${place.name}</h4>
+								    	<ul class="card-body-ul">
+									      <li class="address1">${place.address1}</li>
+									      <c:if test="${pm.criteria.main_id != 1}">
+									      	<li class="tel">${place.tel}</li>      
+									      </c:if>
+									      <!-- test 조건 수정하기 -->
+									      <c:choose>
+										      <c:when test="${place.menu != null}">
+										      <li class="menu">메뉴: ${place.menu}</li>
+									      </c:when>
+									      </c:choose>
+								      </ul>
+								      <a href="#" class="btn btn-info stretched-link">상세 보기</a>
+								    </div>
 							  </div>
 						</div>
 					</c:forEach>
