@@ -5,13 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#map-button{margin:auto;
+        display:block;
+        margin-top: 30px;}
+</style>
 </head>
 <body>
-
-<div id="map" style="width:1080px;height:700px;"></div>
-<a href="<%=request.getContextPath()%>/place/list">
- <button type="button" class="btn btn-outline-info" id="map-button">목록 보기</button>
-</a>
+<div class="container">
+	<div id="map" style="width:1080px;height:700px;"></div>
+	<div class="button">
+		<a href="<%=request.getContextPath()%>/place/list?main_id=${pm.criteria.main_id }">
+			<button type="button" class="btn btn-info" id="map-button" >목록 보기</button>
+		</a>
+	</div>
+</div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44e185ba8590a8162cff60db78eccad0&libraries=services,clusterer,drawing"></script>
 	<script>
 		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
