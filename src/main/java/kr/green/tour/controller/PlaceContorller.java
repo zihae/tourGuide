@@ -35,6 +35,16 @@ public class PlaceContorller {
 		
 	}
 	
+	//map 출력
+	@RequestMapping(value="/place/map", method=RequestMethod.GET)
+	public ModelAndView placeMap(ModelAndView mv) {
+		
+		
+		mv.setViewName("/place/map");
+		return mv;
+		
+	}
+	
 		
 	
 

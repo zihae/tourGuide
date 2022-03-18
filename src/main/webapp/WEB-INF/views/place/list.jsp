@@ -64,14 +64,14 @@ h1{text-align: center;}
 	    	<button type="button" class="btn btn-outline-info">인기순</button>
 	  	</div>	
 	  	<div class="btn-group">
-		  	<a href="<%=request.getContextPath()%>/place/map">
-		    	<button type="button" class="btn btn-outline-info">지도 보기</button>
-		    </a>
+		  		<a href="<%=request.getContextPath()%>/place/map">
+		    	<button type="button" class="btn btn-outline-info" id="map-button">지도 보기</button>
+		    	</a>
 	  	</div>	
 	 </div>
 	 
 	 <!-- 컨텐츠 리스트 -->
-	
+			<div id="contents">
 				 <div class="card-columns">
 				 		<c:forEach items="${list}" var="place">
 						<div class="card-box">
@@ -99,7 +99,8 @@ h1{text-align: center;}
 							  </div>
 						</div>
 					</c:forEach>
-				</div>	
+				</div>
+			</div>	
 			
 			
 			<!-- 페이지네이션 --> 
@@ -119,5 +120,15 @@ h1{text-align: center;}
 		  </ul>
 	</div>
 </div>
+<script>
+//$(document).ready(function() { 
+//	$('#map-button').click(function() {//map-button이란 아이디 클릭시 
+//	$('#contents').load('/place/map.html');//#content에 데이타를 부른다. 
+//	return false; 
+//	}); 
+//});
+
+	
+</script>
 </body>
 </html>
