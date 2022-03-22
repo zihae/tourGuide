@@ -49,6 +49,7 @@
                                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/place/list">관광지</a></li>
                                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/place/list?main_id=2">음식점</a></li>
                                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/place/list?main_id=3">숙소</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/place/public">공공데이터</a></li>
                             </ul>
                         </li> 
                         <li class="nav-item submenu dropdown">
