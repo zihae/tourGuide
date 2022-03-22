@@ -6,6 +6,7 @@
 	<select id="selectPlaceList" resultType="kr.green.tour.vo.PlaceVO">
 	 select * from place where main_id = #{cri.main_id} and name like concat('%', #{cri.search},'%')
 	  order by place_id asc limit #{cri.pageStart}, #{cri.perPageNum}
+	  
 	</select>
 	
 	<select id="selectTotalCount" resultType="int">

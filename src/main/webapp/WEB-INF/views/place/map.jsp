@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,18 +21,41 @@
 		</a>
 	</div>
 </div>
+
+
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44e185ba8590a8162cff60db78eccad0&libraries=services,clusterer,drawing"></script>
 	<script>
-		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-		var options = {
+	
+		var mapContainer = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+		var mapOption = {
 			center: new kakao.maps.LatLng(35.1767651, 126.8087806), //지도의 중심좌표.
 			level: 10 //지도의 레벨(확대, 축소 정도)
 		};
 
-		var map = new kakao.maps.Map(container, options);  //지도 생성 및 객체 리턴
+		var map = new kakao.maps.Map(mapContainer, mapOption);  //지도 생성 및 객체 리턴
 		
-		//마커 샘플 코드
+		
 		// 마커를 표시할 위치와 title 객체 배열입니다 
+		//샘플
+		//ajax로 DB에 모든 관광지 정보를 가져옴
+		//가져온 정보를 아래 positions에 넣어줌
+		var position = [];
+		/*$.ajax({
+			url : '',
+			async : false,
+			datatype : '',
+			success : function(res){
+				var list = res.list;
+				for(place of list){
+					var obj = {
+							title : place.name,
+							latlng: new kakao.maps.LatLng(place.longitude, place.latitude)
+					}
+					position.push(obj);
+				}
+			}
+		});*/
+		/*
 		var positions = [
 		    {
 		        title: '카카오', 
@@ -48,14 +72,26 @@
 		    {
 		        title: '근린공원',
 		        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
+		    },
+		    {
+		        title: '백운목장',
+		        latlng: new kakao.maps.LatLng(34.940116,  127.7006108)
 		    }
+		    
 		];
-
+		*/
+		var positions = [
+			<c:forEach items="${list}" var="place">
+			   {
+				   title: '${place.name}',
+				   latlng: new kakao.maps.LatLng(${place.latitude},${place.longitude})
+			   },
+		   </c:forEach>
+		];
 		// 마커 이미지의 이미지 주소입니다
 		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 		    
 		for (var i = 0; i < positions.length; i ++) {
-		    
 		    // 마커 이미지의 이미지 크기 입니다
 		    var imageSize = new kakao.maps.Size(24, 35); 
 		    
@@ -70,9 +106,7 @@
 		        image : markerImage // 마커 이미지 
 		    });
 		}
-		
-		
-		
+	
 	</script>
 </body>
 </html>
