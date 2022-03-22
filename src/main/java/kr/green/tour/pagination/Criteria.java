@@ -13,7 +13,6 @@ public class Criteria {
 	//Place 종류(숙소,관광지,음식점)
 	private int main_id;
 	
-	
 	//Criteria 디폴트 생성자
 	public Criteria() {
 		this.page = 1;
@@ -27,6 +26,7 @@ public class Criteria {
 		this.perPageNum = perPageNum;
 		this.search="";
 		this.main_id = 1;
+		
 	}
 	
 	//쿼리문에서 limit에 사용되는 인덱스를 계산하는 getter 
