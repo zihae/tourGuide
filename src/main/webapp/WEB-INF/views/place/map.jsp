@@ -10,6 +10,8 @@
 #map-button{margin:auto;
         display:block;
         margin-top: 30px;}
+ 
+
 </style>
 </head>
 <body>
@@ -106,6 +108,38 @@
 		        image : markerImage // 마커 이미지 
 		    });
 		}
+		
+		//수정 필요
+		positions.forEach(function (pos) {
+		    
+
+		    // content HTMLElement 생성
+		    var content = document.createElement('div');
+
+		    var info = document.createElement('span');
+		    info.appendChild(document.createTextNode(pos.title));
+		    content.appendChild(info);
+
+		    var closeBtn = document.createElement('button');
+		    closeBtn.appendChild(document.createTextNode('닫기'));
+		    // 닫기 이벤트 추가
+		    closeBtn.onclick = function() {
+		        overlay.setMap(null);
+		    };
+
+		    content.appendChild(closeBtn);
+
+		    // customoverlay 생성, 이때 map을 선언하지 않으면 지도위에 올라가지 않습니다.
+		    var overlay = new daum.maps.CustomOverlay({
+		        position: pos.latlng,
+		        content: content
+		    });
+
+		    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+		    kakao.maps.event.addListener(marker, 'click', function() {
+		        overlay.setMap(map);
+		    });
+		});
 	
 	</script>
 </body>
