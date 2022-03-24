@@ -33,7 +33,6 @@
 			center: new kakao.maps.LatLng(35.1767651, 126.8087806), //지도의 중심좌표.
 			level: 10 //지도의 레벨(확대, 축소 정도)
 		};
-
 		var map = new kakao.maps.Map(mapContainer, mapOption);  //지도 생성 및 객체 리턴
 		
 		
@@ -57,31 +56,7 @@
 				}
 			}
 		});*/
-		/*
-		var positions = [
-		    {
-		        title: '카카오', 
-		        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-		    },
-		    {
-		        title: '생태연못', 
-		        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-		    },
-		    {
-		        title: '텃밭', 
-		        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-		    },
-		    {
-		        title: '근린공원',
-		        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-		    },
-		    {
-		        title: '백운목장',
-		        latlng: new kakao.maps.LatLng(34.940116,  127.7006108)
-		    }
-		    
-		];
-		*/
+		
 		var positions = [
 			<c:forEach items="${list}" var="place">
 			   {
@@ -112,29 +87,23 @@
 		//수정 필요
 		positions.forEach(function (pos) {
 		    
-
 		    // content HTMLElement 생성
 		    var content = document.createElement('div');
-
 		    var info = document.createElement('span');
 		    info.appendChild(document.createTextNode(pos.title));
 		    content.appendChild(info);
-
 		    var closeBtn = document.createElement('button');
 		    closeBtn.appendChild(document.createTextNode('닫기'));
 		    // 닫기 이벤트 추가
 		    closeBtn.onclick = function() {
 		        overlay.setMap(null);
 		    };
-
 		    content.appendChild(closeBtn);
-
 		    // customoverlay 생성, 이때 map을 선언하지 않으면 지도위에 올라가지 않습니다.
 		    var overlay = new daum.maps.CustomOverlay({
 		        position: pos.latlng,
 		        content: content
 		    });
-
 		    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 		    kakao.maps.event.addListener(marker, 'click', function() {
 		        overlay.setMap(map);
