@@ -8,6 +8,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 <style>
         .box1{
             border: 2px solid red; padding: 10px;
@@ -15,7 +16,7 @@
         .map, .contents{
             height: 700px; box-sizing: border-box; border: 2px solid blue; width: calc((100% - 5px) / 2); float: left;
         }
-        .map{width: 900px;}
+        .map{width: 870px;}
         .contents{
             border-color:#0f0; width:210px; float: right;
         }
@@ -23,49 +24,79 @@
             clear: both; content: ''; display: block;
         }
         .contents-top{
-        	 width: 210px; height:300px; background-color: yellow;
+        	 width: 210px; height:fit-context; background-color: yellow; height:
         }
+        .day{
+        magin-right: 3px;}
     </style>
 </head>
 <body>
     <div class="box1">
-        <div class="map">
+        <div class="map" id="map-section">
+        <%@ include file="map.jsp" %>
         </div>
-        <div class="contents">
-        	<div class="contents-top">
-	            <input id="title" type="text" name="courseName" placeholder="코스 제목을 입력해주세요.">
-	            <div class="form-group">
-	            <select name="option" class="select box">
-					<option value="default">공개범위</option>
-					<option value="public">전체공개</option>
-					<option value="private">비공개</option>
-				</select>
+        <form class="input" action="<%=request.getContextPath()%>/course/register" method="post" enctype="multipart/form-data">
+	        <!-- 상세설정 -->
+	        <div class="contents">
+	        	<div class="contents-top">
+		            <input id="title" type="text" name="course_title" placeholder="코스 제목을 입력해주세요.">
+		            <div class="form-group">
+		            <select name="option" class="select box">
+						<option value="default">공개범위</option>
+						<option value="public">전체공개</option>
+						<option value="private">비공개</option>
+					</select>
+					</div>
+					<!-- 메인 카테고리 예제 했던것 처럼 구현하기 -->
+					<select name="area" class="select box">
+						<option value="default">전체지역</option>
+						<option value="광양시">광양시</option>
+						<option value="private">비공개</option>
+					</select>
+					<select name="type" class="select box">
+						<option value="default">전체분야</option>
+						<option value="public">관광지</option>
+						<option value="private">음식점</option>
+						<option value="private">숙소</option>
+					</select>
+					<div class="daterange">
+						<label>여행 기간</label>
+			            <input type="text" name="duration" id="date">
+		            </div>
+		            	<label>함께할 친구 추가</label>
+		            	<div id="mate-box">
+		            	<input type="text"> 
+		            	</div>
+		            	<div id="recruit-box">
+			             <input type="checkbox" value="" id="defaultCheck1">
+  						 	<label class="check-label" for="defaultCheck1">
+						    친구 모집
+						  	</label>
+			            </div>
+		           <label>세부 일정</label>
+		            <div id="btn-group-day">
+		            	<div id="control-btn">
+			            <button type="button"  id="add-day">추가</button>
+			            <button type="button"  id="remove-day">삭제</button>
+			            </div>
+			            <div id="day-btn">
+			            <button type="button" id="first-day">1일차</button>
+			            </div>
+		            </div>  
 				</div>
-				<select name="area" class="select box">
-					<option value="default">전체지역</option>
-					<option value="public">광양시</option>
-					<option value="private">비공개</option>
-				</select>
-				<select name="type" class="select box">
-					<option value="default">전체분야</option>
-					<option value="public">관광지</option>
-					<option value="private">음식점</option>
-					<option value="private">숙소</option>
-				</select>
-				<div class="form-group">
-					<label>여행 기간</label>
-		            <input type="text" name="daterange" id="date">
-	            </div>
-	            <div class="btn-group">
-	            <div class="mate">함께할 친구 추가</div>
-	            <div class="recruit">함께할 친구 모집</div>
-	            </div>
-			</div>
-        </div>
+	        </div>
+	        <!-- 장소 추가 되는 곳 -->
+	        	<div class="contents-bottom">
+	        	
+	        	</div>
+	       <button class="btn btn-outline-success" id="btn">등록</button>
+	     </form>
         
     </div>
+    
 <script>
 
+//date range picker
 $(function () {
     $('#date').daterangepicker({
         "locale": {
@@ -89,6 +120,25 @@ $(function () {
         console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
     });
 });
+
+
+$(document).ready(function() {
+	//삭제 후 다시 일 추가할때 2부터 시작하게 수정하기
+	//일 추가
+	var i=2; 
+  $("#add-day").click(function() {
+    $("#day-btn").append("<button id='added-day' type='button'>"+i+"일차"+"</button>");
+    i++; // 함수 내 하단에 증가문 설정
+  });
+	
+	//일 삭제
+  $("#remove-day").click(function() {
+	    $("#added-day:last-child").remove();
+	  });
+	
+});
+
+
 </script>
 </body>
 </html>
