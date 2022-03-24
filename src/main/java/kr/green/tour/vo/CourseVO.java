@@ -13,10 +13,10 @@ public class CourseVO {
 	private String course_title;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date course_write_date;
-	private Date departure_date;
-	private Date arrive_date;
+	private String duration;
 	private int course_writer_number;
 	private String option;
+	private String course_mate;
 	
 	public String getCourse_wite_date_str() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
