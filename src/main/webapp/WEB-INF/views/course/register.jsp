@@ -48,10 +48,8 @@
 					</select>
 					</div>
 					<!-- 메인 카테고리 예제 했던것 처럼 구현하기 -->
-					<select name="area" class="select box">
-						<option value="default">전체지역</option>
-						<option value="광양시">광양시</option>
-						<option value="private">비공개</option>
+					<select class="city">
+						<option>전체지역</option>
 					</select>
 					<select name="type" class="select box">
 						<option value="default">전체분야</option>
@@ -80,7 +78,7 @@
 			            <button type="button"  id="remove-day">삭제</button>
 			            </div>
 			            <div id="day-btn">
-			            <button type="button" id="first-day">1일차</button>
+			            <button type="button" id="first-day" class="added-day">1일차</button>
 			            </div>
 		            </div>  
 				</div>
@@ -95,6 +93,7 @@
     </div>
     
 <script>
+
 
 //date range picker
 $(function () {
@@ -123,20 +122,48 @@ $(function () {
 
 
 $(document).ready(function() {
-	//삭제 후 다시 일 추가할때 2부터 시작하게 수정하기
 	//일 추가
-	var i=2; 
   $("#add-day").click(function() {
-    $("#day-btn").append("<button id='added-day' type='button'>"+i+"일차"+"</button>");
-    i++; // 함수 내 하단에 증가문 설정
+    $("#day-btn").append("<button class='added-day days' type='button'>"+i+"일차"+"</button>");
+    numbering();
   });
 	
 	//일 삭제
-  $("#remove-day").click(function() {
-	    $("#added-day:last-child").remove();
-	  });
+  	$("#remove-day").click(function() {
+	    $(".days:last-child").remove();
+	    numbering();
+	});
 	
+
+function numbering(){
+	$('.added-day').each(function(index){
+		$(this).text(index+1+'일차');
+	})  
+}
+
+setCity();
+//지역 설정
+function setCity(){
+	var str = '<option value="0">전체지역</option>';
+	$.ajax({
+		async:false,
+		type:'get',
+		url: '<%=request.getContextPath()%>/city',
+		dataType:"json",
+		success : function(res){
+			console.log(res)
+			var list = res.list;
+			for(city of list){
+			str +=  '<option value="'+city.city_id+'">'+city.city_name+'</option>'
+			}
+			$('.city').html(str);
+		}
+	});
+}
+
 });
+
+
 
 
 </script>

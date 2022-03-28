@@ -70,6 +70,8 @@
 		    });
 		}
 		
+		
+		
 		//수정 필요
 		positions.forEach(function (pos) {
 		    
