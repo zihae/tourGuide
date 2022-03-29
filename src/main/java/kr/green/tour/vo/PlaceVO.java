@@ -21,7 +21,8 @@ public class PlaceVO {
 		private int checkOut;
 		private String menu;
 		private String holiday;
-		private double latitude;
-		private double longitude;
+		private String latitude;
+		private String longitude;
 		private String landmark;
+		private String lodgeId;
 }

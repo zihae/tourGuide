@@ -23,4 +23,14 @@ public class PlaceServiceImp implements PlaceService {
 		public int getTotalCount(Criteria cri) {
 			return placeDao.selectTotalCount(cri);
 		}
+
+		@Override
+		public void insertPlace(PlaceVO place) {
+			 placeDao.insertPlace(place);
+			
+		}
+
+		
+
+		
 }

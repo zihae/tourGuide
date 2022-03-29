@@ -13,4 +13,11 @@ public interface PlaceDAO {
 
 	int selectTotalCount(@Param("cri")Criteria cri);
 
+	void insertPlace(@Param("place")PlaceVO place);
+
+	
+
+	
+
+
 }

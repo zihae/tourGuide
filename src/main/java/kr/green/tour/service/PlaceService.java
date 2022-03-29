@@ -11,4 +11,10 @@ public interface PlaceService {
 
 	int getTotalCount(Criteria cri);
 
+	void insertPlace(PlaceVO place);
+
+	
+
+	
+
 }

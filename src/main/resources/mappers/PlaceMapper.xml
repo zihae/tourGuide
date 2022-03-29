@@ -12,6 +12,11 @@
 	<select id="selectTotalCount" resultType="int">
 		select count(*) from place where main_id = #{cri.main_id} and name like concat('%', #{cri.search},'%')
 	</select>
+	
+	<insert id="insertPlace">
+		insert into place(main_id, address1, img, tel, lodgeId, name) 
+		values (#{place.main_id}, #{place.address1}, #{place.img},#{place.tel}, #{place.lodgeId}, #{place.name} )
+	</insert>
 
 
 
