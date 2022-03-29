@@ -17,12 +17,14 @@ public class PlaceVO {
 		private String bus;
 		private String localPub;
 		private String train;
-		private int checkIn;
-		private int checkOut;
+		private String checkIn;
+		private String checkOut;
 		private String menu;
 		private String holiday;
 		private String latitude;
 		private String longitude;
 		private String landmark;
 		private String lodgeId;
+		private String overview;
+		private String car;
 }

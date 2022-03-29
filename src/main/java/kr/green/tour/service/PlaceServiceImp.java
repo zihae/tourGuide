@@ -30,6 +30,16 @@ public class PlaceServiceImp implements PlaceService {
 			
 		}
 
+		@Override
+		public void updatePlace(PlaceVO place) {
+			if(place == null || place.getLodgeId() == null)
+				return;
+			PlaceVO db = placeDao.selectPlaceVO(place.getLodgeId());
+			if(db == null)
+				placeDao.updatePlace(place);
+			
+		}
+
 		
 
 		

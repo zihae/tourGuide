@@ -17,6 +17,22 @@
 		insert into place(main_id, address1, img, tel, lodgeId, name) 
 		values (#{place.main_id}, #{place.address1}, #{place.img},#{place.tel}, #{place.lodgeId}, #{place.name} )
 	</insert>
+	
+	<update id="updatePlace">
+		update place set
+		
+		 area =#{place.area},
+		 parking =#{place.parking},
+		 checkIn =#{place.checkIn},
+		 checkOut =#{place.checkOut},
+		 overview =#{place.overview}
+		 
+		where lodgeId=#{place.lodgeId} 
+	</update>
+	
+	<select id="selectPlaceVO">
+	 select * from place where lodgeId=#{place.lodgeId}
+	</select>
 
 
 

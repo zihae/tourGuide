@@ -15,6 +15,10 @@ public interface PlaceDAO {
 
 	void insertPlace(@Param("place")PlaceVO place);
 
+	void updatePlace(@Param("place")PlaceVO place);
+
+	PlaceVO selectPlaceVO( @Param("place") String lodgeId);
+
 	
 
 	

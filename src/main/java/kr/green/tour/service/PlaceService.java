@@ -13,6 +13,8 @@ public interface PlaceService {
 
 	void insertPlace(PlaceVO place);
 
+	void updatePlace(PlaceVO place);
+
 	
 
 	
