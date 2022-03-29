@@ -47,7 +47,9 @@
 			<c:forEach items="${list}" var="place">
 			   {
 				   title: '${place.name}',
-				   latlng: new kakao.maps.LatLng(${place.latitude},${place.longitude})
+				   latlng: new kakao.maps.LatLng(${place.latitude},${place.longitude}),
+				   address: '${place.address1}',
+				   tel: '${place.tel}'
 			   },
 		   </c:forEach>
 		];
@@ -75,12 +77,28 @@
 		    content.innerHTML =  data.title;
 		    content.style.cssText = 'background: white; border: 1px solid black';
 		    
+		    var address = document.createElement('div');
+		    address.innerHTML =  data.address;
+		    address.style.cssText = 'background: white; border: 1px solid black';
+		    
+		    var tel = document.createElement('div');
+		    tel.innerHTML =  data.tel;
+		    tel.style.cssText = 'background: white; border: 1px solid black';
+		    
+		  
+		    
+		    
 		    var closeBtn = document.createElement('button');
 		    closeBtn.innerHTML = '닫기';
 		    closeBtn.onclick = function () {
 		        overlay.setMap(null);
 		    };
-		    content.appendChild(closeBtn);
+		    
+		    content.appendChild(address);
+		    address.appendChild(tel);
+		    tel.appendChild(closeBtn);
+		    
+		    
 		    overlay.setContent(content);
 
 		    kakao.maps.event.addListener(marker, 'click', function() {
