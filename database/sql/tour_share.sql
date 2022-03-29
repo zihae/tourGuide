@@ -1,8 +1,10 @@
+CREATE DATABASE  IF NOT EXISTS `tour` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `tour`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tour
 -- ------------------------------------------------------
--- Server version	5.7.36-log
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,20 +25,20 @@ DROP TABLE IF EXISTS `share`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `share` (
-  `share_id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(60) CHARACTER SET latin1 NOT NULL,
-  `contents` longtext CHARACTER SET latin1 NOT NULL,
+  `share_id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `contents` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `create_date` datetime NOT NULL,
-  `state` varchar(30) CHARACTER SET latin1 NOT NULL DEFAULT 'recruiting',
-  `share_member_id` varchar(10) CHARACTER SET latin1 NOT NULL,
-  `share_course_id` int(11) NOT NULL,
-  `board_type` varchar(10) CHARACTER SET latin1 NOT NULL DEFAULT 'share',
+  `state` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'recruiting',
+  `share_member_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `share_course_id` int NOT NULL,
+  `board_type` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'share',
   PRIMARY KEY (`share_id`),
   KEY `FK_course_TO_share_1` (`share_course_id`),
   KEY `share_member_id_idx` (`share_member_id`),
   CONSTRAINT `FK_course_TO_share_1` FOREIGN KEY (`share_course_id`) REFERENCES `course` (`course_id`),
-  CONSTRAINT `share_member_id` FOREIGN KEY (`share_member_id`) REFERENCES `member` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `share_member_id` FOREIGN KEY (`share_member_id`) REFERENCES `member` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-17 15:50:43
+-- Dump completed on 2022-03-29 14:44:09

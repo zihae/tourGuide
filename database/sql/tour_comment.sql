@@ -1,8 +1,10 @@
+CREATE DATABASE  IF NOT EXISTS `tour` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `tour`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tour
 -- ------------------------------------------------------
--- Server version	5.7.36-log
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,21 +25,21 @@ DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comment` (
-  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(10) CHARACTER SET latin1 NOT NULL,
-  `contents` longtext CHARACTER SET latin1 NOT NULL,
-  `class` int(11) NOT NULL,
-  `group_num` int(11) NOT NULL,
+  `comment_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `contents` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `class` int NOT NULL,
+  `group_num` int NOT NULL,
   `date` datetime NOT NULL,
   `update` datetime DEFAULT NULL,
-  `delete` varchar(2) CHARACTER SET latin1 DEFAULT NULL,
+  `delete` varchar(2) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `delete_date` datetime DEFAULT NULL,
-  `board_type` varchar(10) CHARACTER SET latin1 NOT NULL,
-  `comment_board_num` int(11) NOT NULL,
+  `board_type` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `comment_board_num` int NOT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `user_id_idx` (`user_id`),
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `member` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `member` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-17 15:50:35
+-- Dump completed on 2022-03-29 14:44:04

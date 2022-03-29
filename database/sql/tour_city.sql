@@ -1,8 +1,10 @@
+CREATE DATABASE  IF NOT EXISTS `tour` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `tour`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tour
 -- ------------------------------------------------------
--- Server version	5.7.36-log
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,11 +25,10 @@ DROP TABLE IF EXISTS `city`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `city` (
-  `city_id` int(11) NOT NULL AUTO_INCREMENT,
-  `province` varchar(10) CHARACTER SET utf8 NOT NULL,
-  `name` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `city_id` int NOT NULL AUTO_INCREMENT,
+  `city_name` varchar(45) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`city_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +37,7 @@ CREATE TABLE `city` (
 
 LOCK TABLES `city` WRITE;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
-INSERT INTO `city` VALUES (1,'전라북도','고창군'),(2,'전라북도','군산시'),(3,'전라북도','김제시'),(4,'전라북도','남원시'),(5,'전라북도','무주군'),(6,'전라북도','부안군'),(7,'전라북도','순창군'),(8,'전라북도','완주군'),(9,'전라북도','익산시'),(10,'전라북도','임실군'),(11,'전라북도','장수군'),(12,'전라북도','전주시'),(13,'전라북도','정읍시'),(14,'전라북도','진안군');
+INSERT INTO `city` VALUES (1,'광양시'),(2,'강진군'),(3,'해남군'),(4,'여수시'),(5,'완도군'),(6,'순천시'),(7,'나주시'),(8,'담양군'),(9,'곡성군'),(10,'구례군'),(11,'고흥군'),(12,'보성군'),(13,'화순군'),(14,'장흥군'),(15,'영암군'),(16,'무안군'),(17,'함평군'),(18,'영광군'),(19,'장성군'),(20,'진도군'),(21,'신안군');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-17 15:50:34
+-- Dump completed on 2022-03-29 14:44:11

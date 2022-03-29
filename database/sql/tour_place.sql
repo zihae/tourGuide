@@ -1,8 +1,10 @@
+CREATE DATABASE  IF NOT EXISTS `tour` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `tour`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tour
 -- ------------------------------------------------------
--- Server version	5.7.36-log
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,31 +25,31 @@ DROP TABLE IF EXISTS `place`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `place` (
-  `place_id` int(11) NOT NULL AUTO_INCREMENT,
-  `main_id` int(11) NOT NULL,
-  `area` varchar(80) COLLATE utf8_bin NOT NULL,
-  `name` varchar(60) CHARACTER SET utf8 NOT NULL,
-  `address1` varchar(80) CHARACTER SET utf8 NOT NULL,
-  `address2` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
-  `parking` varchar(20) COLLATE utf8_bin DEFAULT NULL,
-  `homepage` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `tel` varchar(13) CHARACTER SET utf8 DEFAULT NULL,
-  `overview` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
-  `img` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `bus` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
-  `localPub` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
-  `train` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
-  `checkIn` int(11) DEFAULT NULL,
-  `checkOut` int(11) DEFAULT NULL,
-  `menu` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `holiday` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `place_id` int NOT NULL AUTO_INCREMENT,
+  `main_id` int NOT NULL,
+  `area` varchar(80) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `name` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `address1` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `address2` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `parking` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `homepage` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `tel` varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `overview` varchar(4000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `bus` varchar(4000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `localPub` varchar(4000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `train` varchar(4000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `checkIn` int DEFAULT NULL,
+  `checkOut` int DEFAULT NULL,
+  `menu` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `holiday` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `latitude` decimal(10,7) DEFAULT NULL,
   `longitude` decimal(10,7) DEFAULT NULL,
-  `landmark` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `landmark` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`place_id`,`main_id`),
   KEY `place_type_idx` (`main_id`),
-  CONSTRAINT `place_type` FOREIGN KEY (`main_id`) REFERENCES `main_category` (`main_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1975 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  CONSTRAINT `place_type` FOREIGN KEY (`main_id`) REFERENCES `main_category` (`main_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1975 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,4 +71,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-17 15:50:38
+-- Dump completed on 2022-03-29 14:44:08

@@ -69,7 +69,7 @@
     		});
 			 
 		    var overlay = new kakao.maps.CustomOverlay({
-		        yAnchor: 3,
+		        yAnchor: 0.5,
 		        position: marker.getPosition()
 		    });
 		    

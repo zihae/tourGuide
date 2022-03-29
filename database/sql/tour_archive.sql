@@ -1,8 +1,10 @@
+CREATE DATABASE  IF NOT EXISTS `tour` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `tour`;
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tour
 -- ------------------------------------------------------
--- Server version	5.7.36-log
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,17 +25,17 @@ DROP TABLE IF EXISTS `archive`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `archive` (
-  `archive_id` int(11) NOT NULL AUTO_INCREMENT,
-  `archive_member_id` int(11) NOT NULL,
-  `state` int(11) DEFAULT NULL,
-  `main_id` int(11) NOT NULL,
-  `archive_board_num` int(11) DEFAULT NULL,
+  `archive_id` int NOT NULL AUTO_INCREMENT,
+  `archive_member_id` int NOT NULL,
+  `state` int DEFAULT NULL,
+  `main_id` int NOT NULL,
+  `archive_board_num` int DEFAULT NULL,
   PRIMARY KEY (`archive_id`),
   KEY `FK_member_TO_archive_1` (`archive_member_id`),
   KEY `mian_id_idx` (`main_id`),
   CONSTRAINT `FK_member_TO_archive_1` FOREIGN KEY (`archive_member_id`) REFERENCES `member` (`id`),
   CONSTRAINT `mian_id` FOREIGN KEY (`main_id`) REFERENCES `main_category` (`main_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-17 15:50:40
+-- Dump completed on 2022-03-29 14:44:10
