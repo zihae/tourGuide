@@ -85,8 +85,17 @@
 		    tel.innerHTML =  data.tel;
 		    tel.style.cssText = 'background: white; border: 1px solid black';
 		    
-		  
+		    var btnGroup = document.createElement('div');
+		    btnGroup.style.cssText = 'background: white; border: 1px solid black';
 		    
+		    var addBtn = document.createElement('button');
+		    addBtn.innerHTML = '추가';
+		    addBtn.onclick = function () {
+		    	document.getElementById("bottom").innerHTML += data.title;
+		    	
+		    	
+		    };
+		   
 		    
 		    var closeBtn = document.createElement('button');
 		    closeBtn.innerHTML = '닫기';
@@ -96,8 +105,9 @@
 		    
 		    content.appendChild(address);
 		    address.appendChild(tel);
-		    tel.appendChild(closeBtn);
-		    
+		    tel.appendChild(btnGroup);
+		    btnGroup.appendChild(addBtn);
+		    btnGroup.appendChild(closeBtn);
 		    
 		    overlay.setContent(content);
 

@@ -40,18 +40,17 @@
 	        <div class="contents">
 	        	<div class="contents-top">
 		            <input id="title" type="text" name="course_title" placeholder="코스 제목을 입력해주세요.">
-		            <div class="form-group">
+		            <div class="scope">
 		            <select name="option" class="select box">
 						<option value="default">공개범위</option>
 						<option value="public">전체공개</option>
 						<option value="private">비공개</option>
 					</select>
 					</div>
-					<!-- 메인 카테고리 예제 했던것 처럼 구현하기 -->
 					<select class="city">
 						<option>전체지역</option>
 					</select>
-					<select name="type" class="select box">
+					<select  class="type">
 						<option value="default">전체분야</option>
 						<option value="public">관광지</option>
 						<option value="private">음식점</option>
@@ -63,15 +62,15 @@
 		            </div>
 		            	<label>함께할 친구 추가</label>
 		            	<div id="mate-box">
-		            	<input type="text"> 
+		            	<input type="text" name="course_mate"> 
 		            	</div>
 		            	<div id="recruit-box">
-			             <input type="checkbox" value="" id="defaultCheck1">
-  						 	<label class="check-label" for="defaultCheck1">
+			             <input type="checkbox" name="recruit" class="recruit-check" value="Y">
+  						 	<label class="check-label" for="recruit-check">
 						    친구 모집
 						  	</label>
 			            </div>
-		           <label>세부 일정</label>
+		           	<label>세부 일정</label>
 		            <div id="btn-group-day">
 		            	<div id="control-btn">
 			            <button type="button"  id="add-day">추가</button>
@@ -82,17 +81,19 @@
 			            </div>
 		            </div>  
 				</div>
-	        </div>
 	        <!-- 장소 추가 되는 곳 -->
-	        	<div class="contents-bottom">
+	        	<div class="contents-bottom" id="bottom">
 	        	
 	        	</div>
+	        </div>
 	       <button class="btn btn-outline-success" id="btn">등록</button>
 	     </form>
         
     </div>
     
 <script>
+//친구 모집
+var checkedValue = $('.recruit-check:checked').val();
 
 
 //date range picker
@@ -124,7 +125,7 @@ $(function () {
 $(document).ready(function() {
 	//일 추가
   $("#add-day").click(function() {
-    $("#day-btn").append("<button class='added-day days' type='button'>"+i+"일차"+"</button>");
+    $("#day-btn").append("<button class='added-day days' type='button'>일차"+"</button>");
     numbering();
   });
 	
@@ -141,8 +142,8 @@ function numbering(){
 	})  
 }
 
-setCity();
 //지역 설정
+setCity();
 function setCity(){
 	var str = '<option value="0">전체지역</option>';
 	$.ajax({
