@@ -40,6 +40,11 @@ public class PlaceContorller {
 	public ModelAndView placeMap(ModelAndView mv, Criteria cri) {
 		cri.setPerPageNum(1000);
 		List<PlaceVO> list = placeService.getPlaceList(cri); 
+		int totalCount = placeService.getTotalCount(cri);
+		//테스트 후 2->10으로 수정하기
+		PageMaker pm = new PageMaker(totalCount,10,cri);
+		//페이지 메이커를 화면에 전달
+		mv.addObject("pm", pm);
 		//컨트롤러가 가져온 게시글을 화면에 전달
 		mv.addObject("list", list);
 		
@@ -47,6 +52,13 @@ public class PlaceContorller {
 		return mv;
 		
 	}
+	//detail
+	@RequestMapping(value="/place/detail")
+	  public ModelAndView main(ModelAndView mv) throws Exception{
+	      mv.setViewName("/place/detail");
+	      return mv;
+	  }
+	  
 	
 }
 	

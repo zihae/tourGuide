@@ -8,7 +8,7 @@
 <title>Insert title here</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   
@@ -42,12 +42,9 @@ h1{text-align: center;}
 	 <form  class="input-group mt-3 mb-3" action="<%=request.getContextPath()%>/place/list">
 		    <div class="input-group mt-3 mb-3">
 		      <div class="input-group-prepend">
-			        <select name="area" class="select">
-			        <option disabled selected>지역</option>
-			        <option value="AC01">광양시</option>
-			        <option value="AC02">강진군</option>
-			        
-			        </select>
+			       <select class="city">
+						<option>전체지역</option>
+					</select>
 		      </div>
 		      <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요." value="${pm.criteria.search}">
 		      <div class="input-group-append">
@@ -77,9 +74,10 @@ h1{text-align: center;}
 				 		<c:forEach items="${list}" var="place">
 						<div class="card-box">
 							  <div class="card" style="margin-bottom: 20px;">
-									  <c:if test="${pm.criteria.main_id == 3}">
-									    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%; height: 200px" >
+									  <!--<c:if test="${pm.criteria.main_id == 3}">
+									    <img class="card-img-top" src="${place.img }" alt="Card image" style="width:100%; height: 200px" >
 									  </c:if>
+									  -->
 								    <div class="card-body">
 								    	<span>${place.area}</span>
 								    	<h4>${place.name}</h4>
@@ -95,7 +93,7 @@ h1{text-align: center;}
 									      </c:when>
 									      </c:choose>
 								      </ul>
-								      <a href="#" class="btn btn-info stretched-link">상세 보기</a>
+								      <a href="<%=request.getContextPath()%>/place/detail" class="btn btn-info stretched-link">상세 보기</a>
 								    </div>
 							  </div>
 						</div>
@@ -122,12 +120,25 @@ h1{text-align: center;}
 	</div>
 </div>
 <script>
-//$(document).ready(function() { 
-//	$('#map-button').click(function() {//map-button이란 아이디 클릭시 
-//	$('#contents').load('/place/map.html');//#content에 데이타를 부른다. 
-//	return false; 
-//	}); 
-//});
+//지역 설정
+setCity();
+function setCity(){
+	var str = '<option value="0">전체지역</option>';
+	$.ajax({
+		async:false,
+		type:'get',
+		url: '<%=request.getContextPath()%>/city',
+		dataType:"json",
+		success : function(res){
+			console.log(res)
+			var list = res.list;
+			for(city of list){
+			str +=  '<option value="'+city.city_id+'">'+city.city_name+'</option>'
+			}
+			$('.city').html(str);
+		}
+	});
+}
 
 	
 </script>
