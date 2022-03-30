@@ -21,17 +21,14 @@
 	<update id="updatePlace">
 		update place set
 		
-		 area =#{place.area},
-		 parking =#{place.parking},
-		 checkIn =#{place.checkIn},
-		 checkOut =#{place.checkOut},
-		 overview =#{place.overview}
+		 latitude =#{place.latitude}
+		 longitude=#{place.longitude}
 		 
 		where lodgeId=#{place.lodgeId} 
 	</update>
 	
-	<select id="selectPlaceVO">
-	 select * from place where lodgeId=#{place.lodgeId}
+	<select id="selectPlaceVO" resultType="kr.green.tour.vo.PlaceVO">
+	 select * from place where lodgeId=#{lodgeId}
 	</select>
 
 
