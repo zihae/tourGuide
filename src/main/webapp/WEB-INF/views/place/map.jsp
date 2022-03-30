@@ -10,20 +10,16 @@
 #map-button{margin:auto;
         display:block;
         margin-top: 30px;}
- 
-
 </style>
 </head>
 <body>
-<div class="container">
-	<div id="map" style="width:1080px;height:700px;"></div>
-	<div class="button">
-		<a href="<%=request.getContextPath()%>/place/list?main_id=${pm.criteria.main_id }">
-			<button type="button" class="btn btn-info" id="map-button" >목록 보기</button>
-		</a>
-	</div>
-</div>
 
+	<div class="container">
+	<div id="map" style="width:1080px;height:700px;"></div>
+	<a href="<%=request.getContextPath()%>/place/list?main_id=${pm.criteria.main_id}">
+		    	<button type="button" class="btn btn-outline-info" id="map-button">목록 보기</button>
+		    	</a>
+</div>
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44e185ba8590a8162cff60db78eccad0&libraries=services,clusterer,drawing"></script>
 	<script>
@@ -61,54 +57,76 @@
 			<c:forEach items="${list}" var="place">
 			   {
 				   title: '${place.name}',
-				   latlng: new kakao.maps.LatLng(${place.latitude},${place.longitude})
+				   latlng: new kakao.maps.LatLng(${place.latitude},${place.longitude}),
+				   address: '${place.address1}',
+				   tel: '${place.tel}'
 			   },
 		   </c:forEach>
 		];
-		// 마커 이미지의 이미지 주소입니다
-		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-		    
-		for (var i = 0; i < positions.length; i ++) {
-		    // 마커 이미지의 이미지 크기 입니다
-		    var imageSize = new kakao.maps.Size(24, 35); 
-		    
-		    // 마커 이미지를 생성합니다    
-		    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-		    
-		    // 마커를 생성합니다
-		    var marker = new kakao.maps.Marker({
-		        map: map, // 마커를 표시할 지도
-		        position: positions[i].latlng, // 마커를 표시할 위치
-		        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-		        image : markerImage // 마커 이미지 
-		    });
+		
+		for(let i=0; i < positions.length; i++){
+		    var data = positions[i];
+		    displayMarker(data);
 		}
 		
-		//수정 필요
-		positions.forEach(function (pos) {
+		
+		// 지도에 마커를 표시하는 함수입니다    
+		function displayMarker(data) { 
+			 // 마커를 생성합니다
+		   var marker = new kakao.maps.Marker({
+	        	map: map,
+	        	position: data.latlng
+    		});
+			 
+		    var overlay = new kakao.maps.CustomOverlay({
+		        yAnchor: 1,
+		        position: marker.getPosition()
+		    });
 		    
-		    // content HTMLElement 생성
 		    var content = document.createElement('div');
-		    var info = document.createElement('span');
-		    info.appendChild(document.createTextNode(pos.title));
-		    content.appendChild(info);
+		    content.innerHTML =  data.title;
+		    content.style.cssText = 'background: white; border: 1px solid black';
+		    
+		    var address = document.createElement('div');
+		    address.innerHTML =  data.address;
+		    address.style.cssText = 'background: white; border: 1px solid black';
+		    
+		    var tel = document.createElement('div');
+		    tel.innerHTML =  data.tel;
+		    tel.style.cssText = 'background: white; border: 1px solid black';
+		    
+		    var btnGroup = document.createElement('div');
+		    btnGroup.style.cssText = 'background: white; border: 1px solid black';
+		    
+		    var addBtn = document.createElement('button');
+		    addBtn.innerHTML = '추가';
+		    addBtn.onclick = function () {
+		    	document.getElementById("bottom").innerHTML += data.title;
+		    	
+		    	
+		    };
+		   
+		    
 		    var closeBtn = document.createElement('button');
-		    closeBtn.appendChild(document.createTextNode('닫기'));
-		    // 닫기 이벤트 추가
-		    closeBtn.onclick = function() {
+		    closeBtn.innerHTML = '닫기';
+		    closeBtn.onclick = function () {
 		        overlay.setMap(null);
 		    };
-		    content.appendChild(closeBtn);
-		    // customoverlay 생성, 이때 map을 선언하지 않으면 지도위에 올라가지 않습니다.
-		    var overlay = new daum.maps.CustomOverlay({
-		        position: pos.latlng,
-		        content: content
-		    });
-		    // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+		    
+		    content.appendChild(address);
+		    address.appendChild(tel);
+		    tel.appendChild(btnGroup);
+		    btnGroup.appendChild(addBtn);
+		    btnGroup.appendChild(closeBtn);
+		    
+		    overlay.setContent(content);
+
 		    kakao.maps.event.addListener(marker, 'click', function() {
 		        overlay.setMap(map);
 		    });
-		});
+		}
+		
+		
 	
 	</script>
 </body>
