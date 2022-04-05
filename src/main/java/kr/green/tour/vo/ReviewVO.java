@@ -14,8 +14,8 @@ public class ReviewVO {
 	private Date create_date;
 	private Date update;
 	private int view;
-	private String delete;
-	private Date delete_date;
+	private String del;
+	private Date del_date;
 	private String board_type;
 	
 	public String getCreate_date_str() {
