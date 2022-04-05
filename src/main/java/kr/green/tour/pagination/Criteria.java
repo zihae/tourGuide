@@ -12,6 +12,8 @@ public class Criteria {
 	private String search;
 	//Place 종류(숙소,관광지,음식점)
 	private int main_id;
+	//지역
+	private int city_id;
 	
 	//Criteria 디폴트 생성자
 	public Criteria() {
