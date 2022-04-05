@@ -38,7 +38,7 @@ public class CourseController {
 		public ModelAndView courseRegisterGet(ModelAndView mv, CourseVO course, Criteria cri) {
 			mv.addObject("course", course);
 			//지도 불러오기
-			cri.setPerPageNum(500);
+			cri.setPerPageNum(1000);
 			List<PlaceVO> list = courseService.getMapList(cri); 
 			//컨트롤러가 가져온 게시글을 화면에 전달
 			mv.addObject("list", list);
