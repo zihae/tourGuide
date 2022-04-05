@@ -11,11 +11,23 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <title>Insert title here</title>
+<style>
+#reg-button{margin:auto;
+        display:block;
+        margin-top: 15px;
+        margin-bottom: 25px;}
+</style>
 </head>
 <body>
 <div class="body">
 	<div class="container">
-	  <h2>여행 후기</h2>          
+	  <h2>여행 후기</h2> 
+	  <form class="input-group mb-3" action="<%=request.getContextPath()%>/review/list">       <!-- 검색어 유지 -->
+		  <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요" value="${pm.criteria.search }">
+		  <div class="input-group-append">
+		    <button class="btn btn-success" type="submit">검색</button>
+		  </div>
+  	  </form>         
 	  <table class="table table-hover">
 	    <thead>
 	      <tr>
@@ -39,8 +51,23 @@
 	    </tbody>
 	  </table>
 	  <a href="<%=request.getContextPath()%>/review/register">
-	  <button class="btn btn-outline-success">글쓰기</button>
+	  <button class="btn btn-outline-success" id="reg-button">글쓰기</button>
 	  </a>
+	  	<!-- 페이지네이션 --> 
+		 <c:if test="${pm.criteria.page == i}">active</c:if>
+		  <ul class="pagination justify-content-center">
+		    <li class="page-item <c:if test="${!pm.prev}">disabled</c:if>">
+		    	<a class="page-link" href="<%=request.getContextPath()%>/review/list?page=${pm.startPage-1}&search=${pm.criteria.search}">이전</a>
+		   	</li>
+		   	<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
+			    <li class="page-item <c:if test="${pm.criteria.page == i}">active</c:if>">
+			    	<a class="page-link" href="<%=request.getContextPath()%>/review/list?page=${i}&search=${pm.criteria.search}">${i}</a>
+			   	</li>
+		   	</c:forEach>
+		    <li class="page-item <c:if test="${!pm.next}">disabled</c:if>">
+		    	<a class="page-link" href="<%=request.getContextPath()%>/review/list?page=${pm.endPage+1}&search=${pm.criteria.search}">다음</a>
+		   	</li>
+		  </ul>
 	</div>
 </div>
 </body>

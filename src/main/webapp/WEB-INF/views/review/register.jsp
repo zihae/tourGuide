@@ -28,5 +28,11 @@
 			<button class="btn btn-outline-success col-12">등록</button>
 		</form>
 	</div>
-	
+	<script>
+      $('[name=contents]').summernote({
+        placeholder: 'Hello Bootstrap 4',
+        tabsize: 2,
+        height: 400
+      });
+    </script>
 </body>

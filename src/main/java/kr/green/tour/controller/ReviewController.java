@@ -50,7 +50,6 @@ public class ReviewController {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		review.setReview_member_id(user.getUser_id());
 		review.setBoard_type("review");
-		System.out.println(review);
 		reviewService.registerReview(review);
 		mv.setViewName("redirect:/review/list");
 		return mv;

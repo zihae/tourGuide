@@ -19,7 +19,7 @@ public class ReviewVO {
 	private String board_type;
 	
 	public String getCreate_date_str() {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String str =format.format(create_date);
 		return str;
 		
