@@ -16,6 +16,7 @@ public class ReviewVO {
 	private int view;
 	private String delete;
 	private Date delete_date;
+	private String board_type;
 	
 	public String getCreate_date_str() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
