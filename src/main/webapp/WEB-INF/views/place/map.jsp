@@ -15,11 +15,11 @@
 <body>
 
 	<div class="container">
-	<div id="map" style="width:1080px;height:700px;"></div>
-	<a href="<%=request.getContextPath()%>/place/list?main_id=${pm.criteria.main_id}">
-		    	<button type="button" class="btn btn-outline-info" id="map-button">목록 보기</button>
-		    	</a>
-</div>
+		<div id="map" style="width:1080px;height:700px;"></div>
+		<a href="<%=request.getContextPath()%>/place/list?main_id=${pm.criteria.main_id}">
+	    	<button type="button" class="btn btn-outline-info" id="map-button">목록 보기</button>
+	    </a>
+	</div>
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44e185ba8590a8162cff60db78eccad0&libraries=services,clusterer,drawing"></script>
 	<script>

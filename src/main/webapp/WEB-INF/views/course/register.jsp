@@ -35,7 +35,7 @@
         <div class="map" id="map-section">
         <%@ include file="map.jsp" %>
         </div>
-        <form class="input" action="<%=request.getContextPath()%>/course/register" method="post" enctype="multipart/form-data">
+        
 	        <!-- 상세설정 -->
 	        <div class="contents">
 	        	<div class="contents-top">
@@ -50,12 +50,15 @@
 					<select class="city">
 						<option>전체지역</option>
 					</select>
-					<select  class="type">
-						<option value="default">전체분야</option>
-						<option value="public">관광지</option>
-						<option value="private">음식점</option>
-						<option value="private">숙소</option>
+					<form>
+					<select  class="type" name="main_id">
+						<option value="default" selected>전체분야</option>
+						<option value="1">관광지</option>
+						<option value="2">음식점</option>
+						<option value="3">숙소</option>
 					</select>
+					</form>
+					<form>
 					<div class="daterange">
 						<label>여행 기간</label>
 			            <input type="text" name="duration" id="date">
@@ -80,14 +83,28 @@
 			            <button type="button" id="first-day" class="added-day">1일차</button>
 			            </div>
 		            </div>  
+		            
+					
+					
+					</form>
 				</div>
 	        <!-- 장소 추가 되는 곳 -->
-	        	<div class="contents-bottom" id="bottom">
+	        <form>
+	        <div class="contents-bottom" id="bottom">
 	        	
 	        	</div>
+	        </form>
 	        </div>
 	       <button class="btn btn-outline-success" id="btn">등록</button>
-	     </form>
+	        
+	        	
+			
+					
+					
+					
+				
+					
+	  
         
     </div>
     
@@ -161,6 +178,7 @@ function setCity(){
 		}
 	});
 }
+
 
 });
 
