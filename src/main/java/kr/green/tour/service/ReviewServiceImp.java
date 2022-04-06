@@ -44,4 +44,13 @@ public class ReviewServiceImp implements ReviewService{
 	}
 
 
+
+	@Override
+	public ReviewVO getReviewNum(Integer review_id) {
+		if(review_id == null || review_id <= 0)
+			return null;
+		return reviewDao.getBoardNum(review_id);
+	}
+
+
 }

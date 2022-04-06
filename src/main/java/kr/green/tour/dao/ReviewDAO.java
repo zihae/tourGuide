@@ -16,6 +16,8 @@ public interface ReviewDAO {
 
 	int selectTotal(@Param("cri")Criteria cri);
 
+	ReviewVO getBoardNum(@Param("review_id")Integer review_id);
+
 
 
 }

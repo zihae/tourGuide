@@ -12,10 +12,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <title>Insert title here</title>
 <style>
-#reg-button{margin:auto;
-        display:block;
+#reg-button{
         margin-top: 15px;
         margin-bottom: 25px;}
+h2{text-align:center;}
+.input-group{margin-top: 10px;}
 </style>
 </head>
 <body>
@@ -41,8 +42,8 @@
 	    <tbody>
 	      <c:forEach items="${list}" var="review" varStatus="vs">
 	      <tr>
-			<td>${review.review_id }</td>
-	        <td>${review.title }</td>
+			<td>${pm.totalCount - pm.criteria.pageStart - vs.index}</td>
+	        <td><a href="<%=request.getContextPath()%>/review/detail?review_id=${review.review_id}">${review.title}</a></td>
 	        <td>${review.review_member_id }</td>
 	        <td>${review.create_date_str}</td>
 	        <td>${review.view }</td>
@@ -55,7 +56,7 @@
 	  </a>
 	  	<!-- 페이지네이션 --> 
 		 <c:if test="${pm.criteria.page == i}">active</c:if>
-		  <ul class="pagination justify-content-center">
+		  <ul class="pagination justify-content-center">                                                       
 		    <li class="page-item <c:if test="${!pm.prev}">disabled</c:if>">
 		    	<a class="page-link" href="<%=request.getContextPath()%>/review/list?page=${pm.startPage-1}&search=${pm.criteria.search}">이전</a>
 		   	</li>

@@ -38,7 +38,7 @@ public class ReviewController {
 		
 	}
 	
-	//review 등록
+	//게시글 등록
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public ModelAndView reviewRegisterGet(ModelAndView mv) {
 		mv.setViewName("/review/register");
@@ -50,8 +50,18 @@ public class ReviewController {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		review.setReview_member_id(user.getUser_id());
 		review.setBoard_type("review");
+		System.out.println(review);
 		reviewService.registerReview(review);
 		mv.setViewName("redirect:/review/list");
+		return mv;
+	}
+	
+	//게시글 상세
+	@RequestMapping(value="/detail", method=RequestMethod.GET)
+	public ModelAndView reviewDetail(ModelAndView mv, Integer review_id) {
+		mv.setViewName("/review/detail");
+		ReviewVO review = reviewService.getReviewNum(review_id);
+		mv.addObject("review",review);
 		return mv;
 	}
 

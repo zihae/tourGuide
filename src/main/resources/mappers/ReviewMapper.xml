@@ -17,4 +17,7 @@
 		select count(*) from review where title like concat('%', #{cri.search},'%')
 	</select>
 
+	<select id="getBoardNum" resultType="kr.green.tour.vo.ReviewVO">
+		select * from review where review_id = #{review_id}
+	</select>
 </mapper>

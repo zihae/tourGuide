@@ -15,5 +15,7 @@ public interface ReviewService {
 
 	int getTotal(Criteria cri);
 
+	ReviewVO getReviewNum(Integer review_id);
+
 
 }
