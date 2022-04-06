@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,11 @@ h1{text-align:center;}
 <body>
 <div class="body container">
 		<h1>여행 후기</h1>
+		<c:if test="${user != null && user.user_id == review.review_member_id}">
+			<a href="<%=request.getContextPath()%>/review/delete?review_id=${review.review_id}">
+				<button class="btn btn-outline-success">삭제</button>
+			</a>
+		</c:if>
 		<div class="form-group">
 		  <input type="text" class="form-control" name="title" readonly value="${review.title}">
 		</div>

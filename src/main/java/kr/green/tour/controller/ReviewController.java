@@ -25,7 +25,7 @@ public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
 	
-	//리스트 출력
+	//게시글 리스트
 	@RequestMapping(value="/list")
 	public ModelAndView reviewList(ModelAndView mv, Criteria cri) {
 		List<ReviewVO> list = reviewService.getReviewList(cri);
@@ -50,7 +50,6 @@ public class ReviewController {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		review.setReview_member_id(user.getUser_id());
 		review.setBoard_type("review");
-		System.out.println(review);
 		reviewService.registerReview(review);
 		mv.setViewName("redirect:/review/list");
 		return mv;
@@ -62,6 +61,16 @@ public class ReviewController {
 		mv.setViewName("/review/detail");
 		ReviewVO review = reviewService.getReviewNum(review_id);
 		mv.addObject("review",review);
+		return mv;
+	}
+	
+	//게시글 삭제
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public ModelAndView reviewDelete(ModelAndView mv, Integer review_id, HttpServletRequest request) {
+		//로그인한 유저 정보 확인
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		reviewService.deleteReview(review_id, user);
+		mv.setViewName("redirect:/review/list");
 		return mv;
 	}
 
