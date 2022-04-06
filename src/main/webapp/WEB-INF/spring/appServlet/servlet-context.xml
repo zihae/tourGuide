@@ -43,6 +43,8 @@
 	 class="kr.green.tour.interceptor.GuestInterceptor"></beans:bean>
 	<beans:bean id="autoLoginInterceptor" 
 		class="kr.green.tour.interceptor.AutoLoginInterceptor"></beans:bean>
+	<beans:bean id="memberInterceptor" 
+		class="kr.green.tour.interceptor.MemberInterceptor"></beans:bean>
 		
 	 
 		<!-- 등록된 인터셉터가 어떤 URL에 동작하는지를 설정  -->
@@ -60,7 +62,12 @@
 		    <mapping path="/**/"/>
 		    <beans:ref bean="autoLoginInterceptor"/>
     	</interceptor>
-	  
+	  	<interceptor>
+		    <mapping path="/review/register"/>
+		    <mapping path="/review/modify"/>
+		    <mapping path="/review/delete"/>
+		    <beans:ref bean="memberInterceptor"/>
+	  	</interceptor>
 		  
 		  
 		</interceptors>
