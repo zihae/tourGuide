@@ -13,7 +13,7 @@ public class ReviewVO {
 	private String contents;
 	private Date create_date;
 	private Date modify_date;
-	private int view;
+	private int views;
 	private String del;
 	private Date del_date;
 	private String board_type;

@@ -56,10 +56,11 @@ public class ReviewController {
 	}
 	
 	//게시글 상세
-	@RequestMapping(value="/detail", method=RequestMethod.GET)
+	@RequestMapping(value="/detail")
 	public ModelAndView reviewDetail(ModelAndView mv, Integer review_id) {
 		mv.setViewName("/review/detail");
 		ReviewVO review = reviewService.getReviewNum(review_id);
+		reviewService.updateViews(review_id);
 		mv.addObject("review",review);
 		return mv;
 	}

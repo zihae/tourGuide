@@ -109,4 +109,12 @@ public class ReviewServiceImp implements ReviewService{
 		//다오에게 수정된 게시글 정보를 주면서 업데이트 하라고 시킴
 		reviewDao.updateReview(dbReview);
 		}
+
+
+
+	@Override
+	public void updateViews(Integer review_id) {
+		reviewDao.updateViews(review_id);
+	
+	}
 }

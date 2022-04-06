@@ -23,6 +23,8 @@ public interface ReviewService {
 	ReviewVO selectReview(Integer review_id, MemberVO user);
 
 	void updateReview(ReviewVO review);
+
+	void updateViews(Integer review_id);
  
 
 }

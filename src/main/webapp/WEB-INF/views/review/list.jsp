@@ -46,7 +46,7 @@ h2{text-align:center;}
 	        <td><a href="<%=request.getContextPath()%>/review/detail?review_id=${review.review_id}">${review.title}</a></td>
 	        <td>${review.review_member_id }</td>
 	        <td>${review.create_date_str}</td>
-	        <td>${review.view }</td>
+	        <td>${review.views }</td>
 	      </tr>
 	       </c:forEach>
 	    </tbody>

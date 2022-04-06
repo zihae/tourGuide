@@ -22,6 +22,8 @@ public interface ReviewDAO {
 
 	void updateReview(@Param("review")ReviewVO dbReview);
 
+	void updateViews(@Param("review_id") Integer review_id);
+
 
 
 }
