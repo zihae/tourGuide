@@ -12,7 +12,7 @@ public class ReviewVO {
 	private String review_member_id;
 	private String contents;
 	private Date create_date;
-	private Date update;
+	private Date modify_date;
 	private int view;
 	private String del;
 	private Date del_date;

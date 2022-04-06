@@ -2,6 +2,7 @@ package kr.green.tour.service;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,4 +79,34 @@ public class ReviewServiceImp implements ReviewService{
 	}
 
 
+
+	@Override
+	public ReviewVO selectReview(Integer review_id, MemberVO user) {
+		//게시글 번호가 유효한지 체크 => 번호가 없거나 0이하이면 작업할 필요 없음
+		if(review_id == null || review_id <= 0)
+			return null;
+		//다오에게 게시글 가져오라고 시킴
+		ReviewVO review = reviewDao.getBoardNum(review_id);
+		if(review == null || !review.getReview_member_id().equals(user.getUser_id()))
+			return null;
+		return review;
+	}
+
+
+
+	@Override
+	public void updateReview(ReviewVO review) {
+		//다오에게 게시글 번호와 일치하는 게시글을 가져오라고 시킴
+		ReviewVO dbReview = reviewDao.getBoardNum(review.getReview_id());	
+		
+		//가져온 게시글의 제목과 내용을 review의 제목과 내용으로 덮어쓰기 함
+		dbReview.setTitle(review.getTitle());
+		dbReview.setContents(review.getContents());
+		
+		//가져온 게시글의 수정일을 현재 시간으로 업데이트
+		dbReview.setModify_date(new Date());	
+		
+		//다오에게 수정된 게시글 정보를 주면서 업데이트 하라고 시킴
+		reviewDao.updateReview(dbReview);
+		}
 }

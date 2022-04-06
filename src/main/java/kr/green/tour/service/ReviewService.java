@@ -20,5 +20,9 @@ public interface ReviewService {
 
 	void deleteReview(Integer review_id, MemberVO user);
 
+	ReviewVO selectReview(Integer review_id, MemberVO user);
+
+	void updateReview(ReviewVO review);
+ 
 
 }

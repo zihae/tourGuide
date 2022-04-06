@@ -73,5 +73,33 @@ public class ReviewController {
 		mv.setViewName("redirect:/review/list");
 		return mv;
 	}
-
+	
+	//게시글 수정
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public ModelAndView reviewModifyGet(ModelAndView mv, Integer review_id, HttpServletRequest request) {
+		//서비스에게 번호와 로그인 회원 정보를 알려주면서 번호와 작성자가 일치하는 게시글을 가져오라고 시킴
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		ReviewVO review = reviewService.selectReview(review_id, user);
+		
+		if(review == null) {
+			mv.setViewName("redirect:review/list");
+		}else {
+			mv.addObject("review", review);
+			mv.setViewName("/review/modify");		
+		}
+		return mv;
+		}
+	
+	
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public ModelAndView reviewModifyPost(ModelAndView mv, ReviewVO review) {
+		//서비스에게 게시글 정보를 주면서 업데이트하라고 시킴
+		reviewService.updateReview(review);
+		//게시글 번호를 넘겨줌
+		mv.addObject("review_id", review.getReview_id());	
+		mv.setViewName("redirect:/review/detail");
+		return mv;
+	}
+	
+	
 }

@@ -18,7 +18,9 @@ public interface ReviewDAO {
 
 	ReviewVO getBoardNum(@Param("review_id")Integer review_id);
 
-	void deleteReview(Integer review_id);
+	void deleteReview(@Param("review_id") Integer review_id);
+
+	void updateReview(@Param("review")ReviewVO dbReview);
 
 
 

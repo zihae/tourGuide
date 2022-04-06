@@ -14,6 +14,9 @@ h1{text-align:center;}
 <div class="body container">
 		<h1>여행 후기</h1>
 		<c:if test="${user != null && user.user_id == review.review_member_id}">
+			<a href="<%=request.getContextPath()%>/review/modify?review_id=${review.review_id}">
+					<button class="btn btn-outline-success">수정</button>
+			</a>
 			<a href="<%=request.getContextPath()%>/review/delete?review_id=${review.review_id}">
 				<button class="btn btn-outline-success">삭제</button>
 			</a>

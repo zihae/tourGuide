@@ -24,4 +24,9 @@
 	<update id="deleteReview">
 		update review set del = 'Y', del_date = now() where review_id = #{review_id}
  	</update>
+ 	
+ 	<update id="updateReview">
+ 		update review set title = #{review.title}, contents = #{review.contents}, modify_date = #{review.modify_date}
+ 		where review_id = #{review.review_id} 
+ 	</update>
 </mapper>

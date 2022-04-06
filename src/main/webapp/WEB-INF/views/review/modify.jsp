@@ -11,23 +11,15 @@
 </head>
 <body>
 	<div class="body container">
-		<h1>여행 후기 등록</h1>
-		<form action="<%=request.getContextPath()%>/review/register" method="post">
+		<h1>여행 후기</h1>
+		<form action="<%=request.getContextPath()%>/review/modify" method="post">
 			<div class="form-group">
-			  <input type="text" class="form-control" name="title" placeholder="제목">
+			  <input type="text" class="form-control" name="title" value="${review.title }">
 			</div>
 			<div class="form-group">
-			  <textarea class="form-control" name="contents" placeholder="내용" rows="10"></textarea>
+			  <textarea class="form-control" name="contents" rows="10">${review.contents}</textarea>
 			</div>
-			<c:if test="${review_id == null}">
-				<input type="hidden" name="review_id" value="${review.review_id }">
-			</c:if>
-			<c:if test="${board_type == null}">
-				<input type="hidden" name="board_type" value="review">
-			</c:if>
-			<c:if test="${board_type != null}">
-				<input type="hidden" name="board_type" value="${board_type}">
-			</c:if>
+			<input type="hidden" name="review_id" value="${review.review_id }">
 			<button class="btn btn-outline-success col-12">등록</button>
 		</form>
 	</div>
