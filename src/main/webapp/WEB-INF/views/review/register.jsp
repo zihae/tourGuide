@@ -19,9 +19,6 @@
 			<div class="form-group">
 			  <textarea class="form-control" name="contents" placeholder="내용" rows="10"></textarea>
 			</div>
-			<c:if test="${review_id == null}">
-				<input type="hidden" name="review_id" value="${review.review_id }">
-			</c:if>
 			<c:if test="${board_type == null}">
 				<input type="hidden" name="board_type" value="review">
 			</c:if>
