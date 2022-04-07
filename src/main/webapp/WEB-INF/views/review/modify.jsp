@@ -20,7 +20,7 @@
 			  <textarea class="form-control" name="contents" rows="10">${review.contents}</textarea>
 			</div>
 			<input type="hidden" name="review_id" value="${review.review_id }">
-			<button class="btn btn-outline-success col-12">등록</button>
+			<button class="btn btn-outline-success col-12">수정 완료</button>
 		</form>
 	</div>
 	<script>
