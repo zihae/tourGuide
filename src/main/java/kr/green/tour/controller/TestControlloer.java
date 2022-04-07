@@ -62,7 +62,7 @@ public ModelAndView sampleTest3(ModelAndView mv) {
 				//지역
 				place.setLongitude(getTagValue("lodgeXpos",eElement));
 				place.setLatitude(getTagValue("lodgeYpos",eElement));
-				place.setLodgeId(getTagValue("lodgeId", eElement));
+			
 		
 				placeService.updatePlace(place);
 				 
