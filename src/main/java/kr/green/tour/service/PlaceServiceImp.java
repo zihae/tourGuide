@@ -37,6 +37,13 @@ public class PlaceServiceImp implements PlaceService {
 			
 		}
 
+		@Override
+		public PlaceVO getPlaceNum(Integer place_id) {
+			if(place_id == null || place_id <= 0)
+				return null;
+			return placeDao.getPlaceDetail(place_id);
+		}
+
 		
 
 		

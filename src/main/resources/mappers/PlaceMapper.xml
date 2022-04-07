@@ -30,6 +30,10 @@
 	<select id="selectPlaceVO" resultType="kr.green.tour.vo.PlaceVO">
 	 select * from place where lodgeId=#{lodgeId}
 	</select>
+	
+	<select id="getPlaceDetail" resultType="kr.green.tour.vo.PlaceVO">
+		select * from place where place_id = #{place_id} 
+	</select>
 
 
 

@@ -19,6 +19,8 @@ public interface PlaceDAO {
 
 	PlaceVO selectPlaceVO( @Param("lodgeId") String lodgeId);
 
+	PlaceVO getPlaceDetail(@Param("place_id")Integer place_id);
+
 	
 
 	

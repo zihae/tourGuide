@@ -15,12 +15,11 @@
   
 <style>
 h1{text-align: center;}
-.btn-group{margin-right: 5px;}
 .stretched-link{ position: absolute; bottom: 30px;}
 .card-body{height: 260px; width: 350px;}
 .pagination{margin-top: 15px}
 .btn-filter{margin-bottom: 20px;}
-.btn-group{position:absoulte; left:830px}
+.btn-group{ margin-right: 5px; position:absoulte; left:830px}
 .cards-box {
             display: flex;
             height: 260px; 
@@ -83,7 +82,7 @@ h1{text-align: center;}
 								    	<h4>${place.name}</h4>
 								    	<ul class="card-body-ul">
 									      <li class="address1">${place.address1}</li>
-									      <c:if test="${pm.criteria.main_id != 1}">
+									      <c:if test="${place.tel != null}">
 									      	<li class="tel">${place.tel}</li>      
 									      </c:if>
 									      <!-- test 조건 수정하기 -->
@@ -93,7 +92,7 @@ h1{text-align: center;}
 									      </c:when>
 									      </c:choose>
 								      </ul>
-								      <a href="<%=request.getContextPath()%>/place/detail" class="btn btn-info stretched-link">상세 보기</a>
+								      <a href="<%=request.getContextPath()%>/place/detail?place_id=${place.place_id}&main_id=${place.main_id}" class="btn btn-info stretched-link">상세 보기</a>
 								    </div>
 							  </div>
 						</div>

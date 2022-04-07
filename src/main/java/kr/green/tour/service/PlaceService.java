@@ -15,6 +15,8 @@ public interface PlaceService {
 
 	void updatePlace(PlaceVO place);
 
+	PlaceVO getPlaceNum(Integer place_id);
+
 	
 
 	

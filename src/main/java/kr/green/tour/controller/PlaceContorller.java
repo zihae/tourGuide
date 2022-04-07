@@ -52,10 +52,12 @@ public class PlaceContorller {
 		return mv;
 		
 	}
-	//detail
+	//장소 detail
 	@RequestMapping(value="/place/detail")
-	  public ModelAndView main(ModelAndView mv) throws Exception{
+	  public ModelAndView placeDetail(ModelAndView mv, Integer place_id) {
 	      mv.setViewName("/place/detail");
+	      PlaceVO place = placeService.getPlaceNum(place_id);
+	      mv.addObject("place", place);
 	      return mv;
 	  }
 	  
