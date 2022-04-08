@@ -87,27 +87,21 @@ var mapOption = {
 	level: 3 //지도의 레벨(확대, 축소 정도)
 };
 var map = new kakao.maps.Map(mapContainer, mapOption);  //지도 생성 및 객체 리턴
-
 //마커가 표시될 위치입니다 
 var markerPosition  = new kakao.maps.LatLng(${place.latitude},${place.longitude}); 
-
 // 마커를 생성합니다
 var marker = new kakao.maps.Marker({
     position: markerPosition
 });
-
 // 마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
-
 var iwContent = '<div style="padding:5px;">${place.name} <br><a href="https://map.kakao.com/link/to/${place.name},${place.latitude},${place.longitude}" style="color:blue" target="_blank">길 찾기</a> </div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 iwPosition = new kakao.maps.LatLng(${place.latitude},${place.longitude}); //인포윈도우 표시 위치입니다
-
 //인포윈도우를 생성합니다
 var infowindow = new kakao.maps.InfoWindow({
 position : iwPosition, 
 content : iwContent 
 });
-
 //마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 infowindow.open(map, marker); 
 
@@ -148,12 +142,10 @@ $('.btn-up, .btn-down').click(function(){
 			}
 		});
 });
-
 viewLikes({
 	likes_place_id : '${place.place_id}',
 	likes_user_id: '${user.user_id}'
 });
-
 //함수
 function viewLikes(likes){
 	$.ajax({

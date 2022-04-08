@@ -73,6 +73,8 @@ public class PlaceContorller {
 	public String placeLikes(@RequestBody LikesVO likes,
 			HttpServletRequest request){
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		//System.out.println(likes);
+		//return null;
 		return placeService.likes(likes,user);
 	}
 	

@@ -30,9 +30,7 @@ public interface PlaceDAO {
 
 	void updateLikes(@Param("likes") LikesVO likes);
 
-	
 
-	
 
 
 }

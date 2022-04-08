@@ -40,17 +40,17 @@
 	</select>
 	
 	<insert id="insertLikes">
-		insert into likes(likes_place_id,likes_user_id,state) values(#{likes.likes_place_id},#{likse.likes_user_id},#{likes.state})
+		insert into likes(likes_place_id,likes_user_id,state) values(#{likes.likes_place_id},#{likes.likes_user_id},#{likes.state})
 	</insert>
 	
 	<update id="updatePlaceLikes">
-		update place set place_up (select count(*) from likes where likes_place_id = #{likes.likes_place_id} and state = 1),
-										 place_down (select count(*) from likes where likes_place_id = #{likes.likes_place_id} and state = -1)
+		update place set place_up = (select count(*) from likes where likes_place_id = #{likes.likes_place_id} and state = 1),
+										 place_down = (select count(*) from likes where likes_place_id = #{likes.likes_place_id} and state = -1)
 					where place_id = #{likes.likes_place_id} 
 	</update>
 	
 	<update id="updateLikes">
-		update place set state = #{likes.state} where likes_place_id = #{likes.likes_place_id} and likes_user_id = #{likes.likes_user_id} 
+		update likes set state = #{likes.state} where likes_place_id = #{likes.likes_place_id} and likes_user_id = #{likes.likes_user_id} 
 	</update>
 
 
