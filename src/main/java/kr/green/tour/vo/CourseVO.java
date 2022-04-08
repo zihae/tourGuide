@@ -14,7 +14,7 @@ public class CourseVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date course_write_date;
 	private String duration;
-	private int course_writer_number;
+	private String course_writer_id;
 	private String option;
 	private String course_mate;
 	private String recruit;

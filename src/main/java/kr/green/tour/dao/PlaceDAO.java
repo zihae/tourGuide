@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.tour.pagination.Criteria;
+import kr.green.tour.vo.LikesVO;
 import kr.green.tour.vo.PlaceVO;
 
 public interface PlaceDAO {
@@ -20,6 +21,14 @@ public interface PlaceDAO {
 	PlaceVO selectPlaceVO( @Param("lodgeId") String lodgeId);
 
 	PlaceVO getPlaceDetail(@Param("place_id")Integer place_id);
+
+	LikesVO selectLikes(@Param("likes")LikesVO likes);
+
+	void insertLikes(@Param("likes") LikesVO likes);
+
+	void updatePlaceLikes(@Param("likes") LikesVO likes);
+
+	void updateLikes(@Param("likes") LikesVO likes);
 
 	
 

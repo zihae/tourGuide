@@ -19,6 +19,8 @@ public class PlaceVO {
 		private String latitude;
 		private String longitude;
 		private String landmark;
+		private int place_up;
+		private int place_down;
 
 		public String getTypeTitle() {
 			if(main_id == 1) {

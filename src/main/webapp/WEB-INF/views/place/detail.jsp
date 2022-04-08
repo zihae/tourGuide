@@ -58,8 +58,11 @@ float: left;}
 					</c:if>
 				</div>
 				<div class="btn">
-					<div class="btn-group">
-						<button class="btn btn-outline-info"><i class="bi bi-heart"></i> 좋아요</button>
+					<div class="btn-group likes-btn-box">
+						<button class="btn btn-outline-info btn-up" data-state="1"><i class="bi bi-heart"></i> 좋아요</button>
+					</div>
+					<div class="btn-group likes-btn-box">
+						<button class="btn btn-outline-info btn-down" data-state="-1"><i class="bi bi-emoji-frown"></i> 아쉬워요</button>
 					</div>
 					<div class="btn-group">
 						<button class="btn btn-outline-info"><i class="bi bi-bookmark-star"></i> 찜</button>
@@ -107,5 +110,70 @@ content : iwContent
 
 //마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 infowindow.open(map, marker); 
+
+//좋아요 기능
+$('.btn-up, .btn-down').click(function(){
+		var state = $(this).data('state');
+		var likes_place_id = '${place.place_id}';
+		var likes_user_id = '${user.user_id}';
+		
+		var likes ={
+				state : state,
+				likes_place_id: likes_place_id,
+				likes_user_id: likes_user_id
+		}
+		
+		if(likes_user_id == ''){
+			alert('로그인한 회원만 가능합니다.')
+			return;
+		}
+		
+		$.ajax({
+			async:false,
+			type:'POST',
+			data: JSON.stringify(likes),
+			url: '<%=request.getContextPath()%>/place/likes',
+			dataType:"json",
+			contentType:"application/json; charset=UTF-8",
+			success : function(res){
+				if(res == 1){
+					alert('좋아요를 눌렀습니다.');
+				}else if(res == -1){
+					alert('아쉬워요를 눌렀습니다.');
+				}else if(res != "fail"){
+					var str = state == 1 ? '좋아요' : '아쉬워요';
+					alert(str + '를 취소했습니다.')
+				}
+				viewLikes(likes);
+			}
+		});
+});
+
+viewLikes({
+	likes_place_id : '${place.place_id}',
+	likes_user_id: '${user.user_id}'
+});
+
+//함수
+function viewLikes(likes){
+	$.ajax({
+		async:false,
+		type:'POST',
+		data: JSON.stringify(likes),
+		url: '<%=request.getContextPath()%>/place/view/likes',
+		dataType:"json",
+		contentType:"application/json; charset=UTF-8",
+		success : function(res){
+			$('.likes-btn-box .btn').removeClass('btn-info').addClass('btn-outline-info');
+			$('.likes-btn-box .btn').each(function(){
+				if($(this).data('state') == res){
+					$(this).removeClass('btn-outline-info').addClass('btn-info');
+				}
+			})
+		}
+	});
+}
 </script>
+
+
 </html>

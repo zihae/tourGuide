@@ -2,15 +2,21 @@ package kr.green.tour.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.tour.pagination.Criteria;
 import kr.green.tour.pagination.PageMaker;
 import kr.green.tour.service.PlaceService;
+import kr.green.tour.vo.LikesVO;
+import kr.green.tour.vo.MemberVO;
 import kr.green.tour.vo.PlaceVO;
 
 @Controller
@@ -61,6 +67,23 @@ public class PlaceContorller {
 	      return mv;
 	  }
 	  
+	//장소 좋아요
+	@ResponseBody
+	@RequestMapping(value ="/place/likes")
+	public String placeLikes(@RequestBody LikesVO likes,
+			HttpServletRequest request){
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		return placeService.likes(likes,user);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value ="/place/view/likes")
+	public String placeViewLikes(@RequestBody LikesVO likes,
+			HttpServletRequest request){
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+
+	  return placeService.viewLikes(likes, user);
+	}
 	
 }
 	
