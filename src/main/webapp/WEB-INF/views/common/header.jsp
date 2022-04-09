@@ -74,7 +74,7 @@
 	                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/login">로그인</a></li>
                                 </c:if>
                                 <c:if test="${user != null}">
-                                	<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/mypage">메세지</a></li>
+                                	<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/message/list">쪽지함</a></li>
 	                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/mypage">마이페이지</a></li>
 	                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/logout">로그아웃</a></li>
                                 </c:if>

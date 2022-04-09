@@ -28,7 +28,7 @@
       <a class="nav-link" data-toggle="tab" href="#menu2">나만의 여행지도</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu3">저장</a>
+      <a class="nav-link" data-toggle="tab" href="#menu3">찜</a>
     </li>
   </ul>
 
