@@ -59,10 +59,10 @@ float: left;}
 				</div>
 				<div class="btn">
 					<div class="btn-group likes-btn-box">
-						<button class="btn btn-outline-info btn-up" data-state="1"><i class="bi bi-heart"></i> 좋아요</button>
+						<button class="btn btn-outline-info btn-up" data-state="1"><i class="bi bi-heart"></i> 좋아요 ${place.place_up }</button>
 					</div>
 					<div class="btn-group likes-btn-box">
-						<button class="btn btn-outline-info btn-down" data-state="-1"><i class="bi bi-emoji-frown"></i> 아쉬워요</button>
+						<button class="btn btn-outline-info btn-down" data-state="-1"><i class="bi bi-emoji-frown"></i> 아쉬워요 ${place.place_down }</button>
 					</div>
 					<div class="btn-group">
 						<button class="btn btn-outline-info"><i class="bi bi-bookmark-star"></i> 찜</button>
