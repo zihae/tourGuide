@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+<!-- 화면 왼쪽 부분-->
 h1{text-align: center;}
 .body{border: 2px solid red;	padding: 10px;}
 .left-box, .right-box{height: 500px;	box-sizing: border-box;	
@@ -18,6 +19,8 @@ h1{text-align: center;}
 			clear: both; content: ''; display: block;
 		}
 .btn{margin:auto; display:block;}
+<!-- 화면 오른쪽 부분-->
+
 </style>
 </head>
 <body>
@@ -34,25 +37,18 @@ h1{text-align: center;}
 		  </a>
 	</div>
 	<div class="right-box">
-	<table class="table table-hover">
-	    <thead>
-	      <tr>
-	        <th><input type="checkbox"></th>
-	        <th>보낸사람</th>
-	        <th>내용</th>
-	        <th>날짜</th>
-	      </tr>
-	    </thead>
-	    <tbody> 
-	      <tr>
-	      	<td><input type="checkbox"></td>
-					<td>you</td>
-	        <td>test</td>
-	        <td>2022.01.01</td>
-	      </tr>   
-	    </tbody>
-	  </table>
-	
+	<form action="<%=request.getContextPath()%>/message/write" method="post">
+		<div class="form-group">
+			<input type="text" class="form-control"  name="receiver_id" placeholder="받는 사람" style="width: 700px; margin:auto;">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control"  name="title" placeholder="제목" style="width: 700px; margin:auto; ">
+		</div>
+		<div class="form-group">
+			<textarea  class="form-control" name="content" placeholder="내용" rows="13" style="width: 700px; margin:auto;"></textarea>
+		</div>
+		<button class="btn btn-outline-info">보내기</button>
+	</form>
 	</div>
 </div>
 </body>
