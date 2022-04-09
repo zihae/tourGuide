@@ -52,7 +52,6 @@ public class PlaceServiceImp implements PlaceService {
 				return "fail";
 			//DB에서 해당 유저가 해당 게시글을 추천/비추천했는지 확인하기 위해 DB에서 가져옴
 			LikesVO dbLikes = placeDao.selectLikes(likes);
-			System.out.println(dbLikes);
 			//해당 게시글에 추천/비추천을 한적이 없을 때
 			if(dbLikes == null) {
 				placeDao.insertLikes(likes);
