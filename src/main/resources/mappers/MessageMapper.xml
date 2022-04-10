@@ -17,4 +17,9 @@
 	<select id="getSendMessage" resultType="kr.green.tour.vo.MessageVO">
 		select * from message where sender_id = #{message.sender_id} order by message_id asc
 	</select>
+	
+	<!-- 메시지 상세 -->
+	<select id="getMessageNum" resultType="kr.green.tour.vo.MessageVO">
+		select * from message where message_id = #{message_id} and del = 'N'
+	</select>
 </mapper>

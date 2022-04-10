@@ -13,6 +13,8 @@ public interface MessageService {
 
 	List<MessageVO> getSendMessage(MessageVO message, MemberVO user);
 
+	MessageVO getMessageNum(Integer message_id);
+
 	
 
 }

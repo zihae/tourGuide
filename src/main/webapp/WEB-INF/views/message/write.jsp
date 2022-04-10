@@ -9,12 +9,12 @@
 <style>
 <!-- 화면 왼쪽 부분-->
 h1{text-align: center;}
-.body{border: 2px solid red;	padding: 10px;}
+.body{padding: 10px;}
 .left-box, .right-box{height: 500px;	box-sizing: border-box;	
 			width: 50%; float: left;}
 .option{list-style: none; padding-left: 10px; padding-top: 10px;}
 .left-box{width: 195px; background-color: lavender; margin-right: 0px;}
-.right-box{border: 2px solid red; width: 915px; height: 500px; float: right;}
+.right-box{width: 915px; height: 500px; float: right;}
 .body::after{
 			clear: both; content: ''; display: block;
 		}

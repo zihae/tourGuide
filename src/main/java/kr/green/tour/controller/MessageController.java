@@ -60,6 +60,15 @@ public class MessageController {
 		return mv;		
 	}
 	
+	//메세지 상세
+	@RequestMapping(value="/detail")
+	public ModelAndView reviewDetail(ModelAndView mv, Integer message_id) {
+		MessageVO message = messageService.getMessageNum(message_id);
+		mv.addObject("message",message);
+		mv.setViewName("/message/detail");
+		return mv;
+	}
+	
 	
 	
 	

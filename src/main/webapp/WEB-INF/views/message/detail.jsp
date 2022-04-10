@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style>
 h1{text-align: center;}
-.body{padding: 10px;}
+.body{border: 2px solid red;	padding: 10px;}
 .left-box, .right-box{height: 500px;	box-sizing: border-box;	
 			width: 50%; float: left;}
 .option{list-style: none; padding-left: 10px; padding-top: 10px;}
@@ -22,7 +22,6 @@ h1{text-align: center;}
 </head>
 <body>
 <div class="body">
-	<h1>받은 쪽지함</h1>
 	<div class="left-box">
 		<ul class="option">
 			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-left-short"></i> <a href="<%=request.getContextPath()%>/message/list">받은 편지함</a></li>
@@ -34,26 +33,24 @@ h1{text-align: center;}
 		  </a>
 	</div>
 	<div class="right-box">
-	<table class="table table-hover">
-	    <thead>
-	      <tr>
-	        <th><input type="checkbox"></th>
-	        <th>보낸사람</th>
-	        <th>제목</th>
-	        <th>날짜</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	    <c:forEach items="${list}" var="message"> 
-	      <tr>
-	      	<td><input type="checkbox"></td>
-					<td>${message.sender_id }</td>
-	        <td><a href="<%=request.getContextPath()%>/message/detail?message_id=${message.message_id}">${message.title}</a></td>
-	        <td>${message.send_date_str}</td>
-	      </tr> 
-	      </c:forEach>  
-	    </tbody>
-	  </table>
+		<c:if test="${message.receiver_id == user.user_id}">
+			<div class="form-group">
+				<input type="text" class="form-control"  name="receiver_id" style="width: 700px; margin:auto;" readonly value="${message.receiver_id}">
+			</div>
+		</c:if>
+		<c:if test="${message.sender_id == user.user_id }">
+			<div class="form-group">
+				<input type="text" class="form-control"  name="sender_id" style="width: 700px; margin:auto;" readonly value="${message.sender_id}">
+			</div>
+		</c:if>
+		<div class="form-group">
+			<input type="text" class="form-control"  name="title"  style="width: 700px; margin:auto;" readonly value="${message.title}">
+		</div>
+		<div class="form-group">
+			<div class="form-control" style=" min-height:300px; height:auto;">${message.content}</div>
+		</div>
+		<button class="btn btn-outline-info send-btn">보내기</button>
+	
 	
 	</div>
 </div>
