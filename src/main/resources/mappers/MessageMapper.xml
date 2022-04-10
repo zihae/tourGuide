@@ -13,4 +13,8 @@
 		select * from message where receiver_id = #{message.receiver_id} order by message_id asc
 	</select>
 	
+	<!-- 보낸 메세지 -->
+	<select id="getSendMessage" resultType="kr.green.tour.vo.MessageVO">
+		select * from message where sender_id = #{message.sender_id} order by message_id asc
+	</select>
 </mapper>

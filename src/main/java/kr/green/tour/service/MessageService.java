@@ -11,6 +11,8 @@ public interface MessageService {
 
 	List<MessageVO> getMessage(MessageVO message, MemberVO user);
 
+	List<MessageVO> getSendMessage(MessageVO message, MemberVO user);
+
 	
 
 }

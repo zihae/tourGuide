@@ -13,4 +13,6 @@ public interface MessageDAO {
 
 	List<MessageVO> getMessage(@Param("message") MessageVO message, @Param("member")MemberVO user);
 
+	List<MessageVO> getSendMessage(@Param("message") MessageVO message, @Param("member")MemberVO user);
+
 }

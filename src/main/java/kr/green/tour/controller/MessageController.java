@@ -32,6 +32,18 @@ public class MessageController {
 		
 	}
 	
+	//보낸 메세지 리스트
+		@RequestMapping(value="/sendList")
+		public ModelAndView sendList(ModelAndView mv, MessageVO message, HttpServletRequest request) {
+			MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+			message.setSender_id(user.getUser_id());
+			List<MessageVO> list = messageService.getSendMessage(message, user);
+			mv.addObject("list", list);
+			mv.setViewName("/message/sendList");
+			return mv;
+			
+		}
+	
 	//쪽지 쓰기
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public ModelAndView reviewWriteGet(ModelAndView mv) {

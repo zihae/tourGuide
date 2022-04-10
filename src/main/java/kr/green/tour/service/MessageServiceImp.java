@@ -32,5 +32,15 @@ public class MessageServiceImp implements MessageService{
 			if(!message.getReceiver_id().equals(user.getUser_id()))
 				return null;
 			return messageDao.getMessage(message, user);
+		}
+
+
+		@Override
+		public List<MessageVO> getSendMessage(MessageVO message, MemberVO user) {
+			if(!message.getSender_id().equals(user.getUser_id()))
+				return null;
+			return messageDao.getSendMessage(message, user);
+		}
+			
 		} 
-}
+
