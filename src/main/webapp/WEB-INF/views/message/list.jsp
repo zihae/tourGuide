@@ -25,7 +25,7 @@ h1{text-align: center;}
 	<h1>쪽지함</h1>
 	<div class="left-box">
 		<ul class="option">
-			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-left-short"></i> <a href="#">받은 편지함</a></li>
+			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-left-short"></i> <a href="<%=request.getContextPath()%>/message/list">받은 편지함</a></li>
 			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-right-short"></i> <a href="#">보낸 편지함</a></li>
 			<li><i class="bi bi-trash-fill"></i><a href="#"> 휴지통</a></li>
 		</ul>
@@ -39,17 +39,19 @@ h1{text-align: center;}
 	      <tr>
 	        <th><input type="checkbox"></th>
 	        <th>보낸사람</th>
-	        <th>내용</th>
+	        <th>제목</th>
 	        <th>날짜</th>
 	      </tr>
 	    </thead>
-	    <tbody> 
+	    <tbody>
+	    <c:forEach items="${list}" var="message"> 
 	      <tr>
 	      	<td><input type="checkbox"></td>
-					<td>you</td>
-	        <td>test</td>
-	        <td>2022.01.01</td>
-	      </tr>   
+					<td>${message.sender_id }</td>
+	        <td>${message.title}</td>
+	        <td>${message.send_date}</td>
+	      </tr> 
+	      </c:forEach>  
 	    </tbody>
 	  </table>
 	

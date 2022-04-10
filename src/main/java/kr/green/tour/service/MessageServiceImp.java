@@ -1,9 +1,12 @@
 package kr.green.tour.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.green.tour.dao.MessageDAO;
+import kr.green.tour.vo.MemberVO;
 import kr.green.tour.vo.MessageVO;
 
 @Service
@@ -21,5 +24,13 @@ public class MessageServiceImp implements MessageService{
 			
 			messageDao.writeMessage(message);
 			
+		}
+
+		
+		@Override
+		public List<MessageVO> getMessage(MessageVO message, MemberVO user) {
+			if(!message.getReceiver_id().equals(user.getUser_id()))
+				return null;
+			return messageDao.getMessage(message, user);
 		} 
 }

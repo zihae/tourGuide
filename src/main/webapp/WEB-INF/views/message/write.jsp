@@ -28,7 +28,7 @@ h1{text-align: center;}
 	<h1>쪽지함</h1>
 	<div class="left-box">
 		<ul class="option">
-			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-left-short"></i> <a href="#">받은 편지함</a></li>
+			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-left-short"></i> <a href="<%=request.getContextPath()%>/message/list">받은 편지함</a></li>
 			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-right-short"></i> <a href="#">보낸 편지함</a></li>
 			<li><i class="bi bi-trash-fill"></i><a href="#"> 휴지통</a></li>
 		</ul>
@@ -47,9 +47,16 @@ h1{text-align: center;}
 		<div class="form-group">
 			<textarea  class="form-control" name="content" placeholder="내용" rows="13" style="width: 700px; margin:auto;"></textarea>
 		</div>
-		<button class="btn btn-outline-info">보내기</button>
+		<button class="btn btn-outline-info send-btn">보내기</button>
 	</form>
 	</div>
 </div>
 </body>
+<script>
+
+//예외 처리 하기
+$('.send-btn').click(function(){
+	alert('발송을 완료했습니다.')
+});
+</script>
 </html>
