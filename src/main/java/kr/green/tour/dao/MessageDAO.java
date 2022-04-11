@@ -17,4 +17,8 @@ public interface MessageDAO {
 
 	MessageVO getMessageNum(@Param("message_id") Integer message_id);
 
+	void updateRead(@Param("message") MessageVO dbmessage );
+
+
+
 }

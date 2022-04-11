@@ -62,12 +62,16 @@ public class MessageController {
 	
 	//메세지 상세
 	@RequestMapping(value="/detail")
-	public ModelAndView reviewDetail(ModelAndView mv, Integer message_id) {
+	public ModelAndView reviewDetail(ModelAndView mv, Integer message_id, MessageVO dbmessage) {
 		MessageVO message = messageService.getMessageNum(message_id);
+		messageService.updateRead(dbmessage);
 		mv.addObject("message",message);
 		mv.setViewName("/message/detail");
 		return mv;
 	}
+	
+
+	
 	
 	
 	

@@ -15,6 +15,10 @@ public interface MessageService {
 
 	MessageVO getMessageNum(Integer message_id);
 
+	void updateRead(MessageVO dbmessage);
+
+	
+
 	
 
 }

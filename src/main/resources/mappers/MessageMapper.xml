@@ -22,4 +22,10 @@
 	<select id="getMessageNum" resultType="kr.green.tour.vo.MessageVO">
 		select * from message where message_id = #{message_id} and del = 'N'
 	</select>
+	
+	<!-- 읽음 여부 업데이트 -->
+	<update id= "updateRead">
+		update message set read_check = case  when receiver_id = #{message.receiver_id} then 1 else read_check end 
+		where message_id = #{message.message_id}
+	</update>
 </mapper>

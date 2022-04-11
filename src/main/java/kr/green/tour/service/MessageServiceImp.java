@@ -42,13 +42,20 @@ public class MessageServiceImp implements MessageService{
 			return messageDao.getSendMessage(message, user);
 		}
 
-
+		
 		@Override
 		public MessageVO getMessageNum(Integer message_id) {
 			if(message_id == null || message_id <= 0)
 				return null;
 			return messageDao.getMessageNum(message_id);
+			
+		}
+		
+		@Override
+		public void updateRead( MessageVO dbmessage) {
+			messageDao.updateRead(dbmessage);
+			
 		}
 			
-		} 
+	} 
 
