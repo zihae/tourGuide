@@ -10,17 +10,17 @@
 <!-- 화면 왼쪽 부분-->
 h1{text-align: center;}
 .body{padding: 10px;}
-.left-box, .right-box{height: 500px;	box-sizing: border-box;	
+.left-box, .right-box{height: 580px;	box-sizing: border-box;	
 			width: 50%; float: left;}
 .option{list-style: none; padding-left: 10px; padding-top: 10px;}
-.left-box{width: 195px; background-color: lavender; margin-right: 0px;}
-.right-box{width: 915px; height: 500px; float: right;}
+.left-box{width: 195px; background-color: lavender; margin-right: 0px; }
+.right-box{width: 915px;  float: right;}
 .body::after{
 			clear: both; content: ''; display: block;
 		}
 .btn{margin:auto; display:block;}
-<!-- 화면 오른쪽 부분-->
-
+.label{font-weight: bold; margin-left: 30px;  }
+.send-btn{margin-left: 350px;}
 </style>
 </head>
 <body>
@@ -39,13 +39,16 @@ h1{text-align: center;}
 	<div class="right-box">
 	<form action="<%=request.getContextPath()%>/message/write" method="post">
 		<div class="form-group">
-			<input type="text" class="form-control"  name="receiver_id" placeholder="받는 사람" style="width: 700px; margin:auto;">
+			<label class="label" for="receiver_id" style="font-weight: bold; margin-left: 30px;">받는이</label>
+			<input type="text" class="form-control"  name="receiver_id" style="width: 700px; margin-left: 30px;">
 		</div>
 		<div class="form-group">
-			<input type="text" class="form-control"  name="title" placeholder="제목" style="width: 700px; margin:auto; ">
+			<label class="label" for="title">제목</label>
+			<input type="text" class="form-control"  name="title"  style="width: 700px; margin-left: 30px; ">
 		</div>
 		<div class="form-group">
-			<textarea  class="form-control" name="content" placeholder="내용" rows="13" style="width: 700px; margin:auto;"></textarea>
+			<label class="label" for="title">내용</label>
+			<textarea  class="form-control" name="content"  rows="13" style="width: 700px; margin-left: 30px;"></textarea>
 		</div>
 		<button class="btn btn-outline-info send-btn">보내기</button>
 	</form>

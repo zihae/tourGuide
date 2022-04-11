@@ -18,7 +18,7 @@ box-sizing: border-box;
 border: 2px solid blue; 
 width: calc((100% - 5px) / 2); 
 float: left;}
-.text-box{border-color:#0f0; float: right; height: fit-content; }
+.text-box{border-color:lavender; float: right; height: fit-content; }
 .contents::after{ clear: both; content: ''; display: block;}
 .btn{margin:auto; display:block;}
 .map{margin-top: 10px;}

@@ -38,7 +38,7 @@ h1{text-align: center;}
 	    <thead>
 	      <tr>
 	        <th><input type="checkbox"></th>
-	        <th>받는사람</th>
+	        <th>받는이</th>
 	        <th>제목</th>
 	        <th>날짜</th>
 	        <th>수신여부</th>

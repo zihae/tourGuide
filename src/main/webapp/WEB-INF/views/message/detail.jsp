@@ -8,16 +8,21 @@
 <title>Insert title here</title>
 <style>
 h1{text-align: center;}
-.body{border: 2px solid red;	padding: 10px;}
-.left-box, .right-box{height: 500px;	box-sizing: border-box;	
+.body{	padding: 10px;}
+.left-box, .right-box{height: 560px;	box-sizing: border-box;	
 			width: 50%; float: left;}
 .option{list-style: none; padding-left: 10px; padding-top: 10px;}
 .left-box{width: 195px; background-color: lavender; margin-right: 0px;}
-.right-box{ width: 915px; height: 500px; float: right;}
+.right-box{ width: 915px; height: 510px; float: right;}
 .body::after{
 			clear: both; content: ''; display: block;
 		}
 .btn{margin:auto; display:block;}
+.info-box{margin: auto;}
+.label{font-weight: bold; margin-left: 30px;  }
+.form-control{margin-left: 30px;}
+.btn-option{margin-left: 330px; position:absoulte;}
+
 </style>
 </head>
 <body>
@@ -33,25 +38,36 @@ h1{text-align: center;}
 		  </a>
 	</div>
 	<div class="right-box">
-		<c:if test="${message.receiver_id == user.user_id}">
+	 <c:if test="${message.sender_id != user.user_id}">
 			<div class="form-group">
-				<input type="text" class="form-control"  name="receiver_id" style="width: 700px; margin:auto;" readonly value="${message.receiver_id}">
+				<label class="label" for="sender_id">보낸이</label>
+				<input type="text" class="form-control"  name="sender_id" style="width: 700px; " readonly value="${message.sender_id}">
 			</div>
 		</c:if>
 		<c:if test="${message.sender_id == user.user_id }">
-			<div class="form-group">
-				<input type="text" class="form-control"  name="sender_id" style="width: 700px; margin:auto;" readonly value="${message.sender_id}">
+			<div class="form-group" >
+				<label class="label" for="receiver_id">받는이</label>
+				<input type="text" class="form-control"  name="receiver_id" style="width: 700px; " readonly value="${message.receiver_id}">
 			</div>
 		</c:if>
 		<div class="form-group">
-			<input type="text" class="form-control"  name="title"  style="width: 700px; margin:auto;" readonly value="${message.title}">
+		<label class="label" for="title">제목</label>
+			<input type="text" class="form-control"  name="title"  style="width: 700px;" readonly value="${message.title}">
 		</div>
 		<div class="form-group">
-			<div class="form-control" style=" min-height:300px; height:auto;">${message.content}</div>
+			<label class="label" for="title">내용</label>
+			<div class="form-control" style=" min-height:300px; height:auto; width:700px; ">${message.content}</div>
 		</div>
-		<button class="btn btn-outline-info send-btn">보내기</button>
-	
-	
+		<div class="btn-option">
+				<div class="btn-group">
+					<button class="btn btn-outline-info send-btn">삭제</button>
+				</div>
+				<div class="btn-group">
+					<c:if test="${message.sender_id != user.user_id}">
+						<button class="btn btn-outline-info send-btn">답장</button>
+					</c:if>
+				</div>
+		</div>
 	</div>
 </div>
 </body>
