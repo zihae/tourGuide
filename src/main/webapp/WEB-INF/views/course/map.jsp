@@ -6,11 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 <body>
 
 	<div id="map" style="width: 870px; height: 700px;"></div>
-
+	<!-- sortable -->
+ 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  	<!-- map -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44e185ba8590a8162cff60db78eccad0&libraries=services,clusterer,drawing"></script>
 	<script>
 	let markers = [];
@@ -114,11 +119,25 @@
 		    var addBtn = document.createElement('button');
 		    addBtn.innerHTML = '추가';
 		    addBtn.onclick = function () {
-		    	document.getElementById("bottom").innerHTML += data.title;
+		    	//document.getElementById("bottom").innerHTML += data.title;
+		    	var info = document.getElementById("bottom");
+		    	var contents = document.createElement('div');
+		    	contents.innerHTML =  data.title;
+		    	contents.style.cssText = 'background: white; border: 1px solid black; cursor: move';
+			  	var infoClose = document.createElement('button');
+			  	infoClose.innerHTML = '삭제';
+			  	infoClose.style.cssText = 'background: yellow;'
+			  	
+			  	
+			   	info.appendChild(contents);
+			   	contents.appendChild(infoClose);
+		    
 		    	
-		    	
+		    $( function() {
+		       contents.sortable();
+		      } );
+		 
 		    };
-		   
 		    
 		    var closeBtn = document.createElement('button');
 		    closeBtn.innerHTML = '닫기';
@@ -131,6 +150,7 @@
 		    tel.appendChild(btnGroup);
 		    btnGroup.appendChild(addBtn);
 		    btnGroup.appendChild(closeBtn);
+		    
 		    
 		    overlay.setContent(content);
 

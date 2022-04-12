@@ -91,8 +91,8 @@
 	        <!-- 장소 추가 되는 곳 -->
 	        <form>
 	        <div class="contents-bottom" id="bottom">
-	        	
-	        	</div>
+	        	<div class="info-title"></div>
+	        </div>
 	        </form>
 	        </div>
 	       <button class="btn btn-outline-success" id="btn">등록</button>
@@ -113,13 +113,16 @@
 var checkedValue = $('.recruit-check:checked').val();
 
 
-//date range picker
+
 $(function () {
+	//지역, 분야 설정
 	$('.type, .city').change(function(){
 		var city = $('.city').val();
 		var main_id = $('.type').val();
 		maker(city, main_id)
 	});
+	
+	//date range picker
     $('#date').daterangepicker({
         "locale": {
             "format": "YYYY-MM-DD",
