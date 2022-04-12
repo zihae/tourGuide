@@ -62,9 +62,12 @@ public class MessageController {
 	
 	//메세지 상세
 	@RequestMapping(value="/detail")
-	public ModelAndView messageDetail(ModelAndView mv, Integer message_id, MessageVO dbmessage) {
+	public ModelAndView messageDetail(ModelAndView mv, Integer message_id, MessageVO dbmessage, HttpServletRequest request ) {
 		MessageVO message = messageService.getMessageNum(message_id);
-		messageService.updateRead(dbmessage);
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		if(message.getReceiver_id().equals(user.getUser_id())) {
+			messageService.updateRead(dbmessage);
+		}
 		mv.addObject("message",message);
 		mv.setViewName("/message/detail");
 		return mv;
