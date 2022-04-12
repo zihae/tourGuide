@@ -27,13 +27,13 @@ CREATE TABLE `course` (
   `course_title` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `course_write_date` datetime NOT NULL,
   `duration` varchar(45) NOT NULL,
-  `course_writer_number` int NOT NULL,
+  `course_writer_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `option` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `course_mate` varchar(60) DEFAULT NULL,
   `recruit` varchar(10) DEFAULT 'N',
   PRIMARY KEY (`course_id`),
-  KEY `FK_member_TO_course_1` (`course_writer_number`),
-  CONSTRAINT `FK_course_TO_member` FOREIGN KEY (`course_writer_number`) REFERENCES `member` (`id`)
+  KEY `FK_writer_id_idx` (`course_writer_id`),
+  CONSTRAINT `FK_writer_id` FOREIGN KEY (`course_writer_id`) REFERENCES `member` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:46
+-- Dump completed on 2022-04-12 12:58:01

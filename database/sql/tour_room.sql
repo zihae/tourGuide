@@ -24,13 +24,13 @@ DROP TABLE IF EXISTS `room`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `room` (
   `room_id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(60) NOT NULL,
-  `admin_id` int NOT NULL,
+  `title` varchar(60) CHARACTER SET latin1 NOT NULL,
+  `admin_user_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `total_number` int NOT NULL,
   PRIMARY KEY (`room_id`),
-  KEY `FK_member_TO_room_1` (`admin_id`),
-  CONSTRAINT `FK_member_TO_room_1` FOREIGN KEY (`admin_id`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `FK_admin_user_id_idx` (`admin_user_id`),
+  CONSTRAINT `FK_admin_user_id` FOREIGN KEY (`admin_user_id`) REFERENCES `member` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:46
+-- Dump completed on 2022-04-12 12:58:05

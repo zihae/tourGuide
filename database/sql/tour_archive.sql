@@ -24,14 +24,15 @@ DROP TABLE IF EXISTS `archive`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `archive` (
   `archive_id` int NOT NULL AUTO_INCREMENT,
-  `archive_member_id` int NOT NULL,
+  `archive_member_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `state` int DEFAULT NULL,
   `main_id` int NOT NULL,
   `archive_board_num` int DEFAULT NULL,
   PRIMARY KEY (`archive_id`),
-  KEY `FK_member_TO_archive_1` (`archive_member_id`),
   KEY `mian_id_idx` (`main_id`),
-  CONSTRAINT `FK_member_TO_archive_1` FOREIGN KEY (`archive_member_id`) REFERENCES `member` (`id`),
+  KEY `FK_member_id_idx` (`archive_member_id`),
+  KEY `archive_user_id_idx` (`archive_member_id`),
+  CONSTRAINT `archive_user_id` FOREIGN KEY (`archive_member_id`) REFERENCES `member` (`user_id`),
   CONSTRAINT `mian_id` FOREIGN KEY (`main_id`) REFERENCES `main_category` (`main_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:46
+-- Dump completed on 2022-04-12 12:58:04

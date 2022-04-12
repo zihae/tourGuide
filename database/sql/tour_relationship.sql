@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `relationship`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `relationship` (
-  `user_first_id` varchar(10) NOT NULL,
+  `user_first_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_second_id` varchar(10) NOT NULL,
-  `relation_type` varchar(30) NOT NULL,
+  `relation_type` varchar(30) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`user_first_id`,`user_second_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:45
+-- Dump completed on 2022-04-12 12:58:00

@@ -16,29 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `history`
+-- Table structure for table `friends`
 --
 
-DROP TABLE IF EXISTS `history`;
+DROP TABLE IF EXISTS `friends`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `history` (
-  `history_id` int NOT NULL AUTO_INCREMENT,
-  `member_id` int NOT NULL,
-  `modify_date` datetime DEFAULT NULL,
-  PRIMARY KEY (`history_id`),
-  KEY `FK_member_TO_history_1` (`member_id`),
-  CONSTRAINT `FK_member_TO_history_1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `friends` (
+  `friends_num` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `friend_id` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `friend_name` varchar(45) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`friends_num`),
+  KEY `FK_user_id_idx` (`user_id`),
+  KEY `FK_friends_id_idx` (`friend_id`),
+  CONSTRAINT `FK_friend_user_id` FOREIGN KEY (`user_id`) REFERENCES `member` (`user_id`),
+  CONSTRAINT `FK_friends_id` FOREIGN KEY (`friend_id`) REFERENCES `member` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `history`
+-- Dumping data for table `friends`
 --
 
-LOCK TABLES `history` WRITE;
-/*!40000 ALTER TABLE `history` DISABLE KEYS */;
-/*!40000 ALTER TABLE `history` ENABLE KEYS */;
+LOCK TABLES `friends` WRITE;
+/*!40000 ALTER TABLE `friends` DISABLE KEYS */;
+/*!40000 ALTER TABLE `friends` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:46
+-- Dump completed on 2022-04-12 12:58:09

@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `read`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `read` (
   `content_id` int NOT NULL,
-  `nickname` varchar(10) NOT NULL,
-  `read_member_id` int NOT NULL,
+  `nickname` varchar(10) CHARACTER SET latin1 NOT NULL,
+  `read_member_id` varchar(10) CHARACTER SET latin1 NOT NULL,
   `state` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`content_id`),
-  KEY `FK_member_TO_read_1` (`read_member_id`),
+  KEY `fk_read_member_id_idx` (`read_member_id`),
   CONSTRAINT `FK_chat_content_TO_read_1` FOREIGN KEY (`content_id`) REFERENCES `chat_content` (`content_id`),
-  CONSTRAINT `FK_member_TO_read_1` FOREIGN KEY (`read_member_id`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_read_member_id` FOREIGN KEY (`read_member_id`) REFERENCES `member` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:46
+-- Dump completed on 2022-04-12 12:58:08

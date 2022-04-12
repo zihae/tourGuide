@@ -24,11 +24,11 @@ DROP TABLE IF EXISTS `course_member`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `course_member` (
   `course_id` int NOT NULL,
-  `course_member_id` int NOT NULL,
+  `course_member_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   KEY `FK_course_TO_course_member_1` (`course_id`),
-  KEY `FK_member_TO_course_member_1` (`course_member_id`),
-  CONSTRAINT `FK_course_TO_course_member_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
-  CONSTRAINT `FK_member_TO_course_member_1` FOREIGN KEY (`course_member_id`) REFERENCES `member` (`id`)
+  KEY `FK_course_member_id_idx` (`course_member_id`),
+  CONSTRAINT `FK_course_member_id` FOREIGN KEY (`course_member_id`) REFERENCES `member` (`user_id`),
+  CONSTRAINT `FK_course_TO_course_member_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:45
+-- Dump completed on 2022-04-12 12:58:03

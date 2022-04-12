@@ -25,13 +25,14 @@ DROP TABLE IF EXISTS `likes`;
 CREATE TABLE `likes` (
   `likes_id` int NOT NULL AUTO_INCREMENT,
   `state` int NOT NULL DEFAULT '0',
-  `board_type` varchar(10) NOT NULL,
-  `likes_board_num` int NOT NULL,
-  `likes_member_id` int NOT NULL,
+  `likes_place_id` int NOT NULL,
+  `likes_user_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`likes_id`),
-  KEY `FK_member_TO_likes_1` (`likes_member_id`),
-  CONSTRAINT `FK_member_TO_likes_1` FOREIGN KEY (`likes_member_id`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  KEY `FK_likes_user_id_idx` (`likes_user_id`),
+  KEY `FK_place_id_idx` (`likes_place_id`),
+  CONSTRAINT `FK_likes_user_id` FOREIGN KEY (`likes_user_id`) REFERENCES `member` (`user_id`),
+  CONSTRAINT `FK_place_id` FOREIGN KEY (`likes_place_id`) REFERENCES `place` (`place_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +41,7 @@ CREATE TABLE `likes` (
 
 LOCK TABLES `likes` WRITE;
 /*!40000 ALTER TABLE `likes` DISABLE KEYS */;
+INSERT INTO `likes` VALUES (1,1,635,'qwe1'),(2,1,1,'qwe1'),(3,1,635,'hana1'),(4,1,2,'qwe1');
 /*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:45
+-- Dump completed on 2022-04-12 12:58:01

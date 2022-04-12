@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `notification`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `notification` (
   `notification_id` int NOT NULL AUTO_INCREMENT,
-  `receiver` varchar(10) NOT NULL,
+  `receiver` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `sender` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `create_date` datetime NOT NULL,
   `check_date` datetime DEFAULT NULL,
@@ -32,8 +32,9 @@ CREATE TABLE `notification` (
   `notification_board_num` int NOT NULL,
   PRIMARY KEY (`notification_id`),
   KEY `receiver_idx` (`receiver`),
-  KEY `sender_idx` (`sender`),
-  CONSTRAINT `sender` FOREIGN KEY (`sender`) REFERENCES `member` (`user_id`)
+  KEY `FK_sender_idx` (`sender`),
+  CONSTRAINT `FK_receiver` FOREIGN KEY (`receiver`) REFERENCES `member` (`user_id`),
+  CONSTRAINT `FK_sender` FOREIGN KEY (`sender`) REFERENCES `member` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-29 17:47:45
+-- Dump completed on 2022-04-12 12:58:02
