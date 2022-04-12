@@ -22,6 +22,7 @@ h1{text-align: center;}
 .label{font-weight: bold; margin-left: 30px;  }
 .form-control{margin-left: 30px;}
 .btn-option{margin-left: 330px; position:absoulte;}
+.friend-btn{margin-left: 30px; margin-bottom: 5px; margin-top: 5px;}
 
 </style>
 </head>
@@ -43,6 +44,9 @@ h1{text-align: center;}
 				<label class="label" for="sender_id">보낸이</label>
 				<input type="text" class="form-control"  name="sender_id" style="width: 700px; " readonly value="${message.sender_id}">
 			</div>
+		
+			<button class="btn btn-info friend-btn">친구추가</button>
+				
 		</c:if>
 		<c:if test="${message.sender_id == user.user_id }">
 			<div class="form-group" >
@@ -60,11 +64,24 @@ h1{text-align: center;}
 		</div>
 		<div class="btn-option">
 				<div class="btn-group">
+				<!-- 받은 메세지 삭제 -->
+				<c:if test="${message.sender_id != user.user_id}">
+					<a href="<%=request.getContextPath()%>/message/delete?message_id=${message.message_id}">
 					<button class="btn btn-outline-info send-btn">삭제</button>
+					</a>
+				</c:if>
+				<!-- 보낸 메세지 삭제 -->
+					<c:if test="${message.sender_id == user.user_id}">
+					<a href="<%=request.getContextPath()%>/message/delete?message_id=${message.message_id}">
+					<button class="btn btn-outline-info send-btn">삭제</button>
+					</a>
+				</c:if>
 				</div>
 				<div class="btn-group">
 					<c:if test="${message.sender_id != user.user_id}">
+					<a href="<%=request.getContextPath()%>/message/write?message.sender_id=${message.sender_id}">
 						<button class="btn btn-outline-info send-btn">답장</button>
+						</a>
 					</c:if>
 				</div>
 		</div>

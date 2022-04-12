@@ -22,7 +22,7 @@ public class MessageController {
 	
 	//받은 메세지 리스트
 	@RequestMapping(value="/list")
-	public ModelAndView reviewList(ModelAndView mv, MessageVO message, HttpServletRequest request) {
+	public ModelAndView messageList(ModelAndView mv, MessageVO message, HttpServletRequest request) {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		message.setReceiver_id(user.getUser_id());
 		List<MessageVO> list = messageService.getMessage(message, user);
@@ -46,13 +46,13 @@ public class MessageController {
 	
 	//쪽지 쓰기
 	@RequestMapping(value="/write", method=RequestMethod.GET)
-	public ModelAndView reviewWriteGet(ModelAndView mv) {
+	public ModelAndView messageWriteGet(ModelAndView mv) {
 		mv.setViewName("/message/write");
 		return mv;		
 	}
 	
 	@RequestMapping(value="/write", method=RequestMethod.POST)
-	public ModelAndView reviewWritePost(ModelAndView mv, MessageVO message, HttpServletRequest request) {
+	public ModelAndView messageWritePost(ModelAndView mv, MessageVO message, HttpServletRequest request) {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		message.setSender_id(user.getUser_id());
 		messageService.writeMessage(message);
@@ -62,11 +62,20 @@ public class MessageController {
 	
 	//메세지 상세
 	@RequestMapping(value="/detail")
-	public ModelAndView reviewDetail(ModelAndView mv, Integer message_id, MessageVO dbmessage) {
+	public ModelAndView messageDetail(ModelAndView mv, Integer message_id, MessageVO dbmessage) {
 		MessageVO message = messageService.getMessageNum(message_id);
 		messageService.updateRead(dbmessage);
 		mv.addObject("message",message);
 		mv.setViewName("/message/detail");
+		return mv;
+	}
+	
+	//메세지 삭제
+	@RequestMapping(value="/delete")
+	public ModelAndView messageDelete(ModelAndView mv, Integer message_id, HttpServletRequest request) {
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		messageService.deleteMessage(message_id, user);
+		mv.setViewName("redirect:/message/list");
 		return mv;
 	}
 	

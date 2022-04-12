@@ -25,9 +25,8 @@ public class MessageVO {
 	public String getRead() {
 		if(read_check == 0) {
 			return "읽지 않음";
-		}else if(read_check == 1) { 
+		}else  { 
 			return "읽음";
-		}
-		return "";	
+		}		
 	}
 }

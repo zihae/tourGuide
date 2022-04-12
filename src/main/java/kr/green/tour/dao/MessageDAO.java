@@ -19,6 +19,8 @@ public interface MessageDAO {
 
 	void updateRead(@Param("message") MessageVO dbmessage );
 
+	void deleteReceive(@Param("message_id") Integer message_id);
+
 
 
 }

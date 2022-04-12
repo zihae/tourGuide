@@ -17,6 +17,8 @@ public interface MessageService {
 
 	void updateRead(MessageVO dbmessage);
 
+	void deleteMessage(Integer message_id, MemberVO user);
+
 	
 
 	

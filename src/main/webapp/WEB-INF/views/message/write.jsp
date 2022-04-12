@@ -20,7 +20,7 @@ h1{text-align: center;}
 		}
 .btn{margin:auto; display:block;}
 .label{font-weight: bold; margin-left: 30px;  }
-.send-btn{margin-left: 350px;}
+.send-btn{margin-left: 328px;}
 </style>
 </head>
 <body>
@@ -41,6 +41,9 @@ h1{text-align: center;}
 		<div class="form-group">
 			<label class="label" for="receiver_id" style="font-weight: bold; margin-left: 30px;">받는이</label>
 			<input type="text" class="form-control"  name="receiver_id" style="width: 700px; margin-left: 30px;">
+			<!-- 답장 시 받는 이 
+			<input type="text" class="form-control"  name="receiver_id" style="width: 700px; margin-left: 30px;" value="${message.sender_id}" readonly>
+			 -->		
 		</div>
 		<div class="form-group">
 			<label class="label" for="title">제목</label>
