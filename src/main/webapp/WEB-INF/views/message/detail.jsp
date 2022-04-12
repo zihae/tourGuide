@@ -67,13 +67,13 @@ h1{text-align: center;}
 				<!-- 받은 메세지 삭제 -->
 				<c:if test="${message.sender_id != user.user_id}">
 					<a href="<%=request.getContextPath()%>/message/delete?message_id=${message.message_id}">
-					<button class="btn btn-outline-info send-btn">삭제</button>
+						<button class="btn btn-outline-info send-btn">삭제</button>
 					</a>
 				</c:if>
 				<!-- 보낸 메세지 삭제 -->
 					<c:if test="${message.sender_id == user.user_id}">
-					<a href="<%=request.getContextPath()%>/message/delete?message_id=${message.message_id}">
-					<button class="btn btn-outline-info send-btn">삭제</button>
+					<a href="<%=request.getContextPath()%>/message/sendDelete?message_id=${message.message_id}">
+						<button class="btn btn-outline-info send-btn">삭제</button>
 					</a>
 				</c:if>
 				</div>

@@ -70,14 +70,23 @@ public class MessageController {
 		return mv;
 	}
 	
-	//메세지 삭제
+	//받은 메세지 삭제
 	@RequestMapping(value="/delete")
-	public ModelAndView messageDelete(ModelAndView mv, Integer message_id, HttpServletRequest request) {
+	public ModelAndView recieveDelete(ModelAndView mv, Integer message_id, HttpServletRequest request) {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		messageService.deleteMessage(message_id, user);
 		mv.setViewName("redirect:/message/list");
 		return mv;
 	}
+	
+	//보낸 메세지 삭제
+		@RequestMapping(value="/sendDelete")
+		public ModelAndView sendDelete(ModelAndView mv, Integer message_id, HttpServletRequest request) {
+			MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+			messageService.deleteSend(message_id, user);
+			mv.setViewName("redirect:/message/sendList");
+			return mv;
+		}
 	
 
 	

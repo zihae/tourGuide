@@ -74,6 +74,23 @@ public class MessageServiceImp implements MessageService{
 			messageDao.deleteReceive(message_id);
 			
 		}
+
+
+		@Override
+		public void deleteSend(Integer message_id, MemberVO user) {
+			if(message_id == null || message_id <= 0)
+				return;
+			
+			MessageVO message = messageDao.getMessageNum(message_id);
+			
+			if(message == null)
+				return;
+			
+			if(!message.getSender_id().equals(user.getUser_id()))
+				return;
+			
+			messageDao.deleteSend(message_id);
+		}
 			
 	} 
 

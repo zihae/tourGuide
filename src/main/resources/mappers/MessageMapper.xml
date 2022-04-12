@@ -34,4 +34,9 @@
 		update message set del_receiver = 'Y' where message_id = #{message_id}
 	</update>
 	
+	<!-- 보낸 메세지 삭제 -->
+	<update id= "deleteSend">
+		update message set del_sender = 'Y' where message_id = #{message_id}
+	</update>
+	
 </mapper>

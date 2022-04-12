@@ -21,6 +21,8 @@ public interface MessageDAO {
 
 	void deleteReceive(@Param("message_id") Integer message_id);
 
+	void deleteSend(@Param("message_id") Integer message_id);
+
 
 
 }

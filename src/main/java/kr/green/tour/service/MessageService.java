@@ -19,6 +19,8 @@ public interface MessageService {
 
 	void deleteMessage(Integer message_id, MemberVO user);
 
+	void deleteSend(Integer message_id, MemberVO user);
+
 	
 
 	
