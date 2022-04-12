@@ -12,4 +12,6 @@ public interface CourseService {
 
 	List<PlaceVO> getMapList(Criteria cri);
 
+	List<PlaceVO> selectPlaceList(Integer city_id, Integer main_id);
+
 }

@@ -1,5 +1,6 @@
 package kr.green.tour.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +58,13 @@ public class CourseController {
 			return map;
 		}
 		
-		
+		//여행지역 설정
+		@ResponseBody
+		@RequestMapping(value = "/course/maker")
+		public List<PlaceVO> courseMaker(Integer city_id, Integer main_id) {
+			List<PlaceVO> list = courseService.selectPlaceList(city_id, main_id);
+			return list;
+		}
 		
 		
 }

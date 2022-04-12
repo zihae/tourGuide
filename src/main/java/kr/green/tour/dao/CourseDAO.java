@@ -14,4 +14,6 @@ public interface CourseDAO {
 
 	List<PlaceVO> selectMapList(@Param("cri")Criteria cri);
 
+	List<PlaceVO> selectPlaceList(@Param("city_id")Integer city_id, @Param("main_id")Integer main_id);
+
 }

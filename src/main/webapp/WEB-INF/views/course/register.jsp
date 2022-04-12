@@ -52,7 +52,7 @@
 					</select>
 					<form>
 					<select  class="type" name="main_id">
-						<option value="default" selected>전체분야</option>
+						<option value="-1" selected>전체분야</option>
 						<option value="1">관광지</option>
 						<option value="2">음식점</option>
 						<option value="3">숙소</option>
@@ -115,6 +115,11 @@ var checkedValue = $('.recruit-check:checked').val();
 
 //date range picker
 $(function () {
+	$('.type, .city').change(function(){
+		var city = $('.city').val();
+		var main_id = $('.type').val();
+		maker(city, main_id)
+	});
     $('#date').daterangepicker({
         "locale": {
             "format": "YYYY-MM-DD",

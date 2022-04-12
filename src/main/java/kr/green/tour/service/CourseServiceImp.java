@@ -29,4 +29,12 @@ public class CourseServiceImp implements CourseService {
 		return courseDao.selectMapList(cri);
 		
 	}
+
+
+
+	@Override
+	public List<PlaceVO> selectPlaceList(Integer city_id, Integer main_id) {
+		
+		return courseDao.selectPlaceList(city_id, main_id);
+	}
 }
