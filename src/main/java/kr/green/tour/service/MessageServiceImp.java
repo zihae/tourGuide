@@ -91,6 +91,13 @@ public class MessageServiceImp implements MessageService{
 			
 			messageDao.deleteSend(message_id);
 		}
+
+
+		@Override
+		public List<MessageVO> getTrash(MessageVO message, MemberVO user) {
+			
+			return null;
+		}
 			
 	} 
 

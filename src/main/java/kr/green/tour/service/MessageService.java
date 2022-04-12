@@ -21,6 +21,8 @@ public interface MessageService {
 
 	void deleteSend(Integer message_id, MemberVO user);
 
+	List<MessageVO> getTrash(MessageVO message, MemberVO user);
+
 	
 
 	
