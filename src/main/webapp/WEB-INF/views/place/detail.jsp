@@ -11,18 +11,19 @@
 
 <style>
 h1{text-align:center;}
-img{width: 500px; height: 500px;}
-.contents{border: 2px solid red; padding: 10px;}
+img{width: 500px; height: 400px;}
+.contents{border: 2px solid lavender; padding: 10px; height: fit-content; }
 .text-box, .img-box{height: 500px; 
 box-sizing: border-box; 
-border: 2px solid blue; 
 width: calc((100% - 5px) / 2); 
 float: left;}
-.text-box{border-color:lavender; float: right; height: fit-content; }
+.text-box{background-color:lavender; float: right; height: fit-content; }
+.img-box{height:fit-content;}
 .contents::after{ clear: both; content: ''; display: block;}
 .btn{margin:auto; display:block;}
 .map{margin-top: 10px;}
 #btn-list{margin-left: 1015px; margin-bottom: 10px;}
+.info-box{margin-left: 10px;}
 </style>
 
 </head>
@@ -37,7 +38,12 @@ float: left;}
 		</div>
 		<div class="contents">
 			<div class="img-box">
-				<img src="https://live.staticflickr.com/8698/17076174837_47bb57ed65_b.jpg" alt="이미지">
+				<c:if test="${place.img != null }">
+					<img src="${place.img }" alt="이미지">
+				</c:if>
+				<c:if test="${place.img == null }">
+					<img src="http://www.hanawaterjet.com/app/dubu_board/docs/imgs/n/lg_n15287811543531_%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC%EC%A4%80%EB%B9%84%EC%A4%91%EC%9E%85%EB%8B%88%EB%8B%A4.jpg" alt="이미지">
+				</c:if>
 			</div>
 			<div class="text-box">
 				<div class="info-box">
