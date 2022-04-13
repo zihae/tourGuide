@@ -12,9 +12,7 @@
 <body>
 
 	<div id="map" style="width: 870px; height: 700px;"></div>
-	<!-- sortable -->
- 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
   	<!-- map -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=44e185ba8590a8162cff60db78eccad0&libraries=services,clusterer,drawing"></script>
 	<script>
