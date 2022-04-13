@@ -18,6 +18,7 @@
 	let markers = [];
 	let map;
 	maker(0,-1);
+	var clickedOverlay = null;
 	function maker(city, main_id){
 		$.ajax({
 			async:false,
@@ -137,7 +138,7 @@
 		   	  var forms = document.createElement('form'); 
 			   	forms.name = 'list'; 
 			   	forms.method = 'post'; 
-			   	forms.action = ''; 
+			   	forms.action = 'http://localhost:8080/tour/course/register'; 
 			   	forms.target = '_self';
 			   	//div
 		    	var divs = document.createElement('div');
@@ -148,7 +149,8 @@
 			  	infoClose.innerHTML = '삭제';
 			  	infoClose.style.cssText = 'background: yellow;'
 			  	infoClose.onclick = function() {
-			  		
+			  		//순차적 삭제 말고 선택된 divs가 삭제되게 바꾸기
+			  		divs.remove();
 			  	}
 		    	
 		    	info.appendChild(forms);
@@ -174,8 +176,13 @@
 		    overlay.setContent(content);
 
 		    kakao.maps.event.addListener(marker, 'click', function() {
-		        overlay.setMap(map);
-		    });
+		       // overlay.setMap(map);
+		    	 if (clickedOverlay) {
+		    	        clickedOverlay.setMap(null);
+		    	    }
+		    	 		overlay.setMap(map);
+		    	    clickedOverlay = overlay;
+		    	  });
 		    markers.push(marker); 
 		}
 	}
