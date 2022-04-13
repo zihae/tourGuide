@@ -93,7 +93,6 @@
 	        <!-- 장소 추가 되는 곳 -->
 	        <form>
 	        <div class="contents-bottom" id="bottom">
-	        	<div class="info-title"></div>
 	        </div>
 	        </form>
 	        </div>
