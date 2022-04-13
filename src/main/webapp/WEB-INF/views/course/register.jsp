@@ -6,10 +6,15 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+ <!-- sortable -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<!-- date range picker -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <style>
+
         .box1{
             border: 2px solid red; padding: 10px;
         }
@@ -82,10 +87,7 @@
 			            <div id="day-btn">
 			            <button type="button" id="first-day" class="added-day">1일차</button>
 			            </div>
-		            </div>  
-		            
-					
-					
+		            </div>  			
 					</form>
 				</div>
 	        <!-- 장소 추가 되는 곳 -->
@@ -95,24 +97,12 @@
 	        </div>
 	        </form>
 	        </div>
-	       <button class="btn btn-outline-success" id="btn">등록</button>
-	        
-	        	
-			
-					
-					
-					
-				
-					
-	  
-        
+	       <button class="btn btn-outline-success" id="btn">등록</button>  
     </div>
     
 <script>
 //친구 모집
 var checkedValue = $('.recruit-check:checked').val();
-
-
 
 $(function () {
 	//지역, 분야 설정
@@ -187,8 +177,13 @@ function setCity(){
 	});
 }
 
+//bottom sortable
+$( function() {
+    $( "#bottom" ).sortable();
+    $( "#bottom" ).disableSelection();
+  } );
 
-});
+}); //document ready end
 
 
 

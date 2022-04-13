@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 <body>
@@ -118,6 +117,8 @@
 		    addBtn.innerHTML = '추가';
 		    addBtn.onclick = function () {
 		    	//document.getElementById("bottom").innerHTML += data.title;
+		    	/* 
+		    	form 형식으로 안 했지만 동작은 되는거 (sortable 적용 x)
 		    	var info = document.getElementById("bottom");
 		    	var contents = document.createElement('div');
 		    	contents.innerHTML =  data.title;
@@ -126,14 +127,34 @@
 			  	infoClose.innerHTML = '삭제';
 			  	infoClose.style.cssText = 'background: yellow;'
 			  	
-			  	
 			   	info.appendChild(contents);
 			   	contents.appendChild(infoClose);
 		    
+			   	 */
+			   	 
+			 		var info = document.getElementById("bottom");
+		   	  // form 
+		   	  var forms = document.createElement('form'); 
+			   	forms.name = 'list'; 
+			   	forms.method = 'post'; 
+			   	forms.action = ''; 
+			   	forms.target = '_self';
+			   	//div
+		    	var divs = document.createElement('div');
+		    	divs.innerHTML =  data.title;
+		    	divs.style.cssText = 'background: white; border: 1px solid black; cursor: move';
+		    	// 삭제 버튼
+		    	var infoClose = document.createElement('button');
+			  	infoClose.innerHTML = '삭제';
+			  	infoClose.style.cssText = 'background: yellow;'
+			  	infoClose.onclick = function() {
+			  		
+			  	}
 		    	
-		    $( function() {
-		       contents.sortable();
-		      } );
+		    	info.appendChild(forms);
+		    	forms.appendChild(divs);
+		    	divs.appendChild(infoClose);
+		    
 		 
 		    };
 		    
