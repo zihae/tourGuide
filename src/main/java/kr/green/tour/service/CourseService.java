@@ -4,6 +4,9 @@ import java.util.List;
 
 import kr.green.tour.pagination.Criteria;
 import kr.green.tour.vo.CityVO;
+import kr.green.tour.vo.CourseDetailVO;
+import kr.green.tour.vo.CourseVO;
+import kr.green.tour.vo.MemberVO;
 import kr.green.tour.vo.PlaceVO;
 
 public interface CourseService {
@@ -13,5 +16,11 @@ public interface CourseService {
 	List<PlaceVO> getMapList(Criteria cri);
 
 	List<PlaceVO> selectPlaceList(Integer city_id, Integer main_id);
+
+	int insertCourse(CourseVO course, MemberVO member);
+
+	int insertCourseDetail(CourseDetailVO cd);
+
+	
 
 }

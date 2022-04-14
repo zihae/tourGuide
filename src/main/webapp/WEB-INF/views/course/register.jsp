@@ -14,26 +14,31 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <style>
-
-        .box1{
-            border: 2px solid red; padding: 10px;
-        }
-        .map, .contents{
-            height: 700px; box-sizing: border-box; border: 2px solid blue; width: calc((100% - 5px) / 2); float: left;
-        }
-        .map{width: 870px;}
-        .contents{
-            border-color:#0f0; width:210px; float: right;
-        }
-        .box1::after{
-            clear: both; content: ''; display: block;
-        }
-        .contents-top{
-        	 width: 210px; height:fit-context; background-color: yellow; height:
-        }
-        .day{
-        magin-right: 3px;}
-    </style>
+.box1{
+    border: 2px solid red; padding: 10px;
+}
+.map, .contents{
+    height: 700px; box-sizing: border-box; border: 2px solid blue; width: calc((100% - 5px) / 2); float: left;
+}
+.map{width: 870px;}
+.contents{
+    border-color:#0f0; width:210px; float: right;
+}
+.box1::after{
+    clear: both; content: ''; display: block;
+}
+.contents-top{
+	 width: 210px; height:fit-context; background-color: yellow; height:
+}
+.day{
+magin-right: 3px;}
+.added-day{
+  background-color: white;
+} 
+.clicked{
+	background-color: gold;
+}
+</style>
 </head>
 <body>
     <div class="box1">
@@ -44,9 +49,9 @@
 	        <!-- 상세설정 -->
 	        <div class="contents">
 	        	<div class="contents-top">
-		            <input id="title" type="text" name="course_title" placeholder="코스 제목을 입력해주세요.">
+		            <input id="title" type="text" name="course_title" placeholder="코스 제목을 입력해주세요." class="course_title">
 		            <div class="scope">
-		            <select name="option" class="select box">
+          <select name="option" class="select box option" >
 						<option value="default">공개범위</option>
 						<option value="public">전체공개</option>
 						<option value="private">비공개</option>
@@ -56,24 +61,24 @@
 						<option>전체지역</option>
 					</select>
 					<form>
-					<select  class="type" name="main_id">
-						<option value="-1" selected>전체분야</option>
-						<option value="1">관광지</option>
-						<option value="2">음식점</option>
-						<option value="3">숙소</option>
-					</select>
+						<select  class="type" name="main_id">
+							<option value="-1" selected>전체분야</option>
+							<option value="1">관광지</option>
+							<option value="2">음식점</option>
+							<option value="3">숙소</option>
+						</select>
 					</form>
 					<form>
 					<div class="daterange">
 						<label>여행 기간</label>
-			            <input type="text" name="duration" id="date">
+			            <input type="text" name="duration" id="date" class="duration">
 		            </div>
 		            	<label>함께할 친구 추가</label>
 		            	<div id="mate-box">
 		            	<input type="text" name="course_mate"> 
 		            	</div>
 		            	<div id="recruit-box">
-			             <input type="checkbox" name="recruit" class="recruit-check" value="Y">
+			             <input type="checkbox" name="recruit" class="recruit-check recruit" value="Y" >
   						 	<label class="check-label" for="recruit-check">
 						    친구 모집
 						  	</label>
@@ -85,18 +90,17 @@
 			            <button type="button"  id="remove-day">삭제</button>
 			            </div>
 			            <div id="day-btn">
-			            <button type="button" id="first-day" class="added-day">1일차</button>
+			            <button type="button" class="added-day clicked" data-index="1">1일차</button>
 			            </div>
 		            </div>  			
 					</form>
 				</div>
 	        <!-- 장소 추가 되는 곳 -->
-	        <form>
-	        <div class="contents-bottom" id="bottom">
+	        <div class="bottoms">
+	        	<div class="contents-bottom" id="bottom1"></div>
 	        </div>
-	        </form>
-	        </div>
-	       <button class="btn btn-outline-success" id="btn">등록</button>  
+        </div>
+       	<button class="btn btn-outline-success" id="btn" type="button">등록</button>  
     </div>
     
 <script>
@@ -136,55 +140,119 @@ $(function () {
 });
 
 
-$(document).ready(function() {
-	//일 추가
-  $("#add-day").click(function() {
-    $("#day-btn").append("<button class='added-day days' type='button'>일차"+"</button>");
-    numbering();
-  });
-	
-	//일 삭제
-  	$("#remove-day").click(function() {
-	    $(".days:last-child").remove();
+	$(document).ready(function() {
+		//일 추가
+	  $("#add-day").click(function() {
+		  var index = $('.added-day').length+1;
+	    $("#day-btn").append("<button class='added-day days' type='button' data-index='"+index+"'>일차"+"</button>");
+	    $('.bottoms').append('<div class="contents-bottom" id="bottom'+index+'"></div>');
 	    numbering();
+	  });
+		
+		//일 삭제
+	  	$("#remove-day").click(function() {
+		    $(".days:last-child").remove();
+		    $('.bottoms').children().last().remove();
+		    numbering();
+		});
+		
+	
+	function numbering(){
+		$('.added-day').each(function(index){
+			$(this).text(index+1+'일차');
+		})  
+	}
+	
+	//일 선택시 버튼 색깔 바꾸기
+	$(document).on('click','.added-day',function(){
+		$('.added-day').removeClass('clicked');
+		$(this).addClass('clicked');
+		$('.bottoms').children().hide();
+		var index = $(this).data('index');
+		$('#bottom'+index).show();
 	});
 	
-
-function numbering(){
-	$('.added-day').each(function(index){
-		$(this).text(index+1+'일차');
-	})  
-}
-
-//지역 설정
-setCity();
-function setCity(){
-	var str = '<option value="0">전체지역</option>';
-	$.ajax({
-		async:false,
-		type:'get',
-		url: '<%=request.getContextPath()%>/city',
-		dataType:"json",
-		success : function(res){
-			console.log(res)
-			var list = res.list;
-			for(city of list){
-			str +=  '<option value="'+city.city_id+'">'+city.city_name+'</option>'
+	//지역 설정
+	setCity();
+	function setCity(){
+		var str = '<option value="0">전체지역</option>';
+		$.ajax({
+			async:false,
+			type:'get',
+			url: '<%=request.getContextPath()%>/city',
+			dataType:"json",
+			success : function(res){
+				console.log(res)
+				var list = res.list;
+				for(city of list){
+				str +=  '<option value="'+city.city_id+'">'+city.city_name+'</option>'
+				}
+				$('.city').html(str);
 			}
-			$('.city').html(str);
+		});
+	}
+	
+	//bottoms sortable
+	$( function() { 
+	    $( ".contents-bottom" ).sortable();
+	    $( ".contents-bottom" ).disableSelection();
+	  } );
+
+	$('#btn').click(function(){
+		var course = {
+				course_title : $('.course_title').val(),
+				duration     : $('.duration').val(),
+				option       : $('.option').val(),
+				recruit      : $('.recruit').is(':checked') ? 'Y' : 'N'
 		}
+		console.log(course);
+		//코스 등록
+		$.ajax({
+			async:false,
+			type:'post',
+			url: '<%=request.getContextPath()%>/course/insert',
+			contentType:"application/json; charset=UTF-8",
+			data:JSON.stringify(course),
+			dataType:"json",
+			success : function(res){
+				console.log(res);
+				course_id = res;
+				count = $('.bottoms .place_id').length;
+				//일차별로
+				$('.bottoms').children().each(function(index){
+					
+					//각 일차별 장소
+					$(this).children().each(function (idx) {
+						
+						var cd = {
+								place_id            : $(this).find('.place_id').val(),
+								order               : idx+1,
+								name                : $(this).find('.name').text(),
+								course_detail_date  : index+1,
+								course_id           : course_id
+						}
+						$.ajax({
+							async:false,
+							type:'post',
+							url: '<%=request.getContextPath()%>/course/detail/insert',
+							contentType:"application/json; charset=UTF-8",
+							data:JSON.stringify(cd),
+							dataType:"json",
+							success : function(res){
+								console.log(res);
+								sendCount++;
+								console.log(count + " , " + sendCount);
+							}
+						});
+					});
+				})
+			}
+		});
 	});
-}
-
-//bottom sortable
-$( function() {
-    $( "#bottom" ).sortable();
-    $( "#bottom" ).disableSelection();
-  } );
-
 }); //document ready end
 
-
+var count = 0;
+var sendCount = 0;
 
 
 </script>

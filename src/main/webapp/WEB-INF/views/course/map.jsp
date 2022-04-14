@@ -33,7 +33,8 @@
 						   title: place.name,
 						   latlng: new kakao.maps.LatLng(place.latitude,place.longitude),
 						   address: place.address1,
-						   tel: place.tel
+						   tel: place.tel,
+						   place_id : place.place_id
 					   }
 					 positions.push(obj);
 				 }
@@ -63,7 +64,8 @@
 		//var position = [];
 		/*$.ajax({
 			url : '',
-			async : false,
+			async : false, 질문이 하나 더 있어요!
+			저기 미리 뿌려준 버튼은 색깔이 바뀌는데 추가한 버튼은 클릭해도 색까링 안 바껴요 
 			datatype : '',
 			success : function(res){
 				var list = res.list;
@@ -132,17 +134,18 @@
 			   	contents.appendChild(infoClose);
 		    
 			   	 */
-			   	 
-			 		var info = document.getElementById("bottom");
+			   	var index = $('.added-day.clicked').data('index'); 
+			   	 console.log(index);
+			 		var info = document.getElementById("bottom"+index);
 		   	  // form 
 		   	  var forms = document.createElement('form'); 
 			   	forms.name = 'list'; 
 			   	forms.method = 'post'; 
 			   	forms.action = 'http://localhost:8080/tour/course/register'; 
-			   	forms.target = '_self';
+			   	forms.target = '_self'; 
 			   	//div
 		    	var divs = document.createElement('div');
-		    	divs.innerHTML =  data.title;
+		    	//divs.innerHTML =  data.title;
 		    	divs.style.cssText = 'background: white; border: 1px solid black; cursor: move';
 		    	// 삭제 버튼
 		    	var infoClose = document.createElement('button');
@@ -151,10 +154,20 @@
 			  	infoClose.onclick = function() {
 			  		divs.remove(divs.selectedIndex);
 			  	}
-		    	
-		    	info.appendChild(forms);
-		    	forms.appendChild(divs);
+			  	var name = document.createElement('span');
+			  	name.classList = 'name';
+			  	name.innerHTML =  data.title;
+			  	var place_id = document.createElement('input');
+			  	place_id.classList = 'place_id';
+			  	place_id.value = data.place_id;
+			  	place_id.type = 'hidden';
+			  	info.appendChild(divs);
+		    	//info.appendChild(forms);
+		    	//forms.appendChild(divs);
+		    	divs.appendChild(name);
+		    	divs.appendChild(place_id);
 		    	divs.appendChild(infoClose);
+		    	
 		    
 		 
 		    };

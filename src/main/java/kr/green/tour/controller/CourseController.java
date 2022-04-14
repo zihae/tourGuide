@@ -1,12 +1,14 @@
 package kr.green.tour.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,7 +18,9 @@ import kr.green.tour.pagination.Criteria;
 import kr.green.tour.service.CourseService;
 import kr.green.tour.service.PlaceService;
 import kr.green.tour.vo.CityVO;
+import kr.green.tour.vo.CourseDetailVO;
 import kr.green.tour.vo.CourseVO;
+import kr.green.tour.vo.MemberVO;
 import kr.green.tour.vo.PlaceVO;
 
 @Controller
@@ -66,5 +70,21 @@ public class CourseController {
 			return list;
 		}
 		
+		//여행지역 설정
+		@ResponseBody
+		@RequestMapping(value = "/course/insert")
+		public int courseInsert(@RequestBody CourseVO course, HttpServletRequest r) {
+			System.out.println(course);
+			MemberVO member = (MemberVO)r.getSession().getAttribute("user");
+			
+			return courseService.insertCourse(course, member);
+		}
+		
+		@ResponseBody
+		@RequestMapping(value = "/course/detail/insert")
+		public int courseDetailInsert(@RequestBody CourseDetailVO cd) {
+			System.out.println(cd);
+			return courseService.insertCourseDetail(cd);
+		}
 		
 }

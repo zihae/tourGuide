@@ -20,4 +20,11 @@
 		and city_id = #{city_id}
 	</if>
 	</select>
+	<insert id="insertCourse" useGeneratedKeys="true" keyProperty="co.course_id" parameterType="kr.green.tour.vo.CourseVO">
+		insert into course(course_title, duration, `option`, recruit, course_writer_id)
+			values(#{co.course_title},#{co.duration},#{co.option},#{co.recruit}, #{co.course_writer_id}) 
+	</insert>
+	<insert id="insertCourseDetail">
+		insert into course_detail values(#{cd.course_detail_date},#{cd.course_id},#{cd.name},#{cd.order},#{cd.place_id})
+	</insert>
 </mapper>
