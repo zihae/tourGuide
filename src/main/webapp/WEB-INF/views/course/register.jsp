@@ -41,21 +41,20 @@ magin-right: 3px;}
 </style>
 </head>
 <body>
-    <div class="box1">
-        <div class="map" id="map-section">
-        <%@ include file="map.jsp" %>
-        </div>
+<div class="box1">
+ 	<div class="map" id="map-section">
+     <%@ include file="map.jsp" %>
+  </div>
         
-	        <!-- 상세설정 -->
-	        <div class="contents">
-	        	<div class="contents-top">
-		            <input id="title" type="text" name="course_title" placeholder="코스 제목을 입력해주세요." class="course_title">
-		            <div class="scope">
-          <select name="option" class="select box option" >
-						<option value="default">공개범위</option>
-						<option value="public">전체공개</option>
-						<option value="private">비공개</option>
-					</select>
+  <!-- 상세설정 -->
+  <div class="contents">
+      <div class="contents-top">
+	        <input id="title" type="text" name="course_title" placeholder="코스 제목을 입력해주세요." class="course_title">
+		      <div class="scope">
+			      <select name="option" class="select box option" >
+							<option value="전체공개" selected>전체공개</option>
+							<option value="비공개">비공개</option>
+					  </select>
 					</div>
 					<select class="city">
 						<option>전체지역</option>
@@ -69,40 +68,43 @@ magin-right: 3px;}
 						</select>
 					</form>
 					<form>
-					<div class="daterange">
-						<label>여행 기간</label>
-			            <input type="text" name="duration" id="date" class="duration">
+						<div class="daterange">
+							<label>여행 기간</label>
+					   		<input type="text" name="duration" id="date" class="duration">
+				     </div>
+	           	<label>함께할 친구 추가</label>
+		           	<div id="mate-box">
+		           		<input type="text" name="course_mate"> 
+		           	</div>
+	           	<div id="recruit-box">
+		           <input type="checkbox" name="recruit" class="recruit-check recruit" value="Y" >
+							 	<label class="check-label" for="recruit-check">
+					    		친구 모집
+					  		</label>
+	            </div>
+	          	<label>세부 일정</label>
+		           <div id="btn-group-day">
+			           <div id="control-btn">
+				            <button type="button"  id="add-day">추가</button>
+				            <button type="button"  id="remove-day">삭제</button>
+			            </div>
+		            	<div id="day-btn">
+		           		 	<button type="button" class="added-day clicked" data-index="1">1일차</button>
 		            </div>
-		            	<label>함께할 친구 추가</label>
-		            	<div id="mate-box">
-		            	<input type="text" name="course_mate"> 
-		            	</div>
-		            	<div id="recruit-box">
-			             <input type="checkbox" name="recruit" class="recruit-check recruit" value="Y" >
-  						 	<label class="check-label" for="recruit-check">
-						    친구 모집
-						  	</label>
-			            </div>
-		           	<label>세부 일정</label>
-		            <div id="btn-group-day">
-		            	<div id="control-btn">
-			            <button type="button"  id="add-day">추가</button>
-			            <button type="button"  id="remove-day">삭제</button>
-			            </div>
-			            <div id="day-btn">
-			            <button type="button" class="added-day clicked" data-index="1">1일차</button>
-			            </div>
-		            </div>  			
-					</form>
+	           	</div>  			
+						</form>
 				</div>
-	        <!-- 장소 추가 되는 곳 -->
-	        <div class="bottoms">
-	        	<div class="contents-bottom" id="bottom1"></div>
-	        </div>
-        </div>
-       	<button class="btn btn-outline-success" id="btn" type="button">등록</button>  
-    </div>
-    
+      <!-- 장소 추가 되는 곳 -->
+      <div class="bottoms">
+      	<div class="contents-bottom" id="bottom1"></div>
+      </div>
+   </div>
+   		<!-- 등록 버튼 -->
+      <a href="<%=request.getContextPath()%>/member/courseList">
+     		<button class="register-btn btn btn-outline-success " id="btn" type="button">등록</button> 
+     	</a>
+</div> 
+
 <script>
 //친구 모집
 var checkedValue = $('.recruit-check:checked').val();
@@ -172,14 +174,14 @@ $(function () {
 		$('#bottom'+index).show();
 	});
 	
-	//지역 설정
+	//DB에 있는 지역 불러오기
 	setCity();
 	function setCity(){
 		var str = '<option value="0">전체지역</option>';
 		$.ajax({
 			async:false,
 			type:'get',
-			url: '<%=request.getContextPath()%>/city',
+			url: '<%=request.getContextPath()%>/course/city',
 			dataType:"json",
 			success : function(res){
 				console.log(res)
@@ -252,9 +254,7 @@ $(function () {
 }); //document ready end
 
 var count = 0;
-var sendCount = 0;
-
-
+var sendCount = 0
 </script>
 </body>
 </html>
