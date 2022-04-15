@@ -106,6 +106,18 @@ magin-right: 3px;}
 </div> 
 
 <script>
+//등록 버튼 클릭 시
+$('.register-btn').click(function(){
+	var user = '${user.user_id}';
+	if(user == ''){
+		alert('로그인 후 나만의 여행지도 등록이 가능합니다.')
+		return;
+	}	else{
+		alert('등록이 완료 되었습니다. 마이페이지 나만의 여행지도로 이동합니다.')
+	}
+});
+
+
 //친구 모집
 var checkedValue = $('.recruit-check:checked').val();
 
