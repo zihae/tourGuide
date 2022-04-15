@@ -28,7 +28,7 @@
 	</insert>
 	
 	<insert id="insertCourseDetail">
-		insert into course_detail values(#{cd.course_detail_date},#{cd.course_id},#{cd.name},#{cd.order},#{cd.place_id})
+		insert into course_detail values(#{cd.course_detail_date},#{cd.cd_course_id},#{cd.name},#{cd.course_order},#{cd.cd_place_id})
 	</insert>
 	
 	<select id="selectCourseList" resultType="kr.green.tour.vo.CourseVO">
@@ -40,9 +40,14 @@
 		select count(*) from course where del = 'N' 
 	</select>
 	
-	<select id="getDetail" resultType="kr.green.tour.vo.CourseDetailVO">
-		select * from course_detail where course_id = #{cd.course_id} and course_detail_date =#{cd.course_detail_date} 
-		and course_order = #{cd.course_order}
+	<select id="getDetail" resultType="kr.green.tour.vo.CourseVO">
+		select course.*, max(course_detail_date) as course_detail_count from course join course_detail on course_id = cd_course_id 
+		where course_id= #{course.course_id} group by course_id;
+	</select>
+	
+	<select id="getDetailInto" resultType="kr.green.tour.vo.CourseDetailVO">
+		select * from course_detail join place on place_id = cd_place_id where cd_course_id = #{cd.cd_course_id} 
+		and course_detail_date = #{cd.course_detail_date};
 	</select>
 	
 </mapper>

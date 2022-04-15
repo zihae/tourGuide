@@ -84,12 +84,19 @@ public class CourseServiceImp implements CourseService {
 
 
 	@Override
-	public CourseDetailVO getCourseNum(Integer course_id, CourseDetailVO cd) {
-		if(course_id == null || course_id <= 0)
+	public CourseVO getCourseNum(CourseVO course, CourseDetailVO cd) {
+		if(course == null ||cd == null)
 			return null;
+		return courseDao.getDetail(cd,course);
+	}
+
+
+
+	@Override
+	public List<PlaceVO> getDetailInfo(CourseDetailVO cd) {
 		if(cd == null)
-			return null;
-		return courseDao.getDetail(cd);
+		return null;
+		return courseDao.getDetailInto(cd);
 	}
 
 

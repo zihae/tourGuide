@@ -98,11 +98,20 @@ public class CourseController {
 		
 		//여행지도 상세
 		@RequestMapping(value="/course/detail")
-		public ModelAndView courseDetail(ModelAndView mv, Integer course_id, CourseDetailVO cd ) {
+		public ModelAndView courseDetail(ModelAndView mv, CourseVO course, CourseDetailVO cd) {
 			mv.setViewName("/course/detail");
-			CourseDetailVO detail = courseService.getCourseNum(course_id, cd);
+			CourseVO detail = courseService.getCourseNum(course,cd);
 			mv.addObject("detail",detail);
 			return mv;
 		}
 		
+		//여행지도 course_detail 입력
+		@ResponseBody
+		@RequestMapping(value = "/course/info")
+		public List<PlaceVO> courseDetailInfo(@RequestBody CourseDetailVO cd) {
+			System.out.println(cd);
+			return courseService.getDetailInfo(cd);
+			
+		}
+
 }

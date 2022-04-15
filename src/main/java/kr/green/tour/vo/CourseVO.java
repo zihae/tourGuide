@@ -15,8 +15,9 @@ public class CourseVO {
 	private String option;
 	private String course_mate;
 	private String recruit;
+	private int course_detail_count;
 	
-	public String getCourse_wite_date_str() {
+	public String getCourse_write_date_str() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String str = format.format(course_write_date);
 		return str;

@@ -26,7 +26,9 @@ public interface CourseDAO {
 
 	int selectTotal(@Param("cri") Criteria cri);
 
-	CourseDetailVO getDetail(@Param("cd")CourseDetailVO cd);
+	CourseVO getDetail(@Param("cd")CourseDetailVO cd, @Param("course") CourseVO course);
+
+	List<PlaceVO> getDetailInto(@Param("cd") CourseDetailVO cd);
 
 	
 
