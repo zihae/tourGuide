@@ -16,29 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `course_member`
+-- Table structure for table `history`
 --
 
-DROP TABLE IF EXISTS `course_member`;
+DROP TABLE IF EXISTS `history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `course_member` (
-  `course_id` int NOT NULL,
-  `course_member_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  KEY `FK_course_TO_course_member_1` (`course_id`),
-  KEY `FK_course_member_id_idx` (`course_member_id`),
-  CONSTRAINT `FK_course_member_id` FOREIGN KEY (`course_member_id`) REFERENCES `member` (`user_id`),
-  CONSTRAINT `FK_course_TO_course_member_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`)
+CREATE TABLE `history` (
+  `history_id` int NOT NULL AUTO_INCREMENT,
+  `member_id` int NOT NULL,
+  `modify_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`history_id`),
+  KEY `FK_member_TO_history_1` (`member_id`),
+  CONSTRAINT `FK_member_TO_history_1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `course_member`
+-- Dumping data for table `history`
 --
 
-LOCK TABLES `course_member` WRITE;
-/*!40000 ALTER TABLE `course_member` DISABLE KEYS */;
-/*!40000 ALTER TABLE `course_member` ENABLE KEYS */;
+LOCK TABLES `history` WRITE;
+/*!40000 ALTER TABLE `history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `history` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -26,7 +26,7 @@ CREATE TABLE `friends` (
   `friends_num` int NOT NULL AUTO_INCREMENT,
   `user_id` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `friend_id` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `friend_name` varchar(45) COLLATE utf8_bin NOT NULL,
+  `friend_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`friends_num`),
   KEY `FK_user_id_idx` (`user_id`),
   KEY `FK_friends_id_idx` (`friend_id`),
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 13:08:31
+-- Dump completed on 2022-04-15 17:46:31

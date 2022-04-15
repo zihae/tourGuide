@@ -26,12 +26,12 @@ CREATE TABLE `message` (
   `message_id` int NOT NULL AUTO_INCREMENT,
   `receiver_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `sender_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `title` varchar(45) COLLATE utf8_bin NOT NULL,
-  `content` longtext COLLATE utf8_bin NOT NULL,
+  `title` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `content` longtext CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `read_check` int NOT NULL DEFAULT '0',
   `send_date` datetime NOT NULL,
-  `del_receiver` varchar(45) COLLATE utf8_bin NOT NULL DEFAULT 'N',
-  `del_sender` varchar(45) COLLATE utf8_bin NOT NULL DEFAULT 'N',
+  `del_receiver` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'N',
+  `del_sender` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'N',
   PRIMARY KEY (`message_id`),
   KEY `FK_receiver_id_idx` (`receiver_id`),
   KEY `FK_sender_id_idx` (`sender_id`),
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 13:08:32
+-- Dump completed on 2022-04-15 17:46:33

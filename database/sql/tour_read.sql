@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `read`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `read` (
   `content_id` int NOT NULL,
-  `nickname` varchar(10) CHARACTER SET latin1 NOT NULL,
-  `read_member_id` varchar(10) CHARACTER SET latin1 NOT NULL,
+  `nickname` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `read_member_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `state` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`content_id`),
   KEY `fk_read_member_id_idx` (`read_member_id`),
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 13:08:35
+-- Dump completed on 2022-04-15 17:46:31
