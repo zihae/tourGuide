@@ -55,7 +55,7 @@
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">여행 지도</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/course/list">나만의 여행지도 만들기</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/course/register">나만의 여행지도 만들기</a></li>
                                 
                             </ul>
                         </li> 

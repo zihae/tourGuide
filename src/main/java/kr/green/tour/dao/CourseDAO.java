@@ -22,4 +22,13 @@ public interface CourseDAO {
 
 	void insertCourseDetail(@Param("cd")CourseDetailVO cd);
 
+	List<CourseVO> selectCourseList(@Param("course")CourseVO course, @Param("cri")Criteria cri);
+
+	int selectTotal(@Param("cri") Criteria cri);
+
+	
+
+
+	
+
 }

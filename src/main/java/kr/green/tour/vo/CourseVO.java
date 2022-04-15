@@ -3,15 +3,12 @@ package kr.green.tour.vo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.Data;
 
 @Data
 public class CourseVO {
 	private int course_id;
 	private String course_title;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date course_write_date;
 	private String duration;
 	private String course_writer_id;

@@ -64,5 +64,27 @@ public class CourseServiceImp implements CourseService {
 
 
 
+	@Override
+	public List<CourseVO> getCourseList(CourseVO course, MemberVO member, Criteria cri) {
+		if(member == null)
+			return null;
+		if(!course.getCourse_writer_id().equals(member.getUser_id()))
+				return null;
+		return courseDao.selectCourseList(course,cri);
+		
+	}
+
+
+
+	@Override
+	public int getTotal(Criteria cri) {
+		return courseDao.selectTotal(cri);
+	}
+
+
+
+
+
+
 	
 }

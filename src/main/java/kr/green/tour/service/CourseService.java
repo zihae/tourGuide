@@ -21,6 +21,13 @@ public interface CourseService {
 
 	int insertCourseDetail(CourseDetailVO cd);
 
+	List<CourseVO> getCourseList(CourseVO course, MemberVO member, Criteria cri);
+
+	int getTotal(Criteria cri);
+
+
+	
+
 	
 
 }

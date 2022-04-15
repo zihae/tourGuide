@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.tour.pagination.Criteria;
+import kr.green.tour.pagination.PageMaker;
 import kr.green.tour.service.CourseService;
 import kr.green.tour.service.PlaceService;
 import kr.green.tour.vo.CityVO;
@@ -30,11 +31,17 @@ public class CourseController {
 		CourseService courseService;
 		PlaceService placeService;
 		
-		//나만의 여행지도 리스트
-		@RequestMapping(value="/course/list", method=RequestMethod.GET)
-		public ModelAndView courseList(ModelAndView mv, Criteria cri) {
-			
-			mv.setViewName("/course/list");
+		//나만의 여행지도 리스트(마이페이지에 출력)
+		@RequestMapping(value="/member/courseList")
+		public ModelAndView courseList(ModelAndView mv, CourseVO course, HttpServletRequest request, Criteria cri) {
+			MemberVO member = (MemberVO)request.getSession().getAttribute("user");
+			course.setCourse_writer_id(member.getUser_id());
+			List<CourseVO> list = courseService.getCourseList(course,member,cri);
+			int totalCount = courseService.getTotal(cri);
+			PageMaker pm = new PageMaker(totalCount,10,cri);
+			mv.addObject("pm",pm);
+			mv.addObject("list", list);
+			mv.setViewName("/member/courseList");
 			return mv;
 		}
 		
@@ -50,10 +57,11 @@ public class CourseController {
 			mv.setViewName("/course/register");
 			return mv;
 		}
+				
 		
-		//여행지역 설정
+		//DB에 있는 여행지역 출력
 		@ResponseBody
-		@RequestMapping(value = "/city")
+		@RequestMapping(value = "/course/city")
 		public Map<String,Object> city() {
 			HashMap<String, Object> map = new HashMap<String,Object>();
 			List<CityVO> list = courseService.selectCity();
@@ -62,7 +70,7 @@ public class CourseController {
 			return map;
 		}
 		
-		//여행지역 설정
+		//여행지도 지도 필터 설정
 		@ResponseBody
 		@RequestMapping(value = "/course/maker")
 		public List<PlaceVO> courseMaker(Integer city_id, Integer main_id) {
@@ -70,7 +78,7 @@ public class CourseController {
 			return list;
 		}
 		
-		//여행지역 설정
+		//여행지도 기본정보 입력
 		@ResponseBody
 		@RequestMapping(value = "/course/insert")
 		public int courseInsert(@RequestBody CourseVO course, HttpServletRequest r) {
@@ -80,6 +88,7 @@ public class CourseController {
 			return courseService.insertCourse(course, member);
 		}
 		
+		//여행지도 course_detail 입력
 		@ResponseBody
 		@RequestMapping(value = "/course/detail/insert")
 		public int courseDetailInsert(@RequestBody CourseDetailVO cd) {

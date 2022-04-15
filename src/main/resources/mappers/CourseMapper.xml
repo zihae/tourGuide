@@ -11,6 +11,7 @@
 	<select id="selectMapList" resultType="kr.green.tour.vo.PlaceVO">
 		select * from place limit #{cri.perPageNum}
 	</select>
+	
 	<select id="selectPlaceList" resultType="kr.green.tour.vo.PlaceVO">
 	SELECT * FROM tour.place join city on area = city_name where 1 = 1
 	<if test="main_id != -1">
@@ -20,11 +21,23 @@
 		and city_id = #{city_id}
 	</if>
 	</select>
+	
 	<insert id="insertCourse" useGeneratedKeys="true" keyProperty="co.course_id" parameterType="kr.green.tour.vo.CourseVO">
 		insert into course(course_title, duration, `option`, recruit, course_writer_id)
 			values(#{co.course_title},#{co.duration},#{co.option},#{co.recruit}, #{co.course_writer_id}) 
 	</insert>
+	
 	<insert id="insertCourseDetail">
 		insert into course_detail values(#{cd.course_detail_date},#{cd.course_id},#{cd.name},#{cd.order},#{cd.place_id})
 	</insert>
+	
+	<select id="selectCourseList" resultType="kr.green.tour.vo.CourseVO">
+		select * from course where course_writer_id = #{course.course_writer_id} and del = 'N' order by course_id asc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="selectTotal" resultType="int">
+		select count(*) from course where del = 'N' 
+	</select>
+	
 </mapper>
