@@ -100,22 +100,12 @@ magin-right: 3px;}
       </div>
    </div>
    		<!-- 등록 버튼 -->
-      <a href="<%=request.getContextPath()%>/member/courseList">
+
      		<button class="register-btn btn btn-outline-success " id="btn" type="button">등록</button> 
-     	</a>
+
 </div> 
 
 <script>
-//등록 버튼 클릭 시
-$('.register-btn').click(function(){
-	var user = '${user.user_id}';
-	if(user == ''){
-		alert('로그인 후 나만의 여행지도 등록이 가능합니다.')
-		return;
-	}	else{
-		alert('등록이 완료 되었습니다. 마이페이지 나만의 여행지도로 이동합니다.')
-	}
-});
 
 
 //친구 모집
@@ -211,8 +201,19 @@ $(function () {
 	    $( ".contents-bottom" ).sortable();
 	    $( ".contents-bottom" ).disableSelection();
 	  } );
-
+	
+	//등록 버튼
 	$('#btn').click(function(){
+		
+		var user = '${user.user_id}';
+		if(user == ''){
+			alert('로그인 후 나만의 여행지도 등록이 가능합니다.');
+			location.href='<%=request.getContextPath()%>/login';
+			return;
+		}	else{
+			alert('등록이 완료 되었습니다. 마이페이지 나만의 여행지도로 이동합니다.')
+		}
+		
 		var course = {
 				course_title : $('.course_title').val(),
 				duration     : $('.duration').val(),
