@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="selectTotal" resultType="int">
-		select count(*) from review where title like concat('%', #{cri.search},'%')
+		select count(*) from review where title like concat('%', #{cri.search},'%') and del = 'N'
 	</select>
 
 	<select id="getBoardNum" resultType="kr.green.tour.vo.ReviewVO">
