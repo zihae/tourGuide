@@ -46,7 +46,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,'hana1','qwe1','test','TEST',0,'2022-04-09 23:41:10','N','N'),(2,'qwe1','hana1','t2','t',0,'2022-04-10 15:08:25','Y','Y'),(5,'qwe1','hana1','alert test','t',0,'2022-04-10 15:40:21','N','N'),(6,'qwe1','hana1','alert','t',0,'2022-04-10 15:41:15','N','Y'),(8,'qwe1','hana1','alert','t',1,'2022-04-10 15:44:34','N','N');
+INSERT INTO `message` VALUES (1,'hana1','qwe1','test','TEST',0,'2022-04-09 23:41:10','N','N'),(2,'qwe1','hana1','t2','t',0,'2022-04-10 15:08:25','Y','Y'),(5,'qwe1','hana1','alert test','t',1,'2022-04-10 15:40:21','N','N'),(6,'qwe1','hana1','alert','t',0,'2022-04-10 15:41:15','N','Y'),(8,'qwe1','hana1','alert','t',1,'2022-04-10 15:44:34','N','N');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-12 12:58:11
+-- Dump completed on 2022-04-15 13:08:32

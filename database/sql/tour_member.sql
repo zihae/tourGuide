@@ -50,7 +50,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,'qwe1','$2a$10$mP3AEGFb70r2//khqwhZZOfxP8QkIddQ96/KArbn8L96MsN9nCIsu','qwe','sdfsdf@fgasd.com','male','2020-12-03',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'513D98822A09B4EFE442501EAABC6FB9','2022-04-19 11:58:24'),(2,'hana1','$2a$10$4/XqwyeCG7zdGy7toYP5pe/WJPgirurgMe7eeLv5fxlO6i8KFF3i.','hana','fghfhgf@jkhjk.com','female','1998-07-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-12 11:58:01');
+INSERT INTO `member` VALUES (1,'qwe1','$2a$10$mP3AEGFb70r2//khqwhZZOfxP8QkIddQ96/KArbn8L96MsN9nCIsu','qwe','sdfsdf@fgasd.com','male','2020-12-03',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-15 12:56:09'),(2,'hana1','$2a$10$4/XqwyeCG7zdGy7toYP5pe/WJPgirurgMe7eeLv5fxlO6i8KFF3i.','hana','fghfhgf@jkhjk.com','female','1998-07-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-15 12:56:46');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-12 12:58:09
+-- Dump completed on 2022-04-15 13:08:30

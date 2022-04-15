@@ -26,9 +26,9 @@ CREATE TABLE `course_detail` (
   `course_detail_date` int NOT NULL,
   `course_id` int NOT NULL,
   `name` varchar(60) NOT NULL,
-  `order` int NOT NULL,
+  `course_order` int NOT NULL,
   `place_id` int NOT NULL,
-  PRIMARY KEY (`course_detail_date`,`course_id`),
+  PRIMARY KEY (`course_detail_date`,`course_id`,`course_order`),
   KEY `FK_course_TO_course_detail_1` (`course_id`),
   KEY `FK_place_TO_course_detail_idx` (`place_id`),
   CONSTRAINT `FK_course_TO_course_detail_1` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`),
@@ -42,6 +42,7 @@ CREATE TABLE `course_detail` (
 
 LOCK TABLES `course_detail` WRITE;
 /*!40000 ALTER TABLE `course_detail` DISABLE KEYS */;
+INSERT INTO `course_detail` VALUES (1,1,'백운목장',1,1),(1,2,'',1,628),(1,2,'',2,656),(1,3,'추억의 골목',1,752),(1,4,'함허정',1,651),(1,6,'태안사',1,666),(1,7,'하늘채',1,946),(1,8,'독도사진전시관',1,669),(1,8,'화순1경 화순적벽',2,929),(1,9,'홍가네흑염소가든',1,321),(1,10,'월출산 기찬랜드',1,843),(1,12,'곡성강빛마을펜션밸리홈',1,944),(1,13,'곡성성당(옥터성지)',1,667),(2,2,'',1,944),(2,2,'',2,985),(2,4,'관음사',1,656),(3,2,'',1,808),(3,2,'',2,585);
 /*!40000 ALTER TABLE `course_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-12 12:58:08
+-- Dump completed on 2022-04-15 13:08:36
