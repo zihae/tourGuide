@@ -26,6 +26,7 @@ h2{text-align: center;}
 	        <th>제목</th>
 	        <th>여행기간</th>
 	        <th>공개범위</th>
+	        <th>작성일</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -35,6 +36,7 @@ h2{text-align: center;}
 	        <td><a href="<%=request.getContextPath()%>/course/detail?course_id=${course.course_id}">${course.course_title }</a></td>
 	        <td>${course.duration}</td>
 	        <td>${course.option}</td>
+	        <td>${course.course_write_date_str}</td>
 	      </tr>
 	       </c:forEach>
 	    </tbody>
