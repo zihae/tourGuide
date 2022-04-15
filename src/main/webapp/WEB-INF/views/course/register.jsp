@@ -231,7 +231,7 @@ $(function () {
 			dataType:"json",
 			success : function(res){
 				console.log(res);
-				course_id = res;
+				cd_course_id = res;
 				count = $('.bottoms .place_id').length;
 				//일차별로
 				$('.bottoms').children().each(function(index){
@@ -240,11 +240,11 @@ $(function () {
 					$(this).children().each(function (idx) {
 						
 						var cd = {
-								place_id            : $(this).find('.place_id').val(),
-								order               : idx+1,
-								name                : $(this).find('.name').text(),
-								course_detail_date  : index+1,
-								course_id           : course_id
+								cd_place_id            : $(this).find('.place_id').val(),
+								course_order           : idx+1,
+								name                	 : $(this).find('.name').text(),
+								course_detail_date     : index+1,
+								cd_course_id           : cd_course_id
 						}
 						$.ajax({
 							async:false,
