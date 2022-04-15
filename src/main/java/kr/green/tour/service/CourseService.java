@@ -25,6 +25,8 @@ public interface CourseService {
 
 	int getTotal(Criteria cri);
 
+	CourseDetailVO getCourseNum(Integer course_id, CourseDetailVO cd);
+
 
 	
 

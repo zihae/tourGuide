@@ -32,7 +32,7 @@ h2{text-align: center;}
 	      <c:forEach items="${list}" var="course" varStatus="vs">
 	      <tr>
 					<td>${pm.totalCount - pm.criteria.pageStart - vs.index}</td>
-	        <td>${course.course_title }</td>
+	        <td><a href="<%=request.getContextPath()%>/course/detail?course_id=${course.course_id}">${course.course_title }</a></td>
 	        <td>${course.duration}</td>
 	        <td>${course.option}</td>
 	      </tr>

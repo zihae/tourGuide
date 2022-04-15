@@ -40,4 +40,9 @@
 		select count(*) from course where del = 'N' 
 	</select>
 	
+	<select id="getDetail" resultType="kr.green.tour.vo.CourseDetailVO">
+		select * from course_detail where course_id = #{cd.course_id} and course_detail_date =#{cd.course_detail_date} 
+		and course_order = #{cd.course_order}
+	</select>
+	
 </mapper>

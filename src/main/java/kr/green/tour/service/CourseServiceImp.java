@@ -45,7 +45,7 @@ public class CourseServiceImp implements CourseService {
 
 	@Override
 	public int insertCourse(CourseVO course, MemberVO member) {
-		if(course == null ||  member == null)
+		if(member == null ||  course == null)
 			return -1;
 		course.setCourse_writer_id(member.getUser_id());
 		courseDao.insertCourse(course);
@@ -79,6 +79,17 @@ public class CourseServiceImp implements CourseService {
 	@Override
 	public int getTotal(Criteria cri) {
 		return courseDao.selectTotal(cri);
+	}
+
+
+
+	@Override
+	public CourseDetailVO getCourseNum(Integer course_id, CourseDetailVO cd) {
+		if(course_id == null || course_id <= 0)
+			return null;
+		if(cd == null)
+			return null;
+		return courseDao.getDetail(cd);
 	}
 
 

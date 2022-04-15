@@ -45,7 +45,7 @@ public class CourseController {
 			return mv;
 		}
 		
-		//여행지도 등록
+		//여행지도 등록 화면
 		@RequestMapping(value="/course/register", method=RequestMethod.GET)
 		public ModelAndView courseRegisterGet(ModelAndView mv, CourseVO course, Criteria cri) {
 			mv.addObject("course", course);
@@ -94,6 +94,15 @@ public class CourseController {
 		public int courseDetailInsert(@RequestBody CourseDetailVO cd) {
 			System.out.println(cd);
 			return courseService.insertCourseDetail(cd);
+		}
+		
+		//여행지도 상세
+		@RequestMapping(value="/course/detail")
+		public ModelAndView courseDetail(ModelAndView mv, Integer course_id, CourseDetailVO cd ) {
+			mv.setViewName("/course/detail");
+			CourseDetailVO detail = courseService.getCourseNum(course_id, cd);
+			mv.addObject("detail",detail);
+			return mv;
 		}
 		
 }
