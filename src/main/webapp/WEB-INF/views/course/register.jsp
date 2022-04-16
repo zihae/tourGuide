@@ -12,32 +12,37 @@
 <!-- date range picker -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script src="<%=request.getContextPath()%>/resources/js/jquery.validate.min.js"></script>
 
 <style>
 .box1{
-    border: 2px solid red; padding: 10px;
+     padding: 10px;
 }
 .map, .contents{
-    height: 700px; box-sizing: border-box; border: 2px solid blue; width: calc((100% - 5px) / 2); float: left;
+    height: 700px; box-sizing: border-box; width: calc((100% - 5px) / 2); float: left;
 }
 .map{width: 870px;}
 .contents{
-    border-color:#0f0; width:210px; float: right;
+    border: 2px solid lavender; width:230px; float: right; box-sizing: content-box;
 }
 .box1::after{
     clear: both; content: ''; display: block;
 }
 .contents-top{
-	 width: 210px; height:fit-context; background-color: yellow; height:
+	 width: 230px; height:fit-context; background-color: lavender; 
 }
 .day{
 magin-right: 3px;}
 .added-day{
-  background-color: white;
+  background-color: white; 
 } 
 .clicked{
-	background-color: gold;
+	background-color: rgba(41, 41, 168, 0.616);
 }
+.label_title{font-weight: bold; font-size: 14px;
+		}
+.course_title{margin-bottom: 5px;}
+#btn{margin-top: 15px; margin-left: 500px;}
 </style>
 </head>
 <body>
@@ -49,36 +54,39 @@ magin-right: 3px;}
   <!-- 상세설정 -->
   <div class="contents">
       <div class="contents-top">
-	        <input id="title" type="text" name="course_title" placeholder="코스 제목을 입력해주세요." class="course_title">
+	        <input name="title" type="text" placeholder="코스 제목을 입력해주세요." class="course_title">
 		      <div class="scope">
+		      	<label class="label_title" for="option">공개범위</label>
 			      <select name="option" class="select box option" >
 							<option value="전체공개" selected>전체공개</option>
 							<option value="비공개">비공개</option>
 					  </select>
 					</div>
-					<select class="city">
-						<option>전체지역</option>
-					</select>
-					<form>
-						<select  class="type" name="main_id">
-							<option value="-1" selected>전체분야</option>
-							<option value="1">관광지</option>
-							<option value="2">음식점</option>
-							<option value="3">숙소</option>
+						<label class="label_title" for="city">지역</label>
+						<select class="city">
+							<option>전체지역</option>
 						</select>
+						<form>
+							<label class="label_title" for="main_id">분야</label>
+							<select  class="type" name="main_id">
+								<option value="-1" selected>전체분야</option>
+								<option value="1">관광지</option>
+								<option value="2">음식점</option>
+								<option value="3">숙소</option>
+							</select>
 					</form>
 					<form>
-						<div class="daterange">
-							<label>여행 기간</label>
-					   		<input type="text" name="duration" id="date" class="duration">
-				     </div>
-	           	<label>함께할 친구 추가</label>
-		           	<div id="mate-box">
-		           		<input type="text" name="course_mate"> 
-		           	</div>
+							<div class="daterange">
+								<label class="label_title">여행 기간</label>
+						   	<input type="text" name="duration" id="date" class="duration">
+				    	 </div>
+	           	<label class="label_title">함께할 친구 추가</label>
+		          <div id="mate-box">
+		           	<input type="text" name="course_mate"> 
+		           </div>
 	           	<div id="recruit-box">
 		           <input type="checkbox" name="recruit" class="recruit-check recruit" value="Y" >
-							 	<label class="check-label" for="recruit-check">
+							 	<label class="check-label label_title" for="recruit-check">
 					    		친구 모집
 					  		</label>
 	            </div>
@@ -98,15 +106,12 @@ magin-right: 3px;}
       <div class="bottoms">
       	<div class="contents-bottom" id="bottom1"></div>
       </div>
-   </div>
+   	</div>
    		<!-- 등록 버튼 -->
-
-     		<button class="register-btn btn btn-outline-success " id="btn" type="button">등록</button> 
-
+     		<button class="btn btn-primary" id="btn" type="button">등록</button> 
 </div> 
 
 <script>
-
 
 //친구 모집
 var checkedValue = $('.recruit-check:checked').val();
@@ -211,7 +216,7 @@ $(function () {
 			location.href='<%=request.getContextPath()%>/login';
 			return;
 		}	else{
-			alert('등록이 완료 되었습니다. 마이페이지 나만의 여행지도로 이동합니다.')
+			alert('등록이 완료 되었습니다. 등록된 지도는 마이페이지 나만의 여행지도에서 확인할 수 있습니다.');
 		}
 		
 		var course = {

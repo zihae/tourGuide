@@ -114,26 +114,13 @@
 		    tel.style.cssText = 'background: white; border: 1px solid black';
 		    
 		    var btnGroup = document.createElement('div');
-		    btnGroup.style.cssText = 'background: white; border: 1px solid black';
+		    btnGroup.style.cssText = 'background: white ';
 		    
 		    var addBtn = document.createElement('button');
 		    addBtn.innerHTML = '추가';
+		    addBtn.style.cssText = 'width: calc((100% - 5px) / 2); ';
 		    addBtn.onclick = function () {
-		    	//document.getElementById("bottom").innerHTML += data.title;
-		    	/* 
-		    	form 형식으로 안 했지만 동작은 되는거 (sortable 적용 x)
-		    	var info = document.getElementById("bottom");
-		    	var contents = document.createElement('div');
-		    	contents.innerHTML =  data.title;
-		    	contents.style.cssText = 'background: white; border: 1px solid black; cursor: move';
-			  	var infoClose = document.createElement('button');
-			  	infoClose.innerHTML = '삭제';
-			  	infoClose.style.cssText = 'background: yellow;'
-			  	
-			   	info.appendChild(contents);
-			   	contents.appendChild(infoClose);
 		    
-			   	 */
 			   	var index = $('.added-day.clicked').data('index'); 
 			   	 console.log(index);
 			 		var info = document.getElementById("bottom"+index);
@@ -146,17 +133,20 @@
 			   	//div
 		    	var divs = document.createElement('div');
 		    	//divs.innerHTML =  data.title;
-		    	divs.style.cssText = 'background: white; border: 1px solid black; cursor: move';
+		    	divs.style.cssText = 'background-color:lavender ; cursor: move';
+		    	divs.style.marginBottom='5px';
 		    	// 삭제 버튼
 		    	var infoClose = document.createElement('button');
 			  	infoClose.innerHTML = '삭제';
-			  	infoClose.style.cssText = 'background: yellow;'
+			  	infoClose.style.cssText = 'background: white;'
+			  	infoClose.style.marginLeft='5px';
 			  	infoClose.onclick = function() {
 			  		divs.remove(divs.selectedIndex);
 			  	}
 			  	var name = document.createElement('span');
 			  	name.classList = 'name';
 			  	name.innerHTML =  data.title;
+			  	name.style.cssText = 'font-weight: bold';
 			  	var place_id = document.createElement('input');
 			  	place_id.classList = 'place_id';
 			  	place_id.value = data.place_id;
@@ -174,6 +164,8 @@
 		    
 		    var closeBtn = document.createElement('button');
 		    closeBtn.innerHTML = '닫기';
+		    closeBtn.style.cssText = 'width: calc((100% - 5px) / 2); ';
+		    closeBtn.style.marginLeft='5px';
 		    closeBtn.onclick = function () {
 		        overlay.setMap(null);
 		    };
