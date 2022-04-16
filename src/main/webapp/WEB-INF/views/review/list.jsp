@@ -26,7 +26,7 @@ h2{text-align:center;}
 	  <form class="input-group mb-3" action="<%=request.getContextPath()%>/review/list">       <!-- 검색어 유지 -->
 		  <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요" value="${pm.criteria.search }">
 		  <div class="input-group-append">
-		    <button class="btn btn-success" type="submit">검색</button>
+		    <button class="btn btn-info" type="submit">검색</button>
 		  </div>
   	  </form>         
 	  <table class="table table-hover">
@@ -52,7 +52,7 @@ h2{text-align:center;}
 	    </tbody>
 	  </table>
 	  <a href="<%=request.getContextPath()%>/review/register">
-	  <button class="btn btn-outline-success" id="reg-button">글쓰기</button>
+	  <button class="btn btn-outline-info" id="reg-button">글쓰기</button>
 	  </a>
 	  	<!-- 페이지네이션 --> 
 		 <c:if test="${pm.criteria.page == i}">active</c:if>
