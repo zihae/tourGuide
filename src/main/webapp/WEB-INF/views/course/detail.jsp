@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <style>
-.bottom{width: 500px; height: 600px; border: 2px solid rgba(61, 61, 167, 0.336) ; margin:auto;}
+.bottom{width: 500px; min-height:400px; max-height: fit-content;border: 2px solid rgba(61, 61, 167, 0.336) ; margin:auto;}
 .clicked{backgroud-color: gold;}
 .days{margin-bottom: 10px;}
 .title{text-align: center;}
