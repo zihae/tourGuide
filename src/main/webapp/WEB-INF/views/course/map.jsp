@@ -96,6 +96,7 @@
 	        	position: data.latlng
     		});
 		   
+			 	//오버레이를 생성합니다
 		    var overlay = new kakao.maps.CustomOverlay({
 		        yAnchor: 1,
 		        position: marker.getPosition()
