@@ -32,7 +32,7 @@
 	</insert>
 	
 	<select id="selectCourseList" resultType="kr.green.tour.vo.CourseVO">
-		select * from course where course_writer_id = #{course.course_writer_id} and del = 'N' order by course_id asc
+		select * from course where course_writer_id = #{course.course_writer_id} and del = 'N' order by course_id desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	

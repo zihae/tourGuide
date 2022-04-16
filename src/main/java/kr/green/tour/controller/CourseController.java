@@ -34,6 +34,7 @@ public class CourseController {
 		//나만의 여행지도 리스트(마이페이지에 출력)
 		@RequestMapping(value="/member/courseList")
 		public ModelAndView courseList(ModelAndView mv, CourseVO course, HttpServletRequest request, Criteria cri) {
+			cri.setPerPageNum(10);
 			MemberVO member = (MemberVO)request.getSession().getAttribute("user");
 			course.setCourse_writer_id(member.getUser_id());
 			List<CourseVO> list = courseService.getCourseList(course,member,cri);
