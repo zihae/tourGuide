@@ -19,7 +19,7 @@ h1{text-align: center;}
 .card-body{height: 260px; width: 350px;}
 .pagination{margin-top: 15px}
 .btn-filter{margin-bottom: 20px;}
-.btn-group{ margin-right: 5px; position:absoulte; left:830px}
+.btn-group{ position:absoulte; }
 .cards-box {
             display: flex;
             height: 260px; 
@@ -40,11 +40,6 @@ h1{text-align: center;}
 	<!-- 검색 -->
 	 <form  class="input-group mt-3 mb-3" action="<%=request.getContextPath()%>/place/list">
 		    <div class="input-group mt-3 mb-3">
-		      <div class="input-group-prepend">
-			       <select class="city">
-						<option>전체지역</option>
-					</select>
-		      </div>
 		      <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요." value="${pm.criteria.search}">
 		      <div class="input-group-append">
 		    		<button class="btn btn-info" type="submit">검색</button>
@@ -53,13 +48,7 @@ h1{text-align: center;}
 	 		</div>
 	</form>	
 	<!-- 상단 버튼 -->
-	<div class="btn-filter">
-			<div class="btn-group">
-	    	<button type="button" class="btn btn-outline-info">전체</button>
-	  	</div>	
-	  	<div class="btn-group">
-	    	<button type="button" class="btn btn-outline-info">인기순</button>
-	  	</div>	
+	<div class="btn-filter">	
 	  	<div class="btn-group">
 		  		<a href="<%=request.getContextPath()%>/place/map?main_id=${pm.criteria.main_id }">
 		    	<button type="button" class="btn btn-outline-info" id="map-button">지도 보기</button>
@@ -119,25 +108,6 @@ h1{text-align: center;}
 	</div>
 </div>
 <script>
-//지역 설정
-setCity();
-function setCity(){
-	var str = '<option value="0">전체지역</option>';
-	$.ajax({
-		async:false,
-		type:'get',
-		url: '<%=request.getContextPath()%>/city',
-		dataType:"json",
-		success : function(res){
-			console.log(res)
-			var list = res.list;
-			for(city of list){
-			str +=  '<option value="'+city.city_id+'">'+city.city_name+'</option>'
-			}
-			$('.city').html(str);
-		}
-	});
-}
 
 	
 </script>

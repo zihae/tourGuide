@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="image/favicon.png" type="image/png">
-        <title></title>
+        <title>여행 안내서</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="resources/templates/css/bootstrap.css">
         <link rel="stylesheet" href="resources/templates/vendors/linericon/style.css">

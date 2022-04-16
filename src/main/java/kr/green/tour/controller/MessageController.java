@@ -91,24 +91,5 @@ public class MessageController {
 		return mv;
 	}
 	
-	//삭제한 메세지 리스트
-	@RequestMapping(value="/trash")
-	public ModelAndView trashList(ModelAndView mv, MessageVO message, HttpServletRequest request) {
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		message.setReceiver_id(user.getUser_id());
-		message.setSender_id(user.getUser_id());
-		List<MessageVO> list = messageService.getTrash(message, user);
-		mv.addObject("list", list);
-		mv.setViewName("/message/trash");
-		return mv;
-		
-	}
-	
-
-	
-	
-	
-	
-	
 	
 }

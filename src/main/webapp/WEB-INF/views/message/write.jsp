@@ -30,7 +30,6 @@ h1{text-align: center;}
 		<ul class="option">
 			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-left-short"></i> <a href="<%=request.getContextPath()%>/message/list">받은 편지함</a></li>
 			<li><i class="bi bi-envelope-fill"></i><i class="bi bi-arrow-right-short"></i> <a href="<%=request.getContextPath()%>/message/sendList">보낸 편지함</a></li>
-			<li><i class="bi bi-trash-fill"></i><a href="#"> 휴지통</a></li>
 		</ul>
 			<a href="<%=request.getContextPath()%>/message/write">
 		  	<button class="btn btn-info btn-sm" id="reg-button">쪽지쓰기</button>

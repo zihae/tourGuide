@@ -212,7 +212,7 @@ $(function () {
 		
 		var user = '${user.user_id}';
 		if(user == ''){
-			alert('로그인 후 나만의 여행지도 등록이 가능합니다.');
+			alert('로그인 후 나만의 여행지도 등록이 가능합니다. 로그인 페이지로 이동합니다.');
 			location.href='<%=request.getContextPath()%>/login';
 			return;
 		}	else{

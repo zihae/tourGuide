@@ -13,7 +13,7 @@
 .days{margin-bottom: 10px;}
 .title{text-align: center;}
 .top{text-align: center;}
-.detail-info{ border: 2px solid lavender; width: 300px; height: fit-content; margin:auto; margin-top: 10px;}
+.detail-info{ border: 2px solid lavender; height: fit-content; margin:auto;}
 .order{ 
 width: 30px; 
 height: 30px; 
@@ -58,12 +58,13 @@ $('.days').click(function(){
 		dataType:"json",
 		contentType:"application/json; charset=UTF-8",
 		success : function(res){
+			
 			console.log(res)
 			var str = '<div class="place">';
 			for(i = 0; i<res.length; i++){
 				str += '<div class="detail-info">'
-									+ '<div class="order">' + res[i].course_order + '</div>' 
-									+ '<div class="name">' + res[i].name + '</div>' 
+				str += '<div class="order">' + res[i].course_order + '</div>' 
+				str +=	'<div class="name">' + res[i].name + '</div>'
 			}
 			str += '</div>'
 			$('.bottom').html(str);
@@ -73,6 +74,7 @@ $('.days').click(function(){
 	$(this).addClass('clicked');
 	
 }); //days click function end
+
 
 
 

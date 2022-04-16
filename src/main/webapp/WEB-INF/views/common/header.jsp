@@ -49,7 +49,6 @@
                                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/place/list">관광지</a></li>
                                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/place/list?main_id=2">음식점</a></li>
                                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/place/list?main_id=3">숙소</a></li>
-                                <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/place/public">공공데이터</a></li>
                             </ul>
                         </li> 
                         <li class="nav-item submenu dropdown">
@@ -62,7 +61,6 @@
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item"><a class="nav-link" href="blog.html">여행 지도 공유</a></li>
                                 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/review/list">여행 후기</a></li>
                             </ul>
                         </li>
