@@ -12,7 +12,7 @@
 <body>
 	<div class="body container">
 		<h1>여행 후기 등록</h1>
-		<form action="<%=request.getContextPath()%>/review/register" method="post">
+		<form action="<%=request.getContextPath()%>/review/register" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 			  <input type="text" class="form-control" name="title" placeholder="제목">
 			</div>
@@ -32,7 +32,37 @@
       $('[name=contents]').summernote({
         placeholder: 'Hello Bootstrap 4',
         tabsize: 2,
-        height: 400
+        height: 400,
+        callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+				onImageUpload : function(files) {
+				uploadSummernoteImageFile(files[0],this);
+			},
+			onPaste: function (e) {
+				var clipboardData = e.originalEvent.clipboardData;
+				if (clipboardData && clipboardData.items && clipboardData.items.length) {
+					var item = clipboardData.items[0];
+					if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+						e.preventDefault();
+									}
+						}
+				}
+  		}
       });
+      
+      function uploadSummernoteImageFile(file, editor) {
+			data = new FormData();
+			data.append("file", file);
+			$.ajax({
+				data : data,
+				type : "POST",
+				url : "<%=request.getContextPath()%>/uploadSummernoteImageFile",
+				contentType : false,
+				processData : false,
+				success : function(data) {
+					
+					$(editor).summernote('insertImage', '<%=request.getContextPath()%>/img'+data.imgUrl);
+				}
+			});
+		}
     </script>
 </body>

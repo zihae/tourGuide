@@ -4,6 +4,8 @@ package kr.green.tour.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import kr.green.tour.pagination.Criteria;
 import kr.green.tour.vo.MemberVO;
 import kr.green.tour.vo.ReviewVO;
@@ -25,6 +27,8 @@ public interface ReviewService {
 	void updateReview(ReviewVO review);
 
 	void updateViews(Integer review_id);
+
+	String semmernoteImg(MultipartFile img);
  
 
 }

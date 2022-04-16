@@ -33,4 +33,9 @@
  	<update id="updateViews">
  		update review set views = views+1 where review_id = #{review_id}
  	</update>
+ 	
+ 	<insert id="insertFile">
+		insert into file(fi_ori_name,fi_name,fi_bd_num)
+		values(#{file.fi_ori_name},#{file.fi_name},#{file.fi_bd_num});
+	</insert>
 </mapper>

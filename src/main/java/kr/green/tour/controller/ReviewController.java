@@ -2,7 +2,9 @@ package kr.green.tour.controller;
 
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.tour.pagination.Criteria;
@@ -100,6 +105,16 @@ public class ReviewController {
 		mv.addObject("review_id", review.getReview_id());	
 		mv.setViewName("redirect:/review/detail");
 		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/uploadSummernoteImageFile")
+	public Map<String, Object>  uploadSummernoteImageFile(@RequestParam("file") MultipartFile img) {
+		//file테이블에 fi_bd_num을 null허용으로 설정해야함
+		String imgUrl = reviewService.semmernoteImg(img);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("imgUrl", imgUrl);
+		return map;
 	}
 	
 	

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.tour.pagination.Criteria;
+import kr.green.tour.vo.FileVO;
 import kr.green.tour.vo.ReviewVO;
 
 public interface ReviewDAO {
@@ -23,6 +24,8 @@ public interface ReviewDAO {
 	void updateReview(@Param("review")ReviewVO dbReview);
 
 	void updateViews( @Param("review_id") Integer review_id);
+
+	void insertFile(@Param("file")FileVO fileVo);
 
 
 

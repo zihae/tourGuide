@@ -12,7 +12,7 @@
 <body>
 	<div class="body container">
 		<h1>여행 후기</h1>
-		<form action="<%=request.getContextPath()%>/review/modify" method="post">
+		<form action="<%=request.getContextPath()%>/review/modify" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 			  <input type="text" class="form-control" name="title" value="${review.title }">
 			</div>

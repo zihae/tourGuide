@@ -7,9 +7,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.green.tour.dao.ReviewDAO;
 import kr.green.tour.pagination.Criteria;
+import kr.green.tour.utils.UploadFileUtils;
+import kr.green.tour.vo.FileVO;
 import kr.green.tour.vo.MemberVO;
 import kr.green.tour.vo.ReviewVO;
 
@@ -18,6 +21,8 @@ public class ReviewServiceImp implements ReviewService{
 
 	@Autowired
 	ReviewDAO reviewDao;
+	
+	String uploadPath = "D:\\JAVA_jjh\\upload";
 	
 	@Override
 	public void registerReview(ReviewVO review) {
@@ -116,5 +121,30 @@ public class ReviewServiceImp implements ReviewService{
 	public void updateViews(Integer review_id) {
 		reviewDao.updateViews(review_id);
 	
+	}
+
+
+
+	@Override
+	public String semmernoteImg(MultipartFile img) {
+		if(img != null && img.getOriginalFilename().length() != 0) {
+			return uploadFile(img, null);
+		}
+		return "";
+	}
+	
+	private String uploadFile(MultipartFile file, Integer bd_num) {
+		try {
+			String path = UploadFileUtils.uploadFile(
+				uploadPath, file.getOriginalFilename(), file.getBytes());
+			FileVO fileVo = 
+				new FileVO(file.getOriginalFilename(), path, bd_num);
+			reviewDao.insertFile(fileVo);
+			return path;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 }
