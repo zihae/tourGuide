@@ -59,7 +59,8 @@
 				   title: '${place.name}',
 				   latlng: new kakao.maps.LatLng(${place.latitude},${place.longitude}),
 				   address: '${place.address1}',
-				   tel: '${place.tel}'
+				   tel: '${place.tel}',
+				   place_id : '${place.place_id}'
 			   },
 		   </c:forEach>
 		];
@@ -99,11 +100,10 @@
 		    btnGroup.style.cssText = 'background: white; border: 1px solid black';
 		    
 		    var addBtn = document.createElement('button');
-		    addBtn.innerHTML = '추가';
+		    addBtn.innerHTML = '상세보기';
 		    addBtn.onclick = function () {
-		    	document.getElementById("bottom").innerHTML += data.title;
-		    	
-		    	
+		    	var place_id = data.place_id;
+		    	location.href='<%=request.getContextPath()%>/place/detail?place_id=' +place_id;
 		    };
 		   
 		    
@@ -120,7 +120,6 @@
 		    btnGroup.appendChild(closeBtn);
 		    
 		    overlay.setContent(content);
-
 		    kakao.maps.event.addListener(marker, 'click', function() {
 		        overlay.setMap(map);
 		    });
