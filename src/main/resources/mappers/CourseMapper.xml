@@ -45,7 +45,7 @@
 		where course_id= #{course.course_id} group by course_id;
 	</select>
 	
-	<select id="getDetailInto" resultType="kr.green.tour.vo.CourseDetailVO">
+	<select id="getDetailInfo" resultType="kr.green.tour.vo.CourseDetailVO">
 		select * from course_detail join place on place_id = cd_place_id where cd_course_id = #{cd.cd_course_id} 
 		and course_detail_date = #{cd.course_detail_date};
 	</select>

@@ -105,7 +105,7 @@ public class CourseController {
 			return mv;
 		}
 		
-		//여행지도 course_detail 입력
+		//여행지도 course_detail 정보 받아오기
 		@ResponseBody
 		@RequestMapping(value = "/course/info")
 		public List<PlaceVO> courseDetailInfo(@RequestBody CourseDetailVO cd) {

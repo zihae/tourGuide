@@ -28,7 +28,7 @@ public interface CourseDAO {
 
 	CourseVO getDetail(@Param("cd")CourseDetailVO cd, @Param("course") CourseVO course);
 
-	List<PlaceVO> getDetailInto(@Param("cd") CourseDetailVO cd);
+	List<PlaceVO> getDetailInfo(@Param("cd") CourseDetailVO cd);
 
 	
 

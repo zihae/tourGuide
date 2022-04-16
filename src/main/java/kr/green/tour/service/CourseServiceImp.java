@@ -96,7 +96,7 @@ public class CourseServiceImp implements CourseService {
 	public List<PlaceVO> getDetailInfo(CourseDetailVO cd) {
 		if(cd == null)
 		return null;
-		return courseDao.getDetailInto(cd);
+		return courseDao.getDetailInfo(cd);
 	}
 
 
