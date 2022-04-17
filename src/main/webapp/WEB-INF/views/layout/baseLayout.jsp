@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>뚜벅이 안내서</title>
+<title>여행 안내서</title>
 <jsp:include page="/WEB-INF/views/common/head.jsp"></jsp:include>
 </head>
 <body>

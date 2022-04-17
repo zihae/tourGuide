@@ -10,12 +10,12 @@
 	
 	<!--받은 메시지  --> 
 	<select id="getMessage" resultType="kr.green.tour.vo.MessageVO">
-		select * from message where receiver_id = #{message.receiver_id} and del_receiver = 'N' order by message_id asc
+		select * from message where receiver_id = #{message.receiver_id} and del_receiver = 'N' order by message_id desc
 	</select>
 	
 	<!-- 보낸 메세지 -->
 	<select id="getSendMessage" resultType="kr.green.tour.vo.MessageVO">
-		select * from message where sender_id = #{message.sender_id} and del_sender = 'N' order by message_id asc
+		select * from message where sender_id = #{message.sender_id} and del_sender = 'N' order by message_id desc
 	</select>
 	
 	<!-- 메시지 상세 -->
