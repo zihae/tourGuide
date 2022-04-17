@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.tour.dao.MessageDAO">
+	<insert id="writeMessage">
+	insert into message(title, receiver_id, sender_id, content, del_receiver, del_sender, send_date, read_check)
+			    values(#{message.title},#{message.receiver_id},#{message.sender_id},#{message.content},'N','N' ,now(), 0)
+	</insert>
+	
+	<!--받은 메시지  --> 
+	<select id="getMessage" resultType="kr.green.tour.vo.MessageVO">
+		select * from message where receiver_id = #{message.receiver_id} and del_receiver = 'N' order by message_id desc
+	</select>
+	
+	<!-- 보낸 메세지 -->
+	<select id="getSendMessage" resultType="kr.green.tour.vo.MessageVO">
+		select * from message where sender_id = #{message.sender_id} and del_sender = 'N' order by message_id desc
+	</select>
+	
+	<!-- 메시지 상세 -->
+	<select id="getMessageNum" resultType="kr.green.tour.vo.MessageVO">
+		select * from message where message_id = #{message_id} 
+	</select>
+	
+	<!-- 읽음 여부 업데이트 -->
+	<update id= "updateRead">
+		update message set read_check = 1
+		where message_id = #{message.message_id}	
+	</update>
+	
+	<!-- 받은 메세지 삭제 -->
+	<update id= "deleteReceive">
+		update message set del_receiver = 'Y' where message_id = #{message_id}
+	</update>
+	
+	<!-- 보낸 메세지 삭제 -->
+	<update id= "deleteSend">
+		update message set del_sender = 'Y' where message_id = #{message_id}
+	</update>
+	
+</mapper>
