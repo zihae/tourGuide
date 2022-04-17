@@ -23,14 +23,15 @@ DROP TABLE IF EXISTS `file`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `file` (
-  `file_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `delete` varchar(2) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `delete_date` datetime DEFAULT NULL,
-  `file_review_num` int NOT NULL,
-  PRIMARY KEY (`file_id`),
-  KEY `FK_review_TO_file_1` (`file_review_num`),
-  CONSTRAINT `FK_review_TO_file_1` FOREIGN KEY (`file_review_num`) REFERENCES `review` (`review_id`)
+  `fi_num` int NOT NULL AUTO_INCREMENT,
+  `fi_ori_name` varchar(255) DEFAULT NULL,
+  `fi_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `fi_bd_num` int DEFAULT NULL,
+  `fi_del` varchar(2) DEFAULT NULL,
+  `fi_del_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`fi_num`),
+  KEY `FK_fi_bd_num_idx` (`fi_bd_num`),
+  CONSTRAINT `FK_fi_bd_num` FOREIGN KEY (`fi_bd_num`) REFERENCES `review` (`review_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 17:46:33
+-- Dump completed on 2022-04-17 11:12:18

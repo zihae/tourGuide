@@ -45,7 +45,7 @@ CREATE TABLE `review` (
 
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
-INSERT INTO `review` VALUES (1,'test','qwe1','test','2022-04-05 15:33:59',NULL,0,'N',NULL,'review'),(2,'test2','qwe1','연습','2022-04-05 15:35:28',NULL,0,'N',NULL,'review'),(3,'3','qwe1','3','2022-04-05 15:37:47',NULL,0,'Y','2022-04-06 12:37:18','review'),(4,'테스트','qwe1','<p>ㅇㅇ</p>','2022-04-05 17:17:32',NULL,0,'N',NULL,'review'),(5,'delete','qwe1','<p>test</p>','2022-04-05 17:36:53',NULL,0,'Y','2022-04-06 12:36:01','review'),(6,'test','qwe1','<p>t</p>','2022-04-06 10:33:46',NULL,3,'N',NULL,'review'),(7,'INDEX TEST','qwe1','<p>수정gh</p>','2022-04-06 12:37:51','2022-04-06 17:40:48',9,'N',NULL,'review'),(8,'d','qwe1','<p>dhghgjh</p>','2022-04-06 17:51:33','2022-04-09 13:03:57',54,'Y','2022-04-09 13:04:01','review');
+INSERT INTO `review` VALUES (1,'test','qwe1','test','2022-04-05 15:33:59',NULL,1,'Y','2022-04-17 10:55:26','review'),(2,'test2','qwe1','연습','2022-04-05 15:35:28',NULL,1,'Y','2022-04-17 10:55:28','review'),(3,'3','qwe1','3','2022-04-05 15:37:47',NULL,0,'Y','2022-04-06 12:37:18','review'),(4,'테스트','qwe1','<p>ㅇㅇ</p>','2022-04-05 17:17:32',NULL,1,'Y','2022-04-17 10:55:31','review'),(5,'delete','qwe1','<p>test</p>','2022-04-05 17:36:53',NULL,0,'Y','2022-04-06 12:36:01','review'),(6,'test','qwe1','<p>t</p>','2022-04-06 10:33:46',NULL,4,'Y','2022-04-17 10:55:34','review'),(7,'INDEX TEST','qwe1','<p>수정gh</p>','2022-04-06 12:37:51','2022-04-06 17:40:48',10,'Y','2022-04-17 10:55:36','review'),(8,'d','qwe1','<p>dhghgjh</p>','2022-04-06 17:51:33','2022-04-09 13:03:57',54,'Y','2022-04-09 13:04:01','review');
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 17:46:33
+-- Dump completed on 2022-04-17 11:12:17

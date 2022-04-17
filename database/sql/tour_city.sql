@@ -26,7 +26,7 @@ CREATE TABLE `city` (
   `city_id` int NOT NULL AUTO_INCREMENT,
   `city_name` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`city_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `city` (
 
 LOCK TABLES `city` WRITE;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
-INSERT INTO `city` VALUES (1,'광양시'),(2,'강진군'),(3,'해남군'),(4,'여수시'),(5,'완도군'),(6,'순천시'),(7,'나주시'),(8,'담양군'),(9,'곡성군'),(10,'구례군'),(11,'고흥군'),(12,'보성군'),(13,'화순군'),(14,'장흥군'),(15,'영암군'),(16,'무안군'),(17,'함평군'),(18,'영광군'),(19,'장성군'),(20,'진도군'),(21,'신안군');
+INSERT INTO `city` VALUES (1,'강진군'),(2,'고흥군'),(3,'곡성군'),(4,'광양시'),(5,'구례군'),(6,'나주시'),(7,'담양군'),(8,'무안군'),(9,'보성군'),(10,'순천시'),(11,'신안군'),(12,'여수시'),(13,'영광군'),(14,'영암군'),(15,'완도군'),(16,'장성군'),(17,'장흥군'),(18,'진도군'),(19,'함평군'),(20,'해남군'),(21,'화순군');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 17:46:33
+-- Dump completed on 2022-04-17 11:12:24
