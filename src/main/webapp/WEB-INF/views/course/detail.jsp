@@ -20,7 +20,7 @@ height: 30px;
 background-color: lavender; 
 display: inline-block;
 text-align: center;
-  line-height: 30px;}
+  line-height: 30px; margin-left: 0px; }
 .name{font-size: 18px; display: inline-block; padding-left:5px; }
 .clicked{background: rgba(61, 61, 167, 0.336); }
 
@@ -62,9 +62,10 @@ $('.days').click(function(){
 			console.log(res)
 			var str = '<div class="place">';
 			for(i = 0; i<res.length; i++){
-				str += '<div class="detail-info">'
+				str += '<div class="detail-info">' 
 				str += '<div class="order">' + res[i].course_order + '</div>' 
 				str +=	'<div class="name">' + res[i].name + '</div>'
+				str += '</div>'
 			}
 			str += '</div>'
 			$('.bottom').html(str);
