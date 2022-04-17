@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 let commentService= (function(){
 	
 	function setContextPath(contextPath){
