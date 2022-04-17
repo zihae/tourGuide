@@ -101,6 +101,8 @@
 		    
 		    var addBtn = document.createElement('button');
 		    addBtn.innerHTML = '상세보기';
+		    addBtn.style.cssText = 'width: calc((100% - 5px) / 2); ';
+		    
 		    addBtn.onclick = function () {
 		    	var place_id = data.place_id;
 		    	location.href='<%=request.getContextPath()%>/place/detail?place_id=' +place_id;
@@ -109,6 +111,8 @@
 		    
 		    var closeBtn = document.createElement('button');
 		    closeBtn.innerHTML = '닫기';
+		    closeBtn.style.cssText = 'width: calc((100% - 5px) / 2); ';
+		    closeBtn.style.marginLeft='5px';
 		    closeBtn.onclick = function () {
 		        overlay.setMap(null);
 		    };
