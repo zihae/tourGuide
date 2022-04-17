@@ -17,6 +17,8 @@
         margin-bottom: 25px;}
 h2{text-align:center;}
 .input-group{margin-top: 10px;}
+.read:visited{color: grey; }
+.read:link { color: blue; text-decoration: none;}
 </style>
 </head>
 <body>
@@ -43,7 +45,7 @@ h2{text-align:center;}
 	      <c:forEach items="${list}" var="review" varStatus="vs">
 	      <tr>
 			<td>${pm.totalCount - pm.criteria.pageStart - vs.index}</td>
-	        <td><a href="<%=request.getContextPath()%>/review/detail?review_id=${review.review_id}">${review.title}</a></td>
+	        <td><a class="read" href="<%=request.getContextPath()%>/review/detail?review_id=${review.review_id}">${review.title}</a></td>
 	        <td>${review.review_member_id }</td>
 	        <td>${review.create_date_str}</td>
 	        <td>${review.views }</td>
