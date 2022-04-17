@@ -22,7 +22,7 @@ h2{text-align: center;}
 	 <table class="table table-hover">
 	    <thead>
 	      <tr>
-	        <th>번호</th>
+	       
 	        <th>제목</th>
 	        <th>여행기간</th>
 	        <th>공개범위</th>
@@ -32,7 +32,7 @@ h2{text-align: center;}
 	    <tbody>
 	      <c:forEach items="${list}" var="course" varStatus="vs">
 	      <tr>
-					<td>${pm.totalCount - pm.criteria.pageStart - vs.index}</td>
+				
 	        <td><a href="<%=request.getContextPath()%>/course/detail?course_id=${course.course_id}">${course.course_title }</a></td>
 	        <td>${course.duration}</td>
 	        <td>${course.option}</td>
@@ -41,21 +41,7 @@ h2{text-align: center;}
 	       </c:forEach>
 	    </tbody>
 	  </table>
-		<!-- 페이지네이션 --> 
-		 <c:if test="${pm.criteria.page == i}">active</c:if>
-		  <ul class="pagination justify-content-center">                                                       
-		    <li class="page-item <c:if test="${!pm.prev}">disabled</c:if>">
-		    	<a class="page-link" href="<%=request.getContextPath()%>/member/courseList?page=${pm.startPage-1}">이전</a>
-		   	</li>
-		   	<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
-			    <li class="page-item <c:if test="${pm.criteria.page == i}">active</c:if>">
-			    	<a class="page-link" href="<%=request.getContextPath()%>/member/courseList?page=${i}">${i}</a>
-			   	</li>
-		   	</c:forEach>
-		    <li class="page-item <c:if test="${!pm.next}">disabled</c:if>">
-		    	<a class="page-link" href="<%=request.getContextPath()%>/member/courseList?page=${pm.endPage+1}">다음</a>
-		   	</li>
-		  </ul>
+		
 
 </div>
 
