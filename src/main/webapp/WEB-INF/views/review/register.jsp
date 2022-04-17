@@ -55,7 +55,7 @@
 			$.ajax({
 				data : data,
 				type : "POST",
-				url : "<%=request.getContextPath()%>/uploadSummernoteImageFile",
+				url : "<%=request.getContextPath()%>/review/uploadSummernoteImageFile",
 				contentType : false,
 				processData : false,
 				success : function(data) {
