@@ -37,7 +37,7 @@ CREATE TABLE `message` (
   KEY `FK_sender_id_idx` (`sender_id`),
   CONSTRAINT `FK_receiver_id` FOREIGN KEY (`receiver_id`) REFERENCES `member` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_sender_id` FOREIGN KEY (`sender_id`) REFERENCES `member` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,'hana1','qwe1','test','TEST',0,'2022-04-09 23:41:10','N','N'),(2,'qwe1','hana1','t2','t',0,'2022-04-10 15:08:25','Y','Y'),(5,'qwe1','hana1','alert test','t',1,'2022-04-10 15:40:21','N','N'),(6,'qwe1','hana1','alert','t',0,'2022-04-10 15:41:15','N','Y'),(8,'qwe1','hana1','alert','t',1,'2022-04-10 15:44:34','N','N'),(10,'qwe1','test1','안녕하세요','테스트 메세지 입니다.',1,'2022-04-17 02:36:20','N','N');
+INSERT INTO `message` VALUES (1,'hana1','qwe1','test','TEST',0,'2022-04-09 23:41:10','N','N'),(2,'qwe1','hana1','t2','t',0,'2022-04-10 15:08:25','Y','Y'),(5,'qwe1','hana1','alert test','t',1,'2022-04-10 15:40:21','N','N'),(6,'qwe1','hana1','alert','t',0,'2022-04-10 15:41:15','N','Y'),(8,'qwe1','hana1','alert','t',1,'2022-04-10 15:44:34','N','N'),(10,'qwe1','test1','안녕하세요','테스트 메세지 입니다.',1,'2022-04-17 02:36:20','N','N'),(11,'test1','test2','테스트 메세지입니다.','테스트 메세지입니다.',1,'2022-04-17 15:01:06','N','N'),(12,'test2','test1','답장 테스트입니다.','답장 테스트입니다.',0,'2022-04-17 15:03:11','N','N'),(13,'hana1','qwe1','asd','asd',0,'2022-04-17 15:04:54','N','N'),(14,'hana1','qwe1','qwe','qwe',0,'2022-04-17 15:09:28','N','N'),(15,'hana1','qwe1','asf','df',0,'2022-04-17 15:10:25','N','N'),(16,'hana1','qwe1','asf','df',0,'2022-04-17 15:10:30','N','N'),(17,'hana1','qwe1','xptmm','d',0,'2022-04-17 15:11:49','N','N');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-17 11:12:21
+-- Dump completed on 2022-04-17 15:19:41

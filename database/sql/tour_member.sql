@@ -41,7 +41,7 @@ CREATE TABLE `member` (
   `session_limit` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +50,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,'qwe1','$2a$10$mP3AEGFb70r2//khqwhZZOfxP8QkIddQ96/KArbn8L96MsN9nCIsu','qwe','sdfsdf@fgasd.com','male','2020-12-03',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-17 10:55:45'),(2,'hana1','$2a$10$4/XqwyeCG7zdGy7toYP5pe/WJPgirurgMe7eeLv5fxlO6i8KFF3i.','hana','fghfhgf@jkhjk.com','female','1998-07-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-16 22:27:29'),(9,'test1','$2a$10$oK6g9NU4oGdhwd94lCu.FeAmM5gfcraCCWFX4fM7PctjRkpRKVzB.','tester','asdfasdf@asdfas.com','female','2022-01-01',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'6510F98179F7FD3D9B928813BD042079','2022-04-24 10:55:53');
+INSERT INTO `member` VALUES (1,'qwe1','$2a$10$mP3AEGFb70r2//khqwhZZOfxP8QkIddQ96/KArbn8L96MsN9nCIsu','qwe','sdfsdf@fgasd.com','male','2020-12-03',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-17 15:12:40'),(2,'hana1','$2a$10$4/XqwyeCG7zdGy7toYP5pe/WJPgirurgMe7eeLv5fxlO6i8KFF3i.','hana','fghfhgf@jkhjk.com','female','1998-07-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-16 22:27:29'),(9,'test1','$2a$10$oK6g9NU4oGdhwd94lCu.FeAmM5gfcraCCWFX4fM7PctjRkpRKVzB.','tester','asdfasdf@asdfas.com','female','2022-01-01',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-17 15:12:56'),(10,'test2','$2a$10$fnexe5gDj2dnoQWMsCvHPeafHSlzYmNsZj1vndSCWP7GM5RmNVF/K','test','sdfads@adf.com','female','2022-01-01',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'none','2022-04-17 15:02:32');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-17 11:12:21
+-- Dump completed on 2022-04-17 15:19:40
