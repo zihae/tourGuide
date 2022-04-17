@@ -18,6 +18,8 @@ h1{text-align: center;}
 			clear: both; content: ''; display: block;
 		}
 .btn{margin:auto; display:block;}
+.read:visited{color: grey; }
+.read:link { color: blue; text-decoration: none;}
 </style>
 </head>
 <body>
@@ -48,7 +50,7 @@ h1{text-align: center;}
 	      <tr>
 	      	<td><input type="checkbox"></td>
 					<td>${message.receiver_id }</td>
-	        <td><a href="<%=request.getContextPath()%>/message/detail?message_id=${message.message_id}">${message.title}</a></td>
+	        <td><a class="read" href="<%=request.getContextPath()%>/message/detail?message_id=${message.message_id}" >${message.title}</a></td>
 	        <td>${message.send_date_str}</td>
 	        <td>${message.read}</td>
 	      </tr> 
