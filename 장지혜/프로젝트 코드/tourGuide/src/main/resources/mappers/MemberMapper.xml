@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.tour.dao.MemberDAO">
+  <insert id="insertMember">
+  	insert into member(user_id,password,nickname,email,gender,birth)
+  							values(#{user.user_id},#{user.password},#{user.nickname},#{user.email},#{user.gender},#{user.birth})
+  </insert>
+  <select id="selectMember" resultType="kr.green.tour.vo.MemberVO">
+  	select * from member where user_id = #{user_id}
+  </select>
+  <select id="selectEmail" resultType="kr.green.tour.vo.MemberVO">
+  	select * from member where email = #{email}
+  </select>
+  <update id="updateSession">
+  	update member set
+  		session_id = #{user.session_id},
+  		session_limit = #{user.session_limit}
+  	where user_id = #{user.user_id}
+  </update>
+  <select id="selectMemberBySessionId" resultType="kr.green.tour.vo.MemberVO">
+  	select * from member
+  	where session_id = #{session_id}
+  		and session_limit >= now()
+  </select>
+  <select id="findId" resultType="String">
+  	select user_id from member
+  	where email = #{user.email} and nickname = #{user.nickname}
+  </select>
+  
+  
+</mapper>
+
+
